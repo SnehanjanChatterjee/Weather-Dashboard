@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CurrentWeather } from '../Models/weather.models';
-import { Key } from 'src/environments/environment';
+import { Key } from '../Constants/Keys';
 
 @Injectable({
   providedIn: 'root'
