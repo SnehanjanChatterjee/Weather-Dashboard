@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CurrentWeather } from '../Models/weather.models';
+import { Key } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class WeatherService {
 
   loadCurrentWeatherByCityName(cityName: string): Observable<CurrentWeather[]> {
     
-    const url = appConfig.remoteHost + appConfig.api.endpoints.weather + '?q=' + cityName + '&appid=' + appConfig.Key;
+    const url = appConfig.remoteHost + appConfig.api.endpoints.weather + '?q=' + cityName + '&appid=' + Key;
     return this._http.get<CurrentWeather[]>(url).pipe(catchError(this.errorHandler));
     
   }
