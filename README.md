@@ -6,6 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line
 
+## Deployment to Github Pages
+
+https://angular.io/guide/deployment
+
 ## API
 
 https://openweathermap.org/api
@@ -20,7 +24,9 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+<!-- Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build. -->
+
+Run `npm run ng build --output-path docs --base-href /Weather-Dashboard/`
 
 ## Running unit tests
 
