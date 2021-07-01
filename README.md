@@ -2,9 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
 
-## To link with local repo
+## To upload project
 
-Run `git remote add origin https://github.com/SnehanjanChatterjee/Weather-Dashboard.git`
+https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line
 
 ## Development server
 
