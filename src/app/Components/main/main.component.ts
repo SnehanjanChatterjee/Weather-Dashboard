@@ -11,6 +11,7 @@ export class MainComponent implements OnInit {
 
   cityName: string = 'Kolkata';
   currentWeatherData: CurrentWeather;
+  pageLoading: boolean = true;
 
   constructor(private _weatherService: WeatherService) { }
 
@@ -21,8 +22,13 @@ export class MainComponent implements OnInit {
   getCurrentWeatherByCityName() {
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).subscribe(
       responseWeatherData => {
-        this.currentWeatherData = responseWeatherData;
-        console.log(this.currentWeatherData);
+      
+        window.setTimeout(() => {
+          this.currentWeatherData = responseWeatherData;
+          console.log(this.currentWeatherData);
+          this.pageLoading = false;
+        }, 2000);
+
         // this.showMsgDiv = false;
       },
       responseProductError => {

@@ -4,6 +4,7 @@
             <app-lhscontents [locationWeatherData]="currentWeatherData"></app-lhscontents>
         </div>
         <div class="col-md-9" style="padding: 0;">
+            <div [ngClass]="{loader:pageLoading}"></div>
             <div id="mainDiv">
                 {{currentWeatherData.name}}
             </div>
