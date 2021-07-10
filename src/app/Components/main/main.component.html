@@ -1,2 +1,10 @@
-<p>main works!</p>
-<!-- {{weatherData}} -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <app-lhscontents [locationWeatherData]="currentWeatherData"></app-lhscontents>
+        </div>
+        <div class="col-md-8">
+            {{currentWeatherData.name}}
+        </div>
+    </div>
+</div>

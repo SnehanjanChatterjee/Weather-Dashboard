@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { CurrentWeather } from 'src/app/Models/weather.models';
 
 @Component({
   selector: 'app-lhscontents',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class LHSContentsComponent implements OnInit {
 
   constructor() { }
+
+  @Input() locationWeatherData: CurrentWeather;
 
   ngOnInit(): void {
   }

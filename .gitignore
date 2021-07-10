@@ -1,6 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-/src/app/Constants/Keys.ts
+/src/app/appConfig.ts
 
 # compiled output
 /dist
@@ -46,3 +46,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+package-lock.json

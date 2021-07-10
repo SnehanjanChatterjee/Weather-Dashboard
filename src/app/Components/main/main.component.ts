@@ -10,7 +10,7 @@ import { WeatherService } from 'src/app/Services/weather.service';
 export class MainComponent implements OnInit {
 
   cityName: string = 'Kolkata';
-  weatherData: CurrentWeather[];
+  currentWeatherData: CurrentWeather;
 
   constructor(private _weatherService: WeatherService) { }
 
@@ -21,12 +21,13 @@ export class MainComponent implements OnInit {
   getCurrentWeatherByCityName() {
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).subscribe(
       responseWeatherData => {
-        this.weatherData = responseWeatherData;
-        console.log(this.weatherData);
+        this.currentWeatherData = responseWeatherData;
+        console.log(this.currentWeatherData);
         // this.showMsgDiv = false;
       },
       responseProductError => {
-        this.weatherData = null;
+        console.log(responseProductError);
+        this.currentWeatherData = null;
         // this.errMsg = responseProductError;
         // console.log(this.errMsg);
       }
