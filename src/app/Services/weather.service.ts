@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { appConfig } from '../Constants/weather-dashboard-constants';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CurrentWeather } from '../Models/weather.models';
-import { APIKey } from '../appConfig';
+import { Api, APIKey, APIUrl } from '../appConfig';
+import { METRIC_UNIT } from '../Constants/weather-dashboard-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class WeatherService {
 
   loadCurrentWeatherByCityName(cityName: string): Observable<CurrentWeather> {
     
-    const url = appConfig.remoteHost + appConfig.api.endpoints.weather + '?q=' + cityName + '&appid=' + APIKey;
+    const url = APIUrl + Api.endpoints.weather + '?q=' + cityName + '&appid=' + APIKey + '&units=' + METRIC_UNIT;
     return this._http.get<CurrentWeather>(url).pipe(catchError(this.errorHandler));
     
   }

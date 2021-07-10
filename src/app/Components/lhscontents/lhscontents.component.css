@@ -1,0 +1,23 @@
+*{
+    color: white;
+}
+
+/* #mainLHSDiv{
+    
+} */
+
+.unitToggler{
+    display: block;
+    height: 80px;
+}
+
+.temp{
+    color: white;
+    text-align: center;
+    font-size: 80px;
+    display: block;
+}
+
+.cityInfo{
+    display: block;
+}

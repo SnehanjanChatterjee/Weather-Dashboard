@@ -1,10 +1,2 @@
-export const appConfig = {
-    remoteHost: 'https://api.openweathermap.org/data/2.5',
-    api: {
-        endpoints: {
-            weather: '/weather',
-            box: '/box/city',
-            find: '/find'
-        }
-    }
-}
+export const METRIC_UNIT = 'metric'; // Celsius unit 
+export const STANDARD_UNIT = 'standard'; // Kelvin unit (default)
