@@ -2,22 +2,31 @@
     color: white;
 }
 
-/* #mainLHSDiv{
-    
-} */
+#mainLHSDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .unitToggler{
-    display: block;
     height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.unitTogglerContent, .unitTogglerContentCel, .unitTogglerContentFah{
+    padding: 5px;
+    font-size: 20px;
 }
 
 .temp{
     color: white;
     text-align: center;
     font-size: 80px;
-    display: block;
 }
 
 .cityInfo{
-    display: block;
+    font-size: 50px;
 }

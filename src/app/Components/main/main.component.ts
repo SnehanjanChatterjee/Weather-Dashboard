@@ -22,22 +22,21 @@ export class MainComponent implements OnInit {
   getCurrentWeatherByCityName() {
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).subscribe(
       responseWeatherData => {
-      
         window.setTimeout(() => {
           this.currentWeatherData = responseWeatherData;
           console.log(this.currentWeatherData);
           this.pageLoading = false;
         }, 2000);
-
-        // this.showMsgDiv = false;
       },
       responseProductError => {
         console.log(responseProductError);
         this.currentWeatherData = null;
-        // this.errMsg = responseProductError;
-        // console.log(this.errMsg);
       }
     );
+  }
+
+  updateDataOnSwitchSelection(data: any) {
+    this.currentWeatherData = data;
   }
 
 }

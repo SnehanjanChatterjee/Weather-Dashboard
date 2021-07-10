@@ -1,11 +1,26 @@
 <div id="mainLHSDiv">
     <div class="unitToggler">
-        unitToggler
+        <div class="unitTogglerContentCel">
+            <span>&#8451;</span>
+        </div>
+        <div class="unitTogglerContent">
+            <mat-slide-toggle color=primary [(ngModel)]="unitType" (change)="handleSwitchSelection()"></mat-slide-toggle>
+        </div>
+        <div class="unitTogglerContentFah">
+            <span>&#8457;</span>
+        </div>
     </div>
-    <div class="temp">
-        {{locationWeatherData.main.temp}}<span>&#8451;</span>
+    <!-- Celcius -->
+    <div class="temp" *ngIf="!unitType">
+        {{locationWeatherData.main.temp | number: '1.0-0'}}
+        <span>&#8451;</span>
+    </div>
+    <!-- Fahrenheit -->
+    <div class="temp" *ngIf="unitType">
+        {{locationWeatherData.main.temp | number: '1.0-0'}}
+        <span>&#8457;</span>
     </div>
     <div class="cityInfo">
-        CityInfo
+        {{locationWeatherData.name}}
     </div>
 </div>

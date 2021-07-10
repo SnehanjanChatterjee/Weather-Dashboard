@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LHSContentsComponent } from './Components/lhscontents/lhscontents.component';
 import { HttpClientModule } from '@angular/common/http';
 import { routing } from './app.routing';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { routing } from './app.routing';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    routing
+    routing,
+    MatSlideToggleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
