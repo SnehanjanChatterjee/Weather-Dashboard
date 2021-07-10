@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CELCIUS } from 'src/app/Constants/weather-dashboard-constants';
+import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
 import { CurrentWeather } from 'src/app/Models/weather.models';
 import { WeatherService } from 'src/app/Services/weather.service';
 
@@ -12,7 +12,8 @@ export class LHSContentsComponent implements OnInit {
 
   constructor(private _weatherService: WeatherService) { }
   cityName: string = 'Kolkata';
-  unitType: boolean = false;
+  unitTypeFahrenheit: boolean = false;
+  displayUnitType: string = CELCIUS;
 
   @Input() locationWeatherData: CurrentWeather;
   @Output() onUnitTypeChange: any = new EventEmitter<CurrentWeather>();
@@ -21,11 +22,12 @@ export class LHSContentsComponent implements OnInit {
   }
 
   handleSwitchSelection() {
-    this._weatherService.setUnitType(this.unitType);
+    this._weatherService.setUnitType(this.unitTypeFahrenheit);
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).subscribe(
       data => {
         this.locationWeatherData = data;
         this.onUnitTypeChange.emit(this.locationWeatherData);
+        this.displayUnitType = this.unitTypeFahrenheit ? FAHRENHEIT : CELCIUS;
       }
     );
   }

@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CurrentWeather } from '../Models/weather.models';
 import { Api, APIKey, APIUrl } from '../appConfig';
-import { METRIC_UNIT, STANDARD_UNIT } from '../Constants/weather-dashboard-constants';
+import { CELCIUS_UNIT, FAHRENHEIT_UNIT } from '../Constants/weather-dashboard-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class WeatherService {
 
   loadCurrentWeatherByCityName(cityName: string): Observable<CurrentWeather> {
 
-    let unit = (this.unitTypeSubject.getValue()) ? STANDARD_UNIT : METRIC_UNIT;
+    let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
     
     const url = APIUrl + Api.endpoints.weather + '?q=' + cityName + '&appid=' + APIKey + '&units=' + unit;
     return this._http.get<CurrentWeather>(url).pipe(catchError(this.errorHandler));
