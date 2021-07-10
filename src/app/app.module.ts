@@ -6,6 +6,7 @@ import { MainComponent } from './Components/main/main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LHSContentsComponent } from './Components/lhscontents/lhscontents.component';
 import { HttpClientModule } from '@angular/common/http';
+import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
