@@ -60,24 +60,118 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! src/app/Services/weather.service */
+    "./src/app/Services/weather.service.ts");
+    /* harmony import */
+
+
+    var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/material/slide-toggle */
+    "./node_modules/@angular/material/fesm2015/slide-toggle.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+
+    function LHSContentsComponent_div_10_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](2, "number");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "\u2103");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](2, 1, ctx_r0.locationWeatherData.main.temp, "1.0-0"), " ");
+      }
+    }
+
+    function LHSContentsComponent_div_11_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](2, "number");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "\u2109");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](2, 1, ctx_r1.locationWeatherData.main.temp, "1.0-0"), " ");
+      }
+    }
 
     var LHSContentsComponent =
     /*#__PURE__*/
     function () {
-      function LHSContentsComponent() {
+      function LHSContentsComponent(_weatherService) {
         _classCallCheck(this, LHSContentsComponent);
+
+        this._weatherService = _weatherService;
+        this.cityName = 'Kolkata';
+        this.unitType = false;
+        this.onUnitTypeChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
       }
 
       _createClass(LHSContentsComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {}
+      }, {
+        key: "handleSwitchSelection",
+        value: function handleSwitchSelection() {
+          var _this = this;
+
+          this._weatherService.setUnitType(this.unitType);
+
+          this._weatherService.loadCurrentWeatherByCityName(this.cityName).subscribe(function (data) {
+            _this.locationWeatherData = data;
+
+            _this.onUnitTypeChange.emit(_this.locationWeatherData);
+          });
+        }
       }]);
 
       return LHSContentsComponent;
     }();
 
     LHSContentsComponent.ɵfac = function LHSContentsComponent_Factory(t) {
-      return new (t || LHSContentsComponent)();
+      return new (t || LHSContentsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_1__["WeatherService"]));
     };
 
     LHSContentsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -86,34 +180,61 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       inputs: {
         locationWeatherData: "locationWeatherData"
       },
-      decls: 9,
-      vars: 1,
-      consts: [["id", "mainLHSDiv"], [1, "unitToggler"], [1, "temp"], [1, "cityInfo"]],
+      outputs: {
+        onUnitTypeChange: "onUnitTypeChange"
+      },
+      decls: 14,
+      vars: 4,
+      consts: [["id", "mainLHSDiv"], [1, "unitToggler"], [1, "unitTogglerContentCel"], [1, "unitTogglerContent"], ["color", "primary", 3, "ngModel", "ngModelChange", "change"], [1, "unitTogglerContentFah"], ["class", "temp", 4, "ngIf"], [1, "cityInfo"], [1, "temp"]],
       template: function LHSContentsComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " unitToggler ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "\u2103");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "\u2103");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, " CityInfo ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "mat-slide-toggle", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function LHSContentsComponent_Template_mat_slide_toggle_ngModelChange_6_listener($event) {
+            return ctx.unitType = $event;
+          })("change", function LHSContentsComponent_Template_mat_slide_toggle_change_6_listener() {
+            return ctx.handleSwitchSelection();
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "\u2109");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, LHSContentsComponent_div_10_Template, 5, 4, "div", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, LHSContentsComponent_div_11_Template, 5, 4, "div", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -121,12 +242,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.unitType);
+
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.locationWeatherData.main.temp, "");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.unitType);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.unitType);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.locationWeatherData.name, " ");
         }
       },
-      styles: ["*[_ngcontent-%COMP%]{\r\n    color: white;\r\n}\r\n\r\n\r\n\r\n.unitToggler[_ngcontent-%COMP%]{\r\n    display: block;\r\n    height: 80px;\r\n}\r\n\r\n.temp[_ngcontent-%COMP%]{\r\n    color: white;\r\n    text-align: center;\r\n    font-size: 80px;\r\n    display: block;\r\n}\r\n\r\n.cityInfo[_ngcontent-%COMP%]{\r\n    display: block;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQ29tcG9uZW50cy9saHNjb250ZW50cy9saHNjb250ZW50cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTs7R0FFRzs7QUFFSDtJQUNJLGNBQWM7SUFDZCxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixlQUFlO0lBQ2YsY0FBYztBQUNsQjs7QUFFQTtJQUNJLGNBQWM7QUFDbEIiLCJmaWxlIjoic3JjL2FwcC9Db21wb25lbnRzL2xoc2NvbnRlbnRzL2xoc2NvbnRlbnRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIqe1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4vKiAjbWFpbkxIU0RpdntcclxuICAgIFxyXG59ICovXHJcblxyXG4udW5pdFRvZ2dsZXJ7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxuICAgIGhlaWdodDogODBweDtcclxufVxyXG5cclxuLnRlbXB7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBmb250LXNpemU6IDgwcHg7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxufVxyXG5cclxuLmNpdHlJbmZve1xyXG4gICAgZGlzcGxheTogYmxvY2s7XHJcbn0iXX0= */"]
+      directives: [_angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_2__["MatSlideToggle"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"]],
+      pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["DecimalPipe"]],
+      styles: ["*[_ngcontent-%COMP%]{\r\n    color: white;\r\n}\r\n\r\n#mainLHSDiv[_ngcontent-%COMP%]{\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.unitToggler[_ngcontent-%COMP%]{\r\n    height: 80px;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.unitTogglerContent[_ngcontent-%COMP%], .unitTogglerContentCel[_ngcontent-%COMP%], .unitTogglerContentFah[_ngcontent-%COMP%]{\r\n    padding: 5px;\r\n    font-size: 20px;\r\n}\r\n\r\n.temp[_ngcontent-%COMP%]{\r\n    color: white;\r\n    text-align: center;\r\n    font-size: 80px;\r\n}\r\n\r\n.cityInfo[_ngcontent-%COMP%]{\r\n    font-size: 50px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQ29tcG9uZW50cy9saHNjb250ZW50cy9saHNjb250ZW50cy5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksWUFBWTtBQUNoQjs7QUFFQTtJQUNJLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsdUJBQXVCO0lBQ3ZCLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFlBQVk7SUFDWixlQUFlO0FBQ25COztBQUVBO0lBQ0ksWUFBWTtJQUNaLGtCQUFrQjtJQUNsQixlQUFlO0FBQ25COztBQUVBO0lBQ0ksZUFBZTtBQUNuQiIsImZpbGUiOiJzcmMvYXBwL0NvbXBvbmVudHMvbGhzY29udGVudHMvbGhzY29udGVudHMuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIip7XHJcbiAgICBjb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbiNtYWluTEhTRGl2e1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbn1cclxuXHJcbi51bml0VG9nZ2xlcntcclxuICAgIGhlaWdodDogODBweDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbn1cclxuXHJcbi51bml0VG9nZ2xlckNvbnRlbnQsIC51bml0VG9nZ2xlckNvbnRlbnRDZWwsIC51bml0VG9nZ2xlckNvbnRlbnRGYWh7XHJcbiAgICBwYWRkaW5nOiA1cHg7XHJcbiAgICBmb250LXNpemU6IDIwcHg7XHJcbn1cclxuXHJcbi50ZW1we1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1zaXplOiA4MHB4O1xyXG59XHJcblxyXG4uY2l0eUluZm97XHJcbiAgICBmb250LXNpemU6IDUwcHg7XHJcbn0iXX0= */"]
     });
     /*@__PURE__*/
 
@@ -139,10 +274,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           styleUrls: ['./lhscontents.component.css']
         }]
       }], function () {
-        return [];
+        return [{
+          type: src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_1__["WeatherService"]
+        }];
       }, {
         locationWeatherData: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        onUnitTypeChange: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
         }]
       });
     })();
@@ -219,19 +359,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getCurrentWeatherByCityName",
         value: function getCurrentWeatherByCityName() {
-          var _this = this;
+          var _this2 = this;
 
           this._weatherService.loadCurrentWeatherByCityName(this.cityName).subscribe(function (responseWeatherData) {
             window.setTimeout(function () {
-              _this.currentWeatherData = responseWeatherData;
-              console.log(_this.currentWeatherData);
-              _this.pageLoading = false;
-            }, 2000); // this.showMsgDiv = false;
+              _this2.currentWeatherData = responseWeatherData;
+              console.log(_this2.currentWeatherData);
+              _this2.pageLoading = false;
+            }, 2000);
           }, function (responseProductError) {
             console.log(responseProductError);
-            _this.currentWeatherData = null; // this.errMsg = responseProductError;
-            // console.log(this.errMsg);
+            _this2.currentWeatherData = null;
           });
+        }
+      }, {
+        key: "updateDataOnSwitchSelection",
+        value: function updateDataOnSwitchSelection(data) {
+          this.currentWeatherData = data;
         }
       }]);
 
@@ -247,7 +391,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       selectors: [["app-main"]],
       decls: 8,
       vars: 5,
-      consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-3", 2, "padding", "0"], [3, "locationWeatherData"], [1, "col-md-9", 2, "padding", "0"], [3, "ngClass"], ["id", "mainDiv"]],
+      consts: [[1, "container-fluid"], [1, "row"], [1, "col-md-3", 2, "padding", "0"], [3, "locationWeatherData", "onUnitTypeChange"], [1, "col-md-9", 2, "padding", "0"], [3, "ngClass"], ["id", "mainDiv"]],
       template: function MainComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -256,7 +400,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "app-lhscontents", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "app-lhscontents", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("onUnitTypeChange", function MainComponent_Template_app_lhscontents_onUnitTypeChange_3_listener($event) {
+            return ctx.updateDataOnSwitchSelection($event);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -320,7 +470,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/Constants/weather-dashboard-constants.ts ***!
     \**********************************************************/
 
-  /*! exports provided: METRIC_UNIT, STANDARD_UNIT */
+  /*! exports provided: METRIC_UNIT, STANDARD_UNIT, FAHRENHEIT, CELCIUS */
 
   /***/
   function srcAppConstantsWeatherDashboardConstantsTs(module, __webpack_exports__, __webpack_require__) {
@@ -339,11 +489,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "STANDARD_UNIT", function () {
       return STANDARD_UNIT;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "FAHRENHEIT", function () {
+      return FAHRENHEIT;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CELCIUS", function () {
+      return CELCIUS;
+    });
 
     var METRIC_UNIT = 'metric'; // Celsius unit 
 
     var STANDARD_UNIT = 'standard'; // Kelvin unit (default)
 
+    var FAHRENHEIT = 'fahrenheit';
+    var CELCIUS = 'celcius';
     /***/
   },
 
@@ -410,13 +574,25 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, WeatherService);
 
         this._http = _http;
+        this.unitTypeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](false);
       }
 
       _createClass(WeatherService, [{
         key: "loadCurrentWeatherByCityName",
         value: function loadCurrentWeatherByCityName(cityName) {
-          var url = _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIUrl"] + _appConfig__WEBPACK_IMPORTED_MODULE_3__["Api"].endpoints.weather + '?q=' + cityName + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["METRIC_UNIT"];
+          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["STANDARD_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["METRIC_UNIT"];
+          var url = _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIUrl"] + _appConfig__WEBPACK_IMPORTED_MODULE_3__["Api"].endpoints.weather + '?q=' + cityName + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
           return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
+        }
+      }, {
+        key: "setUnitType",
+        value: function setUnitType(unitType) {
+          this.unitTypeSubject.next(unitType);
+        }
+      }, {
+        key: "getUnitType",
+        value: function getUnitType() {
+          return this.unitTypeSubject.asObservable();
         }
       }, {
         key: "errorHandler",
@@ -597,7 +773,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @angular/material/slide-toggle */
+    "./node_modules/@angular/material/fesm2015/slide-toggle.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
 
@@ -614,13 +802,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         return new (t || AppModule)();
       },
       providers: [],
-      imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"], _app_routing__WEBPACK_IMPORTED_MODULE_7__["routing"]]]
+      imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"], _app_routing__WEBPACK_IMPORTED_MODULE_7__["routing"], _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_8__["MatSlideToggleModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"]]]
     });
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, {
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _Components_main_main_component__WEBPACK_IMPORTED_MODULE_3__["MainComponent"], _Components_lhscontents_lhscontents_component__WEBPACK_IMPORTED_MODULE_5__["LHSContentsComponent"]],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"], _angular_router__WEBPACK_IMPORTED_MODULE_8__["RouterModule"]]
+        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"], _angular_router__WEBPACK_IMPORTED_MODULE_10__["RouterModule"], _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_8__["MatSlideToggleModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"]]
       });
     })();
     /*@__PURE__*/
@@ -631,7 +819,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
           declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _Components_main_main_component__WEBPACK_IMPORTED_MODULE_3__["MainComponent"], _Components_lhscontents_lhscontents_component__WEBPACK_IMPORTED_MODULE_5__["LHSContentsComponent"]],
-          imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"], _app_routing__WEBPACK_IMPORTED_MODULE_7__["routing"]],
+          imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClientModule"], _app_routing__WEBPACK_IMPORTED_MODULE_7__["routing"], _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_8__["MatSlideToggleModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["FormsModule"]],
           providers: [],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         }]
