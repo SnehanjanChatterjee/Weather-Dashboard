@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3" style="padding: 0;">
-            <app-lhscontents [locationWeatherData]="currentWeatherData" (onUnitTypeChange)="updateDataOnSwitchSelection($event)"></app-lhscontents>
+            <app-lhscontents [weatherData]="currentWeatherData" (onUnitTypeChange)="updateDataOnSwitchSelection($event)"></app-lhscontents>
         </div>
         <div class="col-md-9" style="padding: 0;">
             <div [ngClass]="{loader:pageLoading}"></div>
@@ -9,7 +9,7 @@
                 <div id="searchDiv">
                     <mat-form-field class="example-form-field" appearance="fill">
                         <mat-label style="color: black;">Enter City Name</mat-label>
-                        <input matInput type="text" [(ngModel)]="cityName">
+                        <input matInput type="text" [(ngModel)]="cityName" (keyup.enter)="getCurrentWeatherByCityName()">
                         <button *ngIf="cityName" matSuffix mat-icon-button aria-label="Clear" (click)="cityName=''">
                             <mat-icon>close</mat-icon>
                         </button>

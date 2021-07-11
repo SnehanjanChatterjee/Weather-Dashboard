@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { IconUrl } from 'src/app/appConfig';
 import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
 import { CurrentWeather } from 'src/app/Models/weather.models';
+import { ConvertUnixToUTC } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
@@ -11,11 +13,25 @@ import { WeatherService } from 'src/app/Services/weather.service';
 export class LHSContentsComponent implements OnInit {
 
   constructor(private _weatherService: WeatherService) { }
+
   cityName: string = 'Kolkata';
   unitTypeFahrenheit: boolean = false;
   displayUnitType: string = CELCIUS;
+  iconurl: string = '';
+  currentDatetime: string;
 
-  @Input() locationWeatherData: CurrentWeather;
+  locationWeatherData: CurrentWeather;
+
+  @Input()
+  set weatherData(data: CurrentWeather) {
+    this.locationWeatherData = data;
+    if(this.locationWeatherData) {
+      this.iconurl = IconUrl + this.locationWeatherData.weather[0].icon + '.png';
+      this.currentDatetime = ConvertUnixToUTC(this.locationWeatherData.dt);
+      console.log("IconUrl", this.iconurl, "\n", "currentDatetime", this.currentDatetime);
+    }
+  }
+
   @Output() onUnitTypeChange: any = new EventEmitter<CurrentWeather>();
 
   ngOnInit(): void {
