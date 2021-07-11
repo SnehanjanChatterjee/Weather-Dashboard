@@ -23,7 +23,7 @@ export class LHSContentsComponent implements OnInit {
 
   handleSwitchSelection() {
     this._weatherService.setUnitType(this.unitTypeFahrenheit);
-    this._weatherService.loadCurrentWeatherByCityName(this.cityName).subscribe(
+    this._weatherService.loadCurrentWeatherByCityName(this.locationWeatherData.name).subscribe(
       data => {
         this.locationWeatherData = data;
         this.onUnitTypeChange.emit(this.locationWeatherData);

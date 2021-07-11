@@ -6,7 +6,22 @@
         <div class="col-md-9" style="padding: 0;">
             <div [ngClass]="{loader:pageLoading}"></div>
             <div id="mainDiv">
-                {{currentWeatherData.name}}
+                <div id="searchDiv">
+                    <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label style="color: black;">Enter City Name</mat-label>
+                        <input matInput type="text" [(ngModel)]="cityName">
+                        <button *ngIf="cityName" matSuffix mat-icon-button aria-label="Clear" (click)="cityName=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                        <button matPrefix mat-icon-button (click)="getCurrentWeatherByCityName()">
+                            <mat-icon>search</mat-icon>
+                        </button>
+                    </mat-form-field>                
+                </div>
+                <div *ngIf="showErrorDiv" class="errorDiv">
+                    <mat-icon>error</mat-icon>
+                    <p>Error: {{errorMessage}}</p>
+                </div>
             </div>
         </div>
     </div>

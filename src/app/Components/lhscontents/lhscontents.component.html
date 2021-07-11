@@ -10,17 +10,19 @@
             <span>&#8457;</span>
         </div>
     </div>
-    <!-- Celcius -->
-    <div class="temp" *ngIf="displayUnitType === 'celcius'">
-        {{locationWeatherData.main.temp | number: '1.0-0'}}
-        <span>&#8451;</span>
-    </div>
-    <!-- Fahrenheit -->
-    <div class="temp" *ngIf="displayUnitType === 'fahrenheit'">
-        {{locationWeatherData.main.temp | number: '1.0-0'}}
-        <span>&#8457;</span>
-    </div>
-    <div class="cityInfo">
-        {{locationWeatherData.name}}
+    <div id="tempInfo" *ngIf="locationWeatherData">
+        <!-- Celcius -->
+        <div class="temp" *ngIf="displayUnitType === 'celcius'">
+            {{locationWeatherData.main.temp | number: '1.0-0'}}
+            <span>&#8451;</span>
+        </div>
+        <!-- Fahrenheit -->
+        <div class="temp" *ngIf="displayUnitType === 'fahrenheit'">
+            {{locationWeatherData.main.temp | number: '1.0-0'}}
+            <span>&#8457;</span>
+        </div>
+        <div *ngIf="locationWeatherData" class="cityInfo">
+            {{locationWeatherData.name}}
+        </div>
     </div>
 </div>

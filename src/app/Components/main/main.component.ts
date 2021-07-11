@@ -9,28 +9,36 @@ import { WeatherService } from 'src/app/Services/weather.service';
 })
 export class MainComponent implements OnInit {
 
-  cityName: string = 'Kolkata';
+  cityName: string = '';
   currentWeatherData: CurrentWeather;
-  pageLoading: boolean = true;
-
+  pageLoading: boolean = false;
+  showErrorDiv: boolean = false;
+  errorMessage: string = '';
   constructor(private _weatherService: WeatherService) { }
 
   ngOnInit(): void {
-    this.getCurrentWeatherByCityName();
   }
 
   getCurrentWeatherByCityName() {
+
+    this.pageLoading = true;
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).subscribe(
       responseWeatherData => {
         window.setTimeout(() => {
           this.currentWeatherData = responseWeatherData;
           console.log(this.currentWeatherData);
           this.pageLoading = false;
+          this.showErrorDiv = false;
         }, 2000);
       },
       responseProductError => {
         console.log(responseProductError);
         this.currentWeatherData = null;
+        window.setTimeout(() => {
+          this.pageLoading = false;
+          this.showErrorDiv = true;
+          this.errorMessage = responseProductError;
+        }, 2000);
       }
     );
   }

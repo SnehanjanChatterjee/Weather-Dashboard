@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { routing } from './app.routing';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     routing,
     MatSlideToggleModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

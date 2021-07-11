@@ -21,6 +21,13 @@
     font-size: 20px;
 }
 
+#tempInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .temp{
     color: white;
     text-align: center;
