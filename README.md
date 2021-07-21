@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
 
-Deployed at: https://snehanjanchatterjee.github.io/Weather-Dashboard/
+Deployed at(Work under progress): https://snehanjanchatterjee.github.io/Weather-Dashboard/
 
 ## To upload project
 
