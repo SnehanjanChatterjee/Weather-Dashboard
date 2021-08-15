@@ -19,6 +19,7 @@ export class LHSContentsComponent implements OnInit {
   displayUnitType: string = CELCIUS;
   iconurl: string = '';
   currentDatetime: string;
+  errorMsg: string;
 
   locationWeatherData: CurrentWeather;
 
@@ -39,13 +40,24 @@ export class LHSContentsComponent implements OnInit {
 
   handleSwitchSelection() {
     this._weatherService.setUnitType(this.unitTypeFahrenheit);
-    this._weatherService.loadCurrentWeatherByCityName(this.locationWeatherData.name).subscribe(
-      data => {
-        this.locationWeatherData = data;
-        this.onUnitTypeChange.emit(this.locationWeatherData);
-        this.displayUnitType = this.unitTypeFahrenheit ? FAHRENHEIT : CELCIUS;
-      }
-    );
+    if (this.locationWeatherData && this.locationWeatherData.name) {
+      this._weatherService.loadCurrentWeatherByCityName(this.locationWeatherData.name).subscribe(
+        data => {
+          this.locationWeatherData = data;
+          this.displayUnitType = this.unitTypeFahrenheit ? FAHRENHEIT : CELCIUS;
+          this.onUnitTypeChange.emit(this.locationWeatherData);
+        },
+        responseError => {
+          this.errorMsg = responseError;
+          console.log(responseError);
+        },
+        () => {
+          console.log("handleSwitchSelection() Completed");
+        }
+      );
+    } else {
+      this.displayUnitType = this.unitTypeFahrenheit ? FAHRENHEIT : CELCIUS;
+    }
   }
 
 }

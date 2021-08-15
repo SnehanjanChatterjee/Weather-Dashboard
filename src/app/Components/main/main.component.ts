@@ -31,14 +31,15 @@ export class MainComponent implements OnInit {
           this.showErrorDiv = false;
         }, 2000);
       },
-      responseProductError => {
-        console.log(responseProductError);
+      responseWeatherError => {
+        console.log("responseWeatherError = ", responseWeatherError);
         this.currentWeatherData = null;
-        window.setTimeout(() => {
-          this.pageLoading = false;
-          this.showErrorDiv = true;
-          this.errorMessage = responseProductError;
-        }, 2000);
+        this.errorMessage = responseWeatherError;
+        this.showErrorDiv = true;
+        this.pageLoading = false;
+      },
+      () => {
+        console.log('getCurrentWeatherByCityName Completed');
       }
     );
   }
