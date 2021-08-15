@@ -1,8 +1,8 @@
-*{
+* {
     color: white;
 }
 
-#mainLHSDiv{
+#mainLHSDiv {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -11,31 +11,31 @@
     min-height: 100%;
 }
 
-.unitToggler{
+.unitToggler {
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.unitTogglerContent, .unitTogglerContentCel, .unitTogglerContentFah{
+.unitTogglerContent, .unitTogglerContentCel, .unitTogglerContentFah {
     padding: 5px;
     font-size: 20px;
 }
 
-#tempInfo{
+#tempInfo {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.temp{
+.temp {
     color: white;
     text-align: center;
     font-size: 80px;
 }
 
-.cityInfo{
+.cityInfo {
     font-size: 50px;
 }
