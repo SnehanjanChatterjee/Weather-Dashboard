@@ -7,21 +7,24 @@
             <div [ngClass]="{loader:pageLoading}"></div>
             <div id="mainDiv">
                 <div id="searchDiv">
-                    <mat-form-field class="example-form-field" appearance="fill">
-                        <mat-label style="color: black;">Enter City Name</mat-label>
-                        <input matInput type="text" [(ngModel)]="cityName" (keyup.enter)="getCurrentWeatherByCityName()">
-                        <button *ngIf="cityName" matSuffix mat-icon-button aria-label="Clear" (click)="cityName=''">
-                            <mat-icon>close</mat-icon>
-                        </button>
-                        <button matPrefix mat-icon-button (click)="getCurrentWeatherByCityName()">
-                            <mat-icon>search</mat-icon>
-                        </button>
+                    <mat-form-field class="example-form-field" appearance="outline">
+                        <!-- <div id="searchDiv"> -->
+                            <mat-label style="color: black;">Enter City Name</mat-label>
+                            <input matInput type="text" [(ngModel)]="cityName" (keyup.enter)="getCurrentWeatherByCityName()" required>
+                            <mat-error *ngIf="showErrorDiv">{{errorMessage}}</mat-error>
+                            <button *ngIf="cityName" matSuffix mat-icon-button aria-label="Clear" (click)="cityName=''">
+                                <mat-icon>close</mat-icon>
+                            </button>
+                            <button matPrefix mat-icon-button (click)="getCurrentWeatherByCityName()">
+                                <mat-icon>search</mat-icon>
+                            </button>
+                        <!-- </div> -->
                     </mat-form-field>
                 </div>
-                <div *ngIf="showErrorDiv" class="errorDiv">
+                <!-- <div *ngIf="showErrorDiv" class="errorDiv">
                     <mat-icon>error</mat-icon>
                     <p>Error: {{errorMessage}}</p>
-                </div>
+                </div> -->
                 <!-- <div class="chartDiv">
                     
                 </div> -->
