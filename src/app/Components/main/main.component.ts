@@ -34,7 +34,8 @@ export class MainComponent implements OnInit {
       responseWeatherError => {
         console.log("responseWeatherError = ", responseWeatherError);
         this.currentWeatherData = null;
-        this.errorMessage = responseWeatherError;
+        // this.errorMessage = responseWeatherError;
+        this.errorMessage = 'Incorrect city name';
         this.showErrorDiv = true;
         this.pageLoading = false;
       },
@@ -46,6 +47,10 @@ export class MainComponent implements OnInit {
 
   updateDataOnSwitchSelection(data: any) {
     this.currentWeatherData = data;
+  }
+
+  onKeyDown() {
+    this.showErrorDiv = false;
   }
 
 }

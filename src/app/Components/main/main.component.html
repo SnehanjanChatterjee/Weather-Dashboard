@@ -6,31 +6,26 @@
         <div class="col-md-9" style="padding: 0;">
             <div [ngClass]="{loader:pageLoading}"></div>
             <div id="mainDiv">
-                <div id="searchDiv">
-                    <mat-form-field class="example-form-field" appearance="outline">
-                        <!-- <div id="searchDiv"> -->
-                            <mat-label style="color: black;">Enter City Name</mat-label>
-                            <input matInput type="text" [(ngModel)]="cityName" (keyup.enter)="getCurrentWeatherByCityName()" required>
-                            <mat-error *ngIf="showErrorDiv">{{errorMessage}}</mat-error>
-                            <button *ngIf="cityName" matSuffix mat-icon-button aria-label="Clear" (click)="cityName=''">
-                                <mat-icon>close</mat-icon>
-                            </button>
-                            <button matPrefix mat-icon-button (click)="getCurrentWeatherByCityName()">
-                                <mat-icon>search</mat-icon>
-                            </button>
-                        <!-- </div> -->
-                    </mat-form-field>
+                <div id="searchDiv" [ngStyle]="{'height.px': showErrorDiv ? 150 : 100}">
+                    <div class="input-group" id="searchDivInput">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true" (click)="getCurrentWeatherByCityName()"></i></span>
+                            <input type="text" class="form-control" placeholder="Enter City Name" aria-label="Username" aria-describedby="basic-addon1" 
+                            [(ngModel)]="cityName" (keyup.enter)="getCurrentWeatherByCityName()" (keydown)="onKeyDown()">
+                            <span *ngIf="cityName" class="input-group-text" id="basic-addon1" (click)="cityName=''"><i class="fa fa-times"></i></span>
+                        </div>
+                    </div>
+                    <div *ngIf="showErrorDiv" class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>{{errorMessage}}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="showErrorDiv=false"></button>
+                    </div>
                 </div>
-                <!-- <div *ngIf="showErrorDiv" class="errorDiv">
-                    <mat-icon>error</mat-icon>
-                    <p>Error: {{errorMessage}}</p>
-                </div> -->
                 <!-- <div class="chartDiv">
                     
                 </div> -->
-                <div class="widgetsDiv">
+                <!-- <div class="widgetsDiv">
                     
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -17,44 +17,29 @@
 }
 
 #searchDiv {
-  width: 100%;
+  max-width: 75%;
   /* background-color: white; */
   border-radius: 12px;
-  height: 65px;
-}
-
-/* #searchDivInput {
-  
-} */
-
-.example-form {
-  min-width: 500px;
-  max-width: 500px;
-  width: 100%;
-}
-
-.example-form-field {
-  width: 800px;
-}
-
-.buttonHover {
-  cursor: pointer;
-}
-/* #searchDivParent {
-  width: 600px;
-  background-color: white;
-  border-radius: 12px;
-  height: 30px;
+  height: 100px;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#searchDiv { 
-  width: inherit;
-  height: inherit;
-} */
+#searchDivInput {
+  width: 60%;
+}
+
+.input-group-text {
+  border-radius: 30px;
+  background-color: white;
+}
+
+.form-control {
+  border-radius: 30px;
+  height: 40px;
+}
 
 .loader {
   color: blue;
