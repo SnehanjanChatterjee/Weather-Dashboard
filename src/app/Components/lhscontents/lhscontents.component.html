@@ -10,7 +10,7 @@
             <span>&#8457;</span>
         </div>
     </div>
-    <div id="tempInfo" *ngIf="locationWeatherData">
+    <div class="tempInfo" *ngIf="locationWeatherData">
         <!-- Celcius -->
         <div class="temp" *ngIf="displayUnitType === 'celcius'">
             {{locationWeatherData.main.temp | number: '1.0-0'}}
@@ -22,7 +22,7 @@
             <span>&#8457;</span>
         </div>
         <div class="weatherIconDiv">
-            <img [src]="iconurl" alt="Icon">
+            <img [src]="iconurl" alt="Icon" class="weatherIcon">
         </div>
         <div *ngIf="locationWeatherData" class="cityInfo">
             {{locationWeatherData.name}}, {{locationWeatherData.sys.country}}

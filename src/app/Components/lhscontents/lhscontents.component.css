@@ -23,7 +23,7 @@
     font-size: 20px;
 }
 
-#tempInfo {
+.tempInfo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,3 +39,7 @@
 .cityInfo {
     font-size: 50px;
 }
+
+/* .weatherIcon {
+    height: 100px;
+} */

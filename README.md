@@ -48,3 +48,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 -- Bootstrap 5
 -- Angular Material UI
 -- Font Awesome
+
+## Weather Icons
+
+https://openweathermap.org/weather-conditions

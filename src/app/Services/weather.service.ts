@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { CurrentWeather } from '../Models/weather.models';
 import { Api, APIKey, APIUrl } from '../appConfig';
 import { CELCIUS_UNIT, FAHRENHEIT_UNIT } from '../Constants/weather-dashboard-constants';
+import { OneAPICallModel } from '../Models/OneAPICallModel.models';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,16 @@ export class WeatherService {
     
     const url = APIUrl + Api.endpoints.weather + '?q=' + cityName + '&appid=' + APIKey + '&units=' + unit;
     return this._http.get<CurrentWeather>(url).pipe(catchError(this.errorHandler));
+    
+  }
+  
+  loadCurrentOneAPICallDataByCityName(currentWeatherData: CurrentWeather): Observable<OneAPICallModel> {
+
+    let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
+    
+    const url = APIUrl + Api.endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '?lon=' + 
+    currentWeatherData.coord.lon + '&appid=' + APIKey + '&units=' + unit;
+    return this._http.get<OneAPICallModel>(url).pipe(catchError(this.errorHandler));
     
   }
 

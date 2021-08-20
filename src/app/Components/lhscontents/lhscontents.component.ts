@@ -27,7 +27,7 @@ export class LHSContentsComponent implements OnInit {
   set weatherData(data: CurrentWeather) {
     this.locationWeatherData = data;
     if(this.locationWeatherData) {
-      this.iconurl = IconUrl + this.locationWeatherData.weather[0].icon + '.png';
+      this.iconurl = IconUrl + this.locationWeatherData.weather[0].icon + '@4x.png';
       this.currentDatetime = ConvertUnixToUTC(this.locationWeatherData.dt);
       console.log("IconUrl", this.iconurl, "\n", "currentDatetime", this.currentDatetime);
     }
