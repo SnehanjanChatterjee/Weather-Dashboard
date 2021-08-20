@@ -28,7 +28,7 @@
             {{locationWeatherData.name}}, {{locationWeatherData.sys.country}}
         </div>
         <div *ngIf="locationWeatherData" class="timeInfo">
-            {{currentDatetime | date:'medium'}} &nbsp; <span>UTC</span>
+            {{currentDatetime | date:'MMM d, y, h:mm a'}} &nbsp; <span>UTC</span>
         </div>
     </div>
 </div>
