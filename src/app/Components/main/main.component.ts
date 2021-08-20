@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrentWeather } from 'src/app/Models/weather.models';
 import { WeatherService } from 'src/app/Services/weather.service';
+import { switchMap } from 'rxjs/operators';
+import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 
 @Component({
   selector: 'app-main',
@@ -11,6 +13,7 @@ export class MainComponent implements OnInit {
 
   cityName: string = '';
   currentWeatherData: CurrentWeather;
+  oneCallWeatherData: OneAPICallModel;
   pageLoading: boolean = false;
   showErrorDiv: boolean = false;
   errorMessage: string = '';
@@ -22,18 +25,25 @@ export class MainComponent implements OnInit {
   getCurrentWeatherByCityName() {
 
     this.pageLoading = true;
-    this._weatherService.loadCurrentWeatherByCityName(this.cityName).subscribe(
+    
+    this._weatherService.loadCurrentWeatherByCityName(this.cityName).pipe(
+    switchMap(data => {
+      this.currentWeatherData = data;
+      console.log("In main currentWeatherData = \n", this.currentWeatherData);
+      return this._weatherService.loadOneAPICallDataByCurrentData(data, []);
+    }))
+    .subscribe(
       responseWeatherData => {
         window.setTimeout(() => {
-          this.currentWeatherData = responseWeatherData;
-          console.log(this.currentWeatherData);
+          this.oneCallWeatherData = responseWeatherData;
+          console.log(this.oneCallWeatherData);
           this.pageLoading = false;
           this.showErrorDiv = false;
         }, 2000);
       },
       responseWeatherError => {
         console.log("responseWeatherError = ", responseWeatherError);
-        this.currentWeatherData = null;
+        this.oneCallWeatherData = null;
         // this.errorMessage = responseWeatherError;
         this.errorMessage = 'Incorrect city name';
         this.showErrorDiv = true;
@@ -46,7 +56,7 @@ export class MainComponent implements OnInit {
   }
 
   updateDataOnSwitchSelection(data: any) {
-    this.currentWeatherData = data;
+    this.oneCallWeatherData = data;
   }
 
   onKeyDown() {

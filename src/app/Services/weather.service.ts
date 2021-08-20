@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CurrentWeather } from '../Models/weather.models';
 import { Api, APIKey, APIUrl } from '../appConfig';
-import { CELCIUS_UNIT, FAHRENHEIT_UNIT } from '../Constants/weather-dashboard-constants';
+import { CELCIUS_UNIT, FAHRENHEIT_UNIT, OneCallExcludes } from '../Constants/weather-dashboard-constants';
 import { OneAPICallModel } from '../Models/OneAPICallModel.models';
 
 @Injectable({
@@ -25,12 +25,27 @@ export class WeatherService {
     
   }
   
-  loadCurrentOneAPICallDataByCityName(currentWeatherData: CurrentWeather): Observable<OneAPICallModel> {
+  loadOneAPICallDataByCurrentData(currentWeatherData: CurrentWeather, excludes: any): Observable<OneAPICallModel> {
 
     let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
     
-    const url = APIUrl + Api.endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '?lon=' + 
-    currentWeatherData.coord.lon + '&appid=' + APIKey + '&units=' + unit;
+    let excludesString = '';
+    excludes.forEach((value, index) => {
+      excludesString += value;
+      if (index !== excludes.length - 1) {
+        excludesString += ',';
+      }
+    });
+    console.log(excludesString);
+
+    let url = '';
+    if (excludesString && excludes.length > 0) {
+      url = APIUrl + Api.endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + 
+      '&exclude=' + excludesString + '&appid=' + APIKey + '&units=' + unit;
+    } else {
+      url = APIUrl + Api.endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + 
+      '&appid=' + APIKey + '&units=' + unit;
+    }
     return this._http.get<OneAPICallModel>(url).pipe(catchError(this.errorHandler));
     
   }

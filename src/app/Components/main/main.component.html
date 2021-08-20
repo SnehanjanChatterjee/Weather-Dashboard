@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3" style="padding: 0;">
-            <app-lhscontents [weatherData]="currentWeatherData" (onUnitTypeChange)="updateDataOnSwitchSelection($event)"></app-lhscontents>
+            <app-lhscontents [weatherData]="currentWeatherData" [oneCallWeatherData]="oneCallWeatherData" (onUnitTypeChange)="updateDataOnSwitchSelection($event)"></app-lhscontents>
         </div>
         <div class="col-md-9" style="padding: 0;">
             <div [ngClass]="{loader:pageLoading}"></div>
