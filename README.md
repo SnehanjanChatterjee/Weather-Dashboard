@@ -51,6 +51,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     <li> Bootstrap 5 </li>
     <li> Angular Material UI </li>
     <li> Font Awesome </li>
-    <li> Charts: </li>
+    <li> Charts: https://xieziyu.github.io/ngx-echarts/#/welcome 
+        <ul>
+            <li>Installation:
+                <ol>
+                    <li>`npm install echarts@4 -S`</li>
+                    <li>`npm install ngx-echarts@5 -S`</li>
+                    <li>`npm install resize-observer-polyfill -D`</li>
+                </ol>
+            </li>
+        </ul>
+    </li>
     <li> Weather Icons: https://openweathermap.org/weather-conditions </li>
 </ol>

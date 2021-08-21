@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { DailyChartComponent } from './Components/daily-chart/daily-chart.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,15 @@ import { DailyChartComponent } from './Components/daily-chart/daily-chart.compon
     MatInputModule,
     MatIconModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxEchartsModule.forRoot({
+      /**
+       * This will import all modules from echarts.
+       * If you only need custom modules,
+       * please refer to [Custom Build] section.
+       */
+      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
