@@ -1,7 +1,7 @@
-<div class="chartDiv">
+<div *ngIf="eChartOptions" class="chartDiv">
     <div class="card chartCard">
         <div class="card-body">
-          <div echarts [options]="chartOptions" class="demo-chart"></div>
+          <div echarts [options]="eChartOptions" class="demo-chart"></div>
         </div>
       </div>
 </div>

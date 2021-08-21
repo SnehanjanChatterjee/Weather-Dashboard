@@ -1,6 +1,7 @@
 .chartCard {
     border-radius: 20px;
     background-color: #fff;
+    /* This is not responsive */
     margin-right: 430px;
     margin-left: 50px;
 }

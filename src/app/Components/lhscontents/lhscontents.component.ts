@@ -71,7 +71,7 @@ export class LHSContentsComponent implements OnInit {
         switchMap(data => {
           this.locationWeatherData = data;
           console.log("In LHS locationWeatherData = \n", data);
-          return this._weatherService.loadOneAPICallDataByCurrentData(data, this.excludesArray);
+          return this._weatherService.loadOneAPICallDataByCurrentData(data, this.excludes);
         }))
         .subscribe(
           responseWeatherData => {
