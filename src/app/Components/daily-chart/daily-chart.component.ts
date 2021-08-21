@@ -16,24 +16,7 @@ export class DailyChartComponent implements OnInit {
   seriesData1: number[] = [];
   seriesData2: number[] = [];
   unitTypeValue: string;
-
-  chartOptions: EChartOption = {
-    tooltip: {
-      trigger: 'axis',
-    },
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [{
-      data: [820, 932, 901, 934, 1290, 1330, 1320],
-      type: 'line',
-      smooth: true
-    }]
-  };
+  theme: string = 'light';
 
   constructor(private _weatherService: WeatherService) { }
 
