@@ -4,7 +4,7 @@ import { IconUrl } from 'src/app/appConfig';
 import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeather } from 'src/app/Models/weather.models';
-import { ConvertUnixToUTC } from 'src/app/Services/weather-helper';
+import { LocalDateTime } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class LHSContentsComponent implements OnInit {
   unitTypeFahrenheit: boolean = false;
   displayUnitType: string = CELCIUS;
   iconurl: string = '';
-  currentDatetime: string;
+  currentDatetime: Date;
   currentTemp: number;
   errorMsg: string;
 
@@ -33,9 +33,13 @@ export class LHSContentsComponent implements OnInit {
   set oneCallWeatherData(data: OneAPICallModel) {
     this.OneCallLocationWeatherData = data;
     if(this.OneCallLocationWeatherData) {
+
       this.iconurl = IconUrl + this.OneCallLocationWeatherData.current.weather[0].icon + '@4x.png';
-      this.currentDatetime = ConvertUnixToUTC(this.OneCallLocationWeatherData.current.dt);
+
+      this.currentDatetime = LocalDateTime(this.OneCallLocationWeatherData.timezone_offset);
+
       this.currentTemp = this.OneCallLocationWeatherData.current.temp;
+
       if (this.locationWeatherData && this.locationWeatherData.name) {
         this.cityName = this.locationWeatherData.name;
         this.countryName = this.locationWeatherData.sys.country;
