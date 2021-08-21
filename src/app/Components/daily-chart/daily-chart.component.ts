@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-// import { EChartsOption } from 'echarts';
 import { EChartOption } from 'echarts';
-import { Daily, OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
+import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
+import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
   selector: 'app-daily-chart',
@@ -15,7 +15,8 @@ export class DailyChartComponent implements OnInit {
   xAxisData: string[] = [];
   seriesData1: number[] = [];
   seriesData2: number[] = [];
-  
+  unitTypeValue: string;
+
   chartOptions: EChartOption = {
     tooltip: {
       trigger: 'axis',
@@ -34,9 +35,12 @@ export class DailyChartComponent implements OnInit {
     }]
   };
 
-  constructor() { }
+  constructor(private _weatherService: WeatherService) { }
 
   ngOnInit(): void {
+    this._weatherService.getUnitType().subscribe((res: any) => {  
+      this.unitTypeValue = (res) ? '°F' : '°C';
+    })
   }
 
   @Input() cityName: string;
@@ -67,11 +71,14 @@ export class DailyChartComponent implements OnInit {
       tooltip: {
         trigger: 'axis',
       },
+      legend: {},
       xAxis: {
+        name: 'Day',
         type: 'category',
         data: this.xAxisData
       },
       yAxis: {
+        name: 'Temperature(' + this.unitTypeValue + ')',
         type: 'value'
       },
       series: [

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { IconUrl } from 'src/app/appConfig';
-import { CELCIUS, FAHRENHEIT, OneCallExcludes } from 'src/app/Constants/weather-dashboard-constants';
+import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeather } from 'src/app/Models/weather.models';
 import { ConvertUnixToUTC } from 'src/app/Services/weather-helper';
