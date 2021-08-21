@@ -1,2 +1,7 @@
-<p>daily-chart works!</p>
-<div *ngIf="eChartOptions" echarts [options]="eChartOptions"></div>
+<div class="chartDiv">
+    <div class="card chartCard">
+        <div class="card-body">
+          <div echarts [options]="chartOptions" class="demo-chart"></div>
+        </div>
+      </div>
+</div>
