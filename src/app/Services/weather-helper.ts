@@ -17,5 +17,14 @@ export function LocalDateTime(timezoneOffset: number) {
     const localOffset = currentDate.getTimezoneOffset() * 60000;
     const utc = localTime + localOffset;
     var dateTime = utc + (1000 * timezoneOffset);
+    console.log("In helper file LocalDateTime()", new Date(dateTime));
     return new Date(dateTime);
+}
+
+export function LocalDateTimeByUnixTimestamp(ut: number, timezoneOffset: number) {
+
+    var dateTime = new Date(0); // The 0 there is the key, which sets the date to the epoch
+    dateTime.setUTCSeconds(ut);
+    console.log("dateTime = ", dateTime);
+    return dateTime;
 }

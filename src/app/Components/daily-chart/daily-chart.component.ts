@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EChartOption } from 'echarts';
+import { DAYS } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
+import { LocalDateTime, LocalDateTimeByUnixTimestamp } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
@@ -32,12 +34,16 @@ export class DailyChartComponent implements OnInit {
   set weatherData(data: OneAPICallModel) {
     this.chartweatherData = data;
     if (this.chartweatherData && this.chartweatherData.daily && this.chartweatherData.daily.length > 0) {
-      console.log("In daily-chart ", this.chartweatherData);
+      // console.log("In daily-chart ", this.chartweatherData);
       this.xAxisData = [];
       this.seriesData1 = [];
       this.seriesData2 = [];
       this.chartweatherData.daily.forEach(element => {
-        this.xAxisData.push(element.dt.toString());
+        
+        let newDateTime = LocalDateTimeByUnixTimestamp(element.dt, this.chartweatherData.timezone_offset);
+        let dayOfWeek = DAYS.filter(day => day.id === newDateTime.getDay())[0].day;
+        this.xAxisData.push(dayOfWeek);
+
         this.seriesData1.push(element.temp.min);
         this.seriesData2.push(element.temp.max);
       });
@@ -64,7 +70,7 @@ export class DailyChartComponent implements OnInit {
         data: this.xAxisData
       },
       yAxis: {
-        name: 'Temperature(' + this.unitTypeValue + ')',
+        name: 'Temperature (' + this.unitTypeValue + ')',
         type: 'value'
       },
       series: [

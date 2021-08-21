@@ -32,21 +32,21 @@ export class MainComponent implements OnInit {
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).pipe(
     switchMap(data => {
       this.currentWeatherData = data;
-      console.log("In main currentWeatherData = \n", this.currentWeatherData);
-      console.log("In main excludes =", this.excludes);
+      // console.log("In main currentWeatherData = \n", this.currentWeatherData);
+      // console.log("In main excludes =", this.excludes);
       return this._weatherService.loadOneAPICallDataByCurrentData(data, this.excludes);
     }))
     .subscribe(
       responseWeatherData => {
         window.setTimeout(() => {
           this.oneCallWeatherData = responseWeatherData;
-          console.log("In main.ts this.oneCallWeatherData = \n", this.oneCallWeatherData);
+          // console.log("In main.ts this.oneCallWeatherData = \n", this.oneCallWeatherData);
           this.pageLoading = false;
           this.showErrorDiv = false;
         }, 2000);
       },
       responseWeatherError => {
-        console.log("responseWeatherError = ", responseWeatherError);
+        // console.log("responseWeatherError = ", responseWeatherError);
         this.oneCallWeatherData = null;
         // this.errorMessage = responseWeatherError;
         this.errorMessage = 'Incorrect city name';
@@ -54,7 +54,7 @@ export class MainComponent implements OnInit {
         this.pageLoading = false;
       },
       () => {
-        console.log('getCurrentWeatherByCityName Completed');
+        // console.log('getCurrentWeatherByCityName Completed');
       }
     );
   }
