@@ -15,7 +15,7 @@ export class DailyChartComponent implements OnInit {
   xAxisData: string[] = [];
   seriesData1: number[] = [];
   seriesData2: number[] = [];
-
+  
   chartOptions: EChartOption = {
     tooltip: {
       trigger: 'axis',
@@ -39,6 +39,8 @@ export class DailyChartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() cityName: string;
+
   @Input()
   set weatherData(data: OneAPICallModel) {
     this.chartweatherData = data;
@@ -58,6 +60,10 @@ export class DailyChartComponent implements OnInit {
 
   smoothLineChart() {
     this.eChartOptions = {
+      title: {
+        show: true,
+        text: 'Daily min, max temperature of ' + this.cityName
+      },
       tooltip: {
         trigger: 'axis',
       },

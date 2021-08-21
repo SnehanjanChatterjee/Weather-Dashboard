@@ -53,7 +53,7 @@ export class LHSContentsComponent implements OnInit {
   }
 
   @Input()
-  set excludesArray(array) {
+  set excludesArray(array: any) {
     this.excludes = array;
     console.log("In LHS excludes = ", this.excludes);
   }
