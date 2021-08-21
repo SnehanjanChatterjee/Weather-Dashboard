@@ -54,7 +54,10 @@ export class DailyChartComponent implements OnInit {
       tooltip: {
         trigger: 'axis',
       },
-      legend: {},
+      legend: {
+        show: true,
+        type: 'plain'
+      },
       xAxis: {
         name: 'Day',
         type: 'category',
@@ -66,11 +69,13 @@ export class DailyChartComponent implements OnInit {
       },
       series: [
         {
+          name: 'Min temperature',
           data: this.seriesData1,
           type: 'line',
           smooth: true
         },
         {
+          name: 'Max temperature',
           data: this.seriesData2,
           type: 'line',
           smooth: true
