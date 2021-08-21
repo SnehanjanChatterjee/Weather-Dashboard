@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { IconUrl } from 'src/app/appConfig';
-import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
+import { CELCIUS, FAHRENHEIT, OneCallExcludes } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeather } from 'src/app/Models/weather.models';
 import { ConvertUnixToUTC } from 'src/app/Services/weather-helper';
@@ -27,6 +27,7 @@ export class LHSContentsComponent implements OnInit {
 
   locationWeatherData: CurrentWeather;
   OneCallLocationWeatherData: OneAPICallModel;
+  excludes: any;
 
   @Input()
   set oneCallWeatherData(data: OneAPICallModel) {
@@ -51,6 +52,12 @@ export class LHSContentsComponent implements OnInit {
     // }
   }
 
+  @Input()
+  set excludesArray(array) {
+    this.excludes = array;
+    console.log("In LHS excludes = ", this.excludes);
+  }
+
   @Output() onUnitTypeChange: any = new EventEmitter<CurrentWeather>();
 
   ngOnInit(): void {
@@ -64,7 +71,7 @@ export class LHSContentsComponent implements OnInit {
         switchMap(data => {
           this.locationWeatherData = data;
           console.log("In LHS locationWeatherData = \n", data);
-          return this._weatherService.loadOneAPICallDataByCurrentData(data, []);
+          return this._weatherService.loadOneAPICallDataByCurrentData(data, this.excludesArray);
         }))
         .subscribe(
           responseWeatherData => {

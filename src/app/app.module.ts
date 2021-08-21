@@ -13,12 +13,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { DailyChartComponent } from './Components/daily-chart/daily-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    LHSContentsComponent
+    LHSContentsComponent,
+    DailyChartComponent
   ],
   imports: [
     BrowserModule,
