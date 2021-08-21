@@ -55,9 +55,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
         <ul>
             <li>Installation:
                 <ol>
-                    <li>`npm install echarts@4 -S`</li>
-                    <li>`npm install ngx-echarts@5 -S`</li>
-                    <li>`npm install resize-observer-polyfill -D`</li>
+                    <li><code>npm install echarts@4 -S</code></li>
+                    <li><code>npm install ngx-echarts@5 -S</code></li>
+                    <li><code>npm install resize-observer-polyfill -D</code></li>
                 </ol>
             </li>
         </ul>
