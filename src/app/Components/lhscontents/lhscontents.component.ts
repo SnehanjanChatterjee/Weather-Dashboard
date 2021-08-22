@@ -24,6 +24,9 @@ export class LHSContentsComponent implements OnInit {
   iconurl: string = '';
   currentDatetime: Date;
   currentTemp: number;
+  todayMinTemp: number;
+  todayMaxTemp: number;
+  weatherDescrption: string = '';
   errorMsg: string;
 
   locationWeatherData: CurrentWeather;
@@ -40,6 +43,10 @@ export class LHSContentsComponent implements OnInit {
       this.currentDatetime = LocalDateTime(this.OneCallLocationWeatherData.timezone_offset);
 
       this.currentTemp = this.OneCallLocationWeatherData.current.temp;
+      this.todayMinTemp = this.locationWeatherData.main.temp_min;
+      this.todayMaxTemp = this.locationWeatherData.main.temp_max;
+
+      this.weatherDescrption = this.locationWeatherData.weather[0].description;
 
       if (this.locationWeatherData && this.locationWeatherData.name) {
         this.cityName = this.locationWeatherData.name;
