@@ -47,20 +47,25 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Tech Stack
 
 <ol>
-    <li> Angular CLI 9.0.0 </li>
-    <li> Bootstrap 5 </li>
+    <li> Angular CLI v9.0.0 </li>
+    <li> Bootstrap v5.1.0 </li>
     <li> Angular Material UI </li>
-    <li> Font Awesome </li>
+    <li> Font Awesome v4.7.0 </li>
     <li> Charts: https://xieziyu.github.io/ngx-echarts/#/welcome 
         <ul>
             <li>Installation:
                 <ol>
-                    <li><code>npm install echarts@4 -S</code></li>
-                    <li><code>npm install ngx-echarts@5 -S</code></li>
+                    <li>v4.9.0<code>npm install echarts@4 -S</code></li>
+                    <li>v5.2.2<code>npm install ngx-echarts@5 -S</code></li>
                     <li><code>npm install resize-observer-polyfill -D</code></li>
                 </ol>
             </li>
         </ul>
     </li>
     <li> Weather Icons: https://openweathermap.org/weather-conditions </li>
+    <li> i18n-iso-countries
+        <ul>
+            <li>Installation: https://stackoverflow.com/questions/52600104/how-to-use-i18n-iso-countries-in-angular-6 </li>
+        </ul>
+    </li>
 </ol>

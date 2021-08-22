@@ -23,7 +23,7 @@
     font-size: 20px;
 }
 
-.tempInfo {
+.tempCityInfo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,13 +33,38 @@
 .temp {
     color: white;
     text-align: center;
-    font-size: 80px;
+    font-size: 65px;
+}
+
+.weatherIconDiv {
+    height: 130px;
+}
+
+.weatherIcon {
+    max-height: 80%;
+    max-width: 100%
+}
+
+.weatherIcon, .weatherDesc {
+    /* display: block; */
+    text-align: center;
+}
+
+.weatherDesc {
+    text-align: center;
 }
 
 .cityInfo {
-    font-size: 50px;
+    font-size: 30px;
+    text-align: center;
 }
 
-/* .weatherIcon {
-    height: 100px;
-} */
+.timeInfoDate, .timeInfoTime {
+    text-align: center;
+    font-size: 20px;
+}
+
+.tempMinMax, .sunRiseSunset {
+    text-align: center;
+    font-size: 20px;
+}
