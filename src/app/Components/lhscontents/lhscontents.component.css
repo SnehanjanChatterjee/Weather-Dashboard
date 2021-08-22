@@ -59,11 +59,11 @@
 }
 
 .timeInfoDate, .timeInfoTime {
-    display: block;
     text-align: center;
     font-size: 20px;
 }
 
-/* .weatherIcon {
-    height: 100px;
-} */
+.tempMinMax, .sunRiseSunset {
+    text-align: center;
+    font-size: 20px;
+}

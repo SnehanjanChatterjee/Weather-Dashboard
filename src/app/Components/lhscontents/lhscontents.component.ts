@@ -4,7 +4,7 @@ import { IconUrl } from 'src/app/appConfig';
 import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeather } from 'src/app/Models/weather.models';
-import { LocalDateTime } from 'src/app/Services/weather-helper';
+import { LocalDateTime, LocalDateTimeByUnixTimestamp } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
 import * as i18nIsoCountries from 'i18n-iso-countries';
 
@@ -27,6 +27,8 @@ export class LHSContentsComponent implements OnInit {
   todayMinTemp: number;
   todayMaxTemp: number;
   weatherDescrption: string = '';
+  sunriseTime: Date;
+  sunsetTime: Date;
   errorMsg: string;
 
   locationWeatherData: CurrentWeather;
@@ -47,6 +49,9 @@ export class LHSContentsComponent implements OnInit {
       this.todayMaxTemp = this.locationWeatherData.main.temp_max;
 
       this.weatherDescrption = this.locationWeatherData.weather[0].description;
+
+      this.sunriseTime = LocalDateTimeByUnixTimestamp(this.OneCallLocationWeatherData.current.sunrise, this.OneCallLocationWeatherData.timezone_offset);
+      this.sunsetTime = LocalDateTimeByUnixTimestamp(this.OneCallLocationWeatherData.current.sunset, this.OneCallLocationWeatherData.timezone_offset);
 
       if (this.locationWeatherData && this.locationWeatherData.name) {
         this.cityName = this.locationWeatherData.name;
