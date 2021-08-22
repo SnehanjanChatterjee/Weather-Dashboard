@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EChartOption } from 'echarts';
+import { min } from 'rxjs/operators';
 import { DAYS } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { LocalDateTime, LocalDateTimeByUnixTimestamp } from 'src/app/Services/weather-helper';
@@ -17,6 +18,8 @@ export class DailyChartComponent implements OnInit {
   xAxisData: string[] = [];
   seriesData1: number[] = [];
   seriesData2: number[] = [];
+  minYAxisValue: number = 0;
+  maxYAxisValue: number = 0;
   unitTypeValue: string;
   theme: string = 'light';
 
@@ -47,6 +50,16 @@ export class DailyChartComponent implements OnInit {
         this.seriesData1.push(element.temp.min);
         this.seriesData2.push(element.temp.max);
       });
+      
+      let min_value1 = Math.min(...this.seriesData1);
+      let min_value2 = Math.min(...this.seriesData2);
+      let min_value = Math.min(min_value1, min_value2);
+      let max_value1 = Math.max(...this.seriesData1);
+      let max_value2 = Math.max(...this.seriesData2);
+      let max_value = Math.max(max_value1, max_value2);
+      this.minYAxisValue = Math.floor(min_value);
+      this.maxYAxisValue = Math.ceil(max_value);
+
       this.smoothLineChart();
     }
   }
@@ -55,7 +68,7 @@ export class DailyChartComponent implements OnInit {
     this.eChartOptions = {
       title: {
         show: true,
-        text: 'Daily min, max temperature of ' + this.cityName
+        text: this.cityName.toLocaleUpperCase()
       },
       tooltip: {
         trigger: 'axis',
@@ -71,7 +84,9 @@ export class DailyChartComponent implements OnInit {
       },
       yAxis: {
         name: 'Temperature (' + this.unitTypeValue + ')',
-        type: 'value'
+        type: 'value',
+        min: this.minYAxisValue,
+        max: this.maxYAxisValue
       },
       series: [
         {
