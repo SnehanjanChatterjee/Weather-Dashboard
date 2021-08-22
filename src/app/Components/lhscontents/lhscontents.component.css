@@ -46,7 +46,8 @@
 }
 
 .weatherIcon, .weatherDesc {
-    display: block;
+    /* display: block; */
+    text-align: center;
 }
 
 .weatherDesc {
