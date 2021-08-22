@@ -10,7 +10,7 @@
             <span>&#8457;</span>
         </div>
     </div>
-    <div class="tempInfo" *ngIf="OneCallLocationWeatherData">
+    <div class="tempCityInfo" *ngIf="OneCallLocationWeatherData">
         <!-- Celcius -->
         <div class="temp" *ngIf="displayUnitType === 'celcius'">
             {{currentTemp | number: '1.0-0'}}
@@ -23,14 +23,14 @@
         </div>
         <div class="weatherIconDiv">
             <img [src]="iconurl" alt="Icon" class="weatherIcon">
+            <span class="weatherDesc">{{locationWeatherData.weather[0].main}}</span>
         </div>
-        <div *ngIf="OneCallLocationWeatherData" class="cityInfo">
-            {{cityName}}, {{countryName}}
-            <!-- {{locationWeatherData.name}}, {{locationWeatherData.sys.country}} -->
-            <!-- {{OneCallLocationWeatherData.timezone}} -->
+        <div class="cityInfo mx-1">
+            <span><i class="fa fa-location-arrow" aria-hidden="true"></i>&nbsp;{{cityName}}, {{countryName}}</span>
         </div>
-        <div *ngIf="OneCallLocationWeatherData" class="timeInfo">
-            {{currentDatetime | date:'MMM d, y, h:mm a'}} &nbsp;
+        <div class="timeInfo my-2">
+            <span class="timeInfoDate"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;{{currentDatetime | date:'EEEE, MMM d, y'}}</span>
+            <span class="timeInfoTime"><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{{currentDatetime | date:'h:mm a'}}</span>
         </div>
     </div>
 </div>

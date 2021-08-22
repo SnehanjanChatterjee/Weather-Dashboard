@@ -6,6 +6,7 @@ import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeather } from 'src/app/Models/weather.models';
 import { LocalDateTime } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
+import * as i18nIsoCountries from 'i18n-iso-countries';
 
 @Component({
   selector: 'app-lhscontents',
@@ -42,7 +43,10 @@ export class LHSContentsComponent implements OnInit {
 
       if (this.locationWeatherData && this.locationWeatherData.name) {
         this.cityName = this.locationWeatherData.name;
-        this.countryName = this.locationWeatherData.sys.country;
+        // this.countryName = this.locationWeatherData.sys.country;
+        var countries = require("i18n-iso-countries");
+        // console.log(countries.getNames("en", {select: "official"}));
+        this.countryName = countries.getName(this.locationWeatherData.sys.country, "en", {select: "official"});
       }
       // console.log("IconUrl", this.iconurl, "\n", "currentDatetime", this.currentDatetime);
     }
@@ -65,6 +69,7 @@ export class LHSContentsComponent implements OnInit {
   @Output() onUnitTypeChange: any = new EventEmitter<CurrentWeather>();
 
   ngOnInit(): void {
+    i18nIsoCountries.registerLocale(require("i18n-iso-countries/langs/en.json"));
   }
 
   handleSwitchSelection() {

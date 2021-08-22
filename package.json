@@ -24,6 +24,7 @@
     "bootstrap": "^5.1.0",
     "echarts": "^4.9.0",
     "font-awesome": "^4.7.0",
+    "i18n-iso-countries": "^6.8.0",
     "material-design-icons": "^3.0.1",
     "ngx-echarts": "^5.2.2",
     "rxjs": "~6.5.4",
