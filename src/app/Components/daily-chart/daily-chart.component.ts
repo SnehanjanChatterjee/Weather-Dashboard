@@ -3,7 +3,7 @@ import { EChartOption } from 'echarts';
 import { min } from 'rxjs/operators';
 import { DAYS } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
-import { LocalDateTime, LocalDateTimeByUnixTimestamp } from 'src/app/Services/weather-helper';
+import { LocalDateTime, LocalDateTimeByUnixTimestamp, TitleCase } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
@@ -64,7 +64,7 @@ export class DailyChartComponent implements OnInit {
     this.eChartOptions = {
       title: {
         show: true,
-        text: this.cityName.toLocaleUpperCase()
+        text: TitleCase(this.cityName)
       },
       tooltip: {
         trigger: 'axis',

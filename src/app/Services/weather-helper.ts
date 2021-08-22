@@ -28,3 +28,9 @@ export function LocalDateTimeByUnixTimestamp(ut: number, timezoneOffset: number)
     // console.log("dateTime = ", dateTime);
     return dateTime;
 }
+
+export function TitleCase(str: string) {
+    return str.toLowerCase().split(' ').map(function(word) {
+      return (word.charAt(0).toUpperCase() + word.slice(1));
+    }).join(' ');
+  }
