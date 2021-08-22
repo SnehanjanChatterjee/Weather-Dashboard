@@ -4,6 +4,11 @@
     /* This is not responsive */
     margin-right: 430px;
     margin-left: 50px;
+    height: 350px;
+}
+
+.chartCard {
+    height: 350px;
 }
 
 .chartCard:hover {

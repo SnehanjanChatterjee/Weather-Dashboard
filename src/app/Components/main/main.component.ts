@@ -49,7 +49,7 @@ export class MainComponent implements OnInit {
         // console.log("responseWeatherError = ", responseWeatherError);
         this.oneCallWeatherData = null;
         // this.errorMessage = responseWeatherError;
-        this.errorMessage = 'Incorrect city name';
+        this.errorMessage = (this.cityName === '' || this.cityName === null) ? 'Please enter city name' : 'Incorrect city name';
         this.showErrorDiv = true;
         this.pageLoading = false;
       },
