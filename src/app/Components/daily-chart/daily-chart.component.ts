@@ -51,14 +51,10 @@ export class DailyChartComponent implements OnInit {
         this.seriesData2.push(element.temp.max);
       });
       
-      let min_value1 = Math.min(...this.seriesData1);
-      let min_value2 = Math.min(...this.seriesData2);
-      let min_value = Math.min(min_value1, min_value2);
-      let max_value1 = Math.max(...this.seriesData1);
-      let max_value2 = Math.max(...this.seriesData2);
-      let max_value = Math.max(max_value1, max_value2);
-      this.minYAxisValue = Math.floor(min_value);
-      this.maxYAxisValue = Math.ceil(max_value);
+      let min_value = Math.min(Math.min(...this.seriesData1), Math.min(...this.seriesData2));
+      let max_value = Math.max(Math.max(...this.seriesData1), Math.max(...this.seriesData2));
+      this.minYAxisValue = Math.floor(min_value / 10) * 10;
+      this.maxYAxisValue = Math.ceil(max_value / 10) * 10;
 
       this.smoothLineChart();
     }
