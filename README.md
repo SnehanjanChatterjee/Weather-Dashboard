@@ -44,11 +44,23 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
--- Angular CLI 9.0.0
--- Bootstrap 5
--- Angular Material UI
--- Font Awesome
+## Tech Stack
 
-## Weather Icons
-
-https://openweathermap.org/weather-conditions
+<ol>
+    <li> Angular CLI 9.0.0 </li>
+    <li> Bootstrap 5 </li>
+    <li> Angular Material UI </li>
+    <li> Font Awesome </li>
+    <li> Charts: https://xieziyu.github.io/ngx-echarts/#/welcome 
+        <ul>
+            <li>Installation:
+                <ol>
+                    <li><code>npm install echarts@4 -S</code></li>
+                    <li><code>npm install ngx-echarts@5 -S</code></li>
+                    <li><code>npm install resize-observer-polyfill -D</code></li>
+                </ol>
+            </li>
+        </ul>
+    </li>
+    <li> Weather Icons: https://openweathermap.org/weather-conditions </li>
+</ol>

@@ -1,0 +1,20 @@
+.chartCard {
+    border-radius: 30px;
+    background-color: #fff;
+    /* This is not responsive */
+    margin-right: 430px;
+    margin-left: 50px;
+    height: 350px;
+}
+
+.chartCard {
+    height: 350px;
+}
+
+.chartCard:hover {
+    /* box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff; */
+    /* box-shadow: 0 0 11px rgba(33,33,33,.2);  */
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+}

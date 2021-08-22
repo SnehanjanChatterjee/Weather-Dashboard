@@ -3,6 +3,7 @@ import { CurrentWeather } from 'src/app/Models/weather.models';
 import { WeatherService } from 'src/app/Services/weather.service';
 import { switchMap } from 'rxjs/operators';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
+import { OneCallExcludes } from 'src/app/Constants/weather-dashboard-constants';
 
 @Component({
   selector: 'app-main',
@@ -17,6 +18,8 @@ export class MainComponent implements OnInit {
   pageLoading: boolean = false;
   showErrorDiv: boolean = false;
   errorMessage: string = '';
+  excludes = [OneCallExcludes.Minutely, OneCallExcludes.Hourly];
+
   constructor(private _weatherService: WeatherService) { }
 
   ngOnInit(): void {
@@ -29,28 +32,29 @@ export class MainComponent implements OnInit {
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).pipe(
     switchMap(data => {
       this.currentWeatherData = data;
-      console.log("In main currentWeatherData = \n", this.currentWeatherData);
-      return this._weatherService.loadOneAPICallDataByCurrentData(data, []);
+      // console.log("In main currentWeatherData = \n", this.currentWeatherData);
+      // console.log("In main excludes =", this.excludes);
+      return this._weatherService.loadOneAPICallDataByCurrentData(data, this.excludes);
     }))
     .subscribe(
       responseWeatherData => {
         window.setTimeout(() => {
           this.oneCallWeatherData = responseWeatherData;
-          console.log(this.oneCallWeatherData);
+          // console.log("In main.ts this.oneCallWeatherData = \n", this.oneCallWeatherData);
           this.pageLoading = false;
           this.showErrorDiv = false;
         }, 2000);
       },
       responseWeatherError => {
-        console.log("responseWeatherError = ", responseWeatherError);
+        // console.log("responseWeatherError = ", responseWeatherError);
         this.oneCallWeatherData = null;
         // this.errorMessage = responseWeatherError;
-        this.errorMessage = 'Incorrect city name';
+        this.errorMessage = (this.cityName === '' || this.cityName === null) ? 'Please enter city name' : 'Incorrect city name';
         this.showErrorDiv = true;
         this.pageLoading = false;
       },
       () => {
-        console.log('getCurrentWeatherByCityName Completed');
+        // console.log('getCurrentWeatherByCityName Completed');
       }
     );
   }

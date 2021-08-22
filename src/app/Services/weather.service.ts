@@ -36,7 +36,7 @@ export class WeatherService {
         excludesString += ',';
       }
     });
-    console.log(excludesString);
+    // console.log(excludesString);
 
     let url = '';
     if (excludesString && excludes.length > 0) {

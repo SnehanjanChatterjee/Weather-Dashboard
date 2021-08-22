@@ -4,7 +4,7 @@ import { IconUrl } from 'src/app/appConfig';
 import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeather } from 'src/app/Models/weather.models';
-import { ConvertUnixToUTC } from 'src/app/Services/weather-helper';
+import { LocalDateTime } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
@@ -21,25 +21,30 @@ export class LHSContentsComponent implements OnInit {
   unitTypeFahrenheit: boolean = false;
   displayUnitType: string = CELCIUS;
   iconurl: string = '';
-  currentDatetime: string;
+  currentDatetime: Date;
   currentTemp: number;
   errorMsg: string;
 
   locationWeatherData: CurrentWeather;
   OneCallLocationWeatherData: OneAPICallModel;
+  excludes: any;
 
   @Input()
   set oneCallWeatherData(data: OneAPICallModel) {
     this.OneCallLocationWeatherData = data;
     if(this.OneCallLocationWeatherData) {
+
       this.iconurl = IconUrl + this.OneCallLocationWeatherData.current.weather[0].icon + '@4x.png';
-      this.currentDatetime = ConvertUnixToUTC(this.OneCallLocationWeatherData.current.dt);
+
+      this.currentDatetime = LocalDateTime(this.OneCallLocationWeatherData.timezone_offset);
+
       this.currentTemp = this.OneCallLocationWeatherData.current.temp;
+
       if (this.locationWeatherData && this.locationWeatherData.name) {
         this.cityName = this.locationWeatherData.name;
         this.countryName = this.locationWeatherData.sys.country;
       }
-      console.log("IconUrl", this.iconurl, "\n", "currentDatetime", this.currentDatetime);
+      // console.log("IconUrl", this.iconurl, "\n", "currentDatetime", this.currentDatetime);
     }
   }
 
@@ -49,6 +54,12 @@ export class LHSContentsComponent implements OnInit {
     // if (this.locationWeatherData && this.locationWeatherData.name) {
     //   this.cityName = this.locationWeatherData.name;
     // }
+  }
+
+  @Input()
+  set excludesArray(array: any) {
+    this.excludes = array;
+    // console.log("In LHS excludes = ", this.excludes);
   }
 
   @Output() onUnitTypeChange: any = new EventEmitter<CurrentWeather>();
@@ -63,8 +74,8 @@ export class LHSContentsComponent implements OnInit {
       this._weatherService.loadCurrentWeatherByCityName(this.cityName).pipe(
         switchMap(data => {
           this.locationWeatherData = data;
-          console.log("In LHS locationWeatherData = \n", data);
-          return this._weatherService.loadOneAPICallDataByCurrentData(data, []);
+          // console.log("In LHS locationWeatherData = \n", data);
+          return this._weatherService.loadOneAPICallDataByCurrentData(data, this.excludes);
         }))
         .subscribe(
           responseWeatherData => {
@@ -74,10 +85,10 @@ export class LHSContentsComponent implements OnInit {
         },
         responseWeather => {
           this.errorMsg = responseWeather;
-          console.log(responseWeather);
+          // console.log(responseWeather);
         },
         () => {
-          console.log("handleSwitchSelection() Completed");
+          // console.log("handleSwitchSelection() Completed");
         }
       );
     } else {
