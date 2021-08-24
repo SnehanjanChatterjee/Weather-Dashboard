@@ -24,9 +24,9 @@
 }
 
 @media screen and (max-width: 768px) {
-    #mainDiv {
-        border-radius: 12px 12px 0px 0px;
-    }
+  #mainDiv {
+    border-radius: 12px 12px 0px 0px;
+  }
 }
 
 #searchDiv {
