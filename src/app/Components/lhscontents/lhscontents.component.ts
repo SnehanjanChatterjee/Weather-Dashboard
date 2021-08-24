@@ -45,8 +45,10 @@ export class LHSContentsComponent implements OnInit {
       this.currentDatetime = LocalDateTime(this.OneCallLocationWeatherData.timezone_offset);
 
       this.currentTemp = this.OneCallLocationWeatherData.current.temp;
-      this.todayMinTemp = this.locationWeatherData.main.temp_min;
-      this.todayMaxTemp = this.locationWeatherData.main.temp_max;
+      // this.todayMinTemp = this.locationWeatherData.main.temp_min;
+      // this.todayMaxTemp = this.locationWeatherData.main.temp_max;
+      this.todayMinTemp = this.OneCallLocationWeatherData.daily[0].temp.min;
+      this.todayMaxTemp = this.OneCallLocationWeatherData.daily[0].temp.max;
 
       this.weatherDescrption = this.locationWeatherData.weather[0].description;
 
