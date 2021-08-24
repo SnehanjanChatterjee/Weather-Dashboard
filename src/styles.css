@@ -1,14 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
+:root {
+    --url1: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100');
+    --url2: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?dpr=0.800000011920929&auto=format&fit=crop&w=1199&h=800&q=80&cs=tinysrgb&crop=');
+}
 
-html, body { 
+html, body {
     font-family: 'Merriweather', sans-serif;
-    /* background-color: #34b4eb; */
     height: 100%;
     margin: 0;
-    background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100');
+
+    /* Background Image */
+    background-image: var(--url2);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    /* Background Image ends*/
+
+    /* Background Color */
+    /* background: #C33764;
+    background: -webkit-linear-gradient(to bottom, #1D2671, #C33764);
+    background: linear-gradient(to bottom, #1D2671, #C33764); */
+    /* Background Color ends */
 }
+
+/* @media screen and (max-width: 768px) {
+    body {
+        overflow-y: scroll;
+    }
+} */

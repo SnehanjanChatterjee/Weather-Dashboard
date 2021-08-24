@@ -1,13 +1,14 @@
+.chartDiv {
+    display: flex;
+}
+
 .chartCard {
     border-radius: 30px;
     background-color: #fff;
     /* This is not responsive */
-    margin-right: 430px;
-    margin-left: 50px;
-    height: 350px;
-}
-
-.chartCard {
+    /* margin-right: 430px;
+    margin-left: 50px; */
+    width: 800px;
     height: 350px;
 }
 
