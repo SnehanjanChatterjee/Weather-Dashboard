@@ -1,8 +1,13 @@
+#shellDiv {
+  height: 100vh;
+  overflow: auto;
+}
+
 #mainDiv {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 12px;
+  border-radius: 12px 0px 0px 12px;
   border: 1px solid rgba(209, 213, 219, 0.3);
   display: flex;
   flex-direction: column;
@@ -11,13 +16,19 @@
   /* Along the main axis, the main-axis size is the sum of the flex-grow, flex-shrink, and flex-basis properties. */
   /* align-items: center; */
   width: 100%;
-  height: 100%;
-  position: fixed;
+  height: 100vh;
+  /* position: fixed; */
   z-index: 10;
 }
 
+@media screen and (max-width: 768px) {
+    #mainDiv {
+        border-radius: 12px 12px 0px 0px;
+    }
+}
+
 #searchDiv {
-  max-width: 75%;
+  max-width: 100%;
   /* background-color: white; */
   border-radius: 12px;
   height: 100px;
