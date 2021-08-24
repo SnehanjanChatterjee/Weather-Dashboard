@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { DailyChartComponent } from './Components/daily-chart/daily-chart.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

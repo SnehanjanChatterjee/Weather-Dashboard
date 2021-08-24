@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { EChartOption } from 'echarts';
 import { min } from 'rxjs/operators';
@@ -23,7 +24,7 @@ export class DailyChartComponent implements OnInit {
   unitTypeValue: string;
   theme: string = 'light';
 
-  constructor(private _weatherService: WeatherService) { }
+  constructor(private _weatherService: WeatherService, private datePipe: DatePipe) { }
 
   ngOnInit(): void {
     this._weatherService.getUnitType().subscribe((res: any) => {  
@@ -44,8 +45,9 @@ export class DailyChartComponent implements OnInit {
       this.chartweatherData.daily.forEach(element => {
         
         let newDateTime = LocalDateTimeByUnixTimestamp(element.dt, this.chartweatherData.timezone_offset);
-        let dayOfWeek = DAYS.filter(day => day.id === newDateTime.getDay())[0].day;
-        this.xAxisData.push(dayOfWeek);
+        // let dayOfWeek = DAYS.filter(day => day.id === newDateTime.getDay())[0].day;
+        let xAxisArrayValue = this.datePipe.transform(newDateTime, 'dd/MM');
+        this.xAxisData.push(xAxisArrayValue);
 
         this.seriesData1.push(element.temp.min);
         this.seriesData2.push(element.temp.max);
