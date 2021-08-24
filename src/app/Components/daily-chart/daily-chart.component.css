@@ -12,10 +12,6 @@
     height: 350px;
 }
 
-.chartCard {
-    height: 350px;
-}
-
 .chartCard:hover {
     /* box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff; */
     /* box-shadow: 0 0 11px rgba(33,33,33,.2);  */
