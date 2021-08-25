@@ -68,4 +68,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
             <li>Installation: https://stackoverflow.com/questions/52600104/how-to-use-i18n-iso-countries-in-angular-6 </li>
         </ul>
     </li>
+    <li> Animated Iocns:
+        <ul>
+            <li>Lord Icon</li>
+            <li>Installation: <code>npm install lord-icon-element lottie-web</code>
+        </ul>
+    </li>
 </ol>

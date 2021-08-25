@@ -47,6 +47,8 @@
 .input-group-text {
   border-radius: 30px;
   background-color: white;
+  height: 40px;
+  width: 50px;
 }
 
 .form-control {

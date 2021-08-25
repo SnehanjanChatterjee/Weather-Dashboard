@@ -2,6 +2,12 @@
     display: flex;
 }
 
+@media screen and (max-width: 768px) {
+    .chartDiv {
+        padding: 0px 2px;
+    }
+}
+
 .chartCard {
     border-radius: 30px;
     background-color: #fff;
