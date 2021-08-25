@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './Components/main/main.component';
@@ -16,6 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { DailyChartComponent } from './Components/daily-chart/daily-chart.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DatePipe } from '@angular/common';
+import { defineLordIconElement } from 'lord-icon-element';
+import lottie from 'lottie-web';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,11 @@ import { DatePipe } from '@angular/common';
     }),
   ],
   providers: [DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    defineLordIconElement(lottie.loadAnimation);
+  }
+}

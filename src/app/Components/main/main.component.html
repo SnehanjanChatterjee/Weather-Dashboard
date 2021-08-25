@@ -1,8 +1,8 @@
 <div class="container-fluid overflow-auto" id="shellDiv">
     <div class="row">
         <div class="col-md-3" style="padding: 0;">
-            <app-lhscontents [weatherData]="currentWeatherData" [oneCallWeatherData]="oneCallWeatherData" [excludesArray]="excludes"
-            (onUnitTypeChange)="updateDataOnSwitchSelection($event)"></app-lhscontents>
+            <app-lhscontents [weatherData]="currentWeatherData" [oneCallWeatherData]="oneCallWeatherData"
+                [excludesArray]="excludes" (onUnitTypeChange)="updateDataOnSwitchSelection($event)"></app-lhscontents>
         </div>
         <div class="col-md-9" style="padding: 0;">
             <div [ngClass]="{loader:pageLoading}"></div>
@@ -10,15 +10,24 @@
                 <div id="searchDiv" [ngStyle]="{'height.px': showErrorDiv ? 150 : 100}">
                     <div class="input-group" id="searchDivInput">
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true" (click)="getCurrentWeatherByCityName()"></i></span>
-                            <input type="text" class="form-control" placeholder="Enter City Name" aria-label="Username" aria-describedby="basic-addon1" 
-                            [(ngModel)]="cityName" (keyup.enter)="getCurrentWeatherByCityName()" (keydown)="onKeyDown()">
-                            <span *ngIf="cityName" class="input-group-text" id="basic-addon1" (click)="cityName=''"><i class="fa fa-times"></i></span>
+                            <!-- <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true" (click)="getCurrentWeatherByCityName()"></i></span> -->
+                            <span class="input-group-text" id="basic-addon1">
+                                <lord-icon src="https://cdn.lordicon.com/msoeawqm.json" trigger="click"
+                                    colors="primary:#121331,secondary:#08a88a" stroke="100"
+                                    (click)="getCurrentWeatherByCityName()">
+                                </lord-icon>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Enter City Name" aria-label="Username"
+                                aria-describedby="basic-addon1" [(ngModel)]="cityName"
+                                (keyup.enter)="getCurrentWeatherByCityName()" (keydown)="onKeyDown()">
+                            <span *ngIf="cityName" class="input-group-text" id="basic-addon1" (click)="cityName=''"><i
+                                    class="fa fa-times"></i></span>
                         </div>
                     </div>
                     <div *ngIf="showErrorDiv" class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>{{errorMessage}}</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="showErrorDiv=false"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"
+                            (click)="showErrorDiv=false"></button>
                     </div>
                 </div>
                 <app-daily-chart [weatherData]="oneCallWeatherData" [cityName]="cityName"></app-daily-chart>
