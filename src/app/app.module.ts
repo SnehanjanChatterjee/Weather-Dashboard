@@ -18,6 +18,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { DatePipe } from '@angular/common';
 import { defineLordIconElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import lottie from 'lottie-web';
        */
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
+    NgxSpinnerModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

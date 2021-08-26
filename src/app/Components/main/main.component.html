@@ -5,7 +5,8 @@
                 [excludesArray]="excludes" (onUnitTypeChange)="updateDataOnSwitchSelection($event)"></app-lhscontents>
         </div>
         <div class="col-md-9" style="padding: 0;">
-            <div [ngClass]="{loader:pageLoading}"></div>
+            <!-- <div [ngClass]="{loader:pageLoading}"></div> -->
+            <!-- <ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="line-scale-party" [fullScreen]="true"><p style="color: white" > Loading... </p></ngx-spinner> -->
             <div id="mainDiv">
                 <div id="searchDiv" [ngStyle]="{'height.px': showErrorDiv ? 150 : 100}">
                     <div class="input-group" id="searchDivInput">

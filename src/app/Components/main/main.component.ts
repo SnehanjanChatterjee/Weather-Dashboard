@@ -4,6 +4,7 @@ import { WeatherService } from 'src/app/Services/weather.service';
 import { switchMap } from 'rxjs/operators';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { OneCallExcludes } from 'src/app/Constants/weather-dashboard-constants';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-main',
@@ -15,19 +16,21 @@ export class MainComponent implements OnInit {
   cityName: string = '';
   currentWeatherData: CurrentWeather;
   oneCallWeatherData: OneAPICallModel;
-  pageLoading: boolean = false;
+  // pageLoading: boolean = false;
   showErrorDiv: boolean = false;
   errorMessage: string = '';
   excludes = [OneCallExcludes.Minutely, OneCallExcludes.Hourly];
 
-  constructor(private _weatherService: WeatherService) { }
+  constructor(private _weatherService: WeatherService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
 
   getCurrentWeatherByCityName() {
 
-    this.pageLoading = true;
+    // this.pageLoading = true;
+    // this.spinner.show();
+    this._weatherService.setShowSpinner(true);
     
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).pipe(
     switchMap(data => {
@@ -41,7 +44,9 @@ export class MainComponent implements OnInit {
         window.setTimeout(() => {
           this.oneCallWeatherData = responseWeatherData;
           // console.log("In main.ts this.oneCallWeatherData = \n", this.oneCallWeatherData);
-          this.pageLoading = false;
+          // this.pageLoading = false;
+          // this.spinner.hide();
+          this._weatherService.setShowSpinner(false);
           this.showErrorDiv = false;
         }, 2000);
       },
@@ -51,7 +56,9 @@ export class MainComponent implements OnInit {
         // this.errorMessage = responseWeatherError;
         this.errorMessage = (this.cityName === '' || this.cityName === null) ? 'Please enter city name' : 'Incorrect city name';
         this.showErrorDiv = true;
-        this.pageLoading = false;
+        // this.pageLoading = false;
+        // this.spinner.hide();
+        this._weatherService.setShowSpinner(false);
       },
       () => {
         // console.log('getCurrentWeatherByCityName Completed');

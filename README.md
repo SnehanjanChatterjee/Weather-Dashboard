@@ -68,10 +68,17 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
             <li>Installation: https://stackoverflow.com/questions/52600104/how-to-use-i18n-iso-countries-in-angular-6 </li>
         </ul>
     </li>
-    <li> Animated Iocns:
+    <li> Animated Icons:
         <ul>
             <li>Lord Icon</li>
             <li>Installation: <code>npm install lord-icon-element lottie-web</code>
+        </ul>
+    </li>
+    <li> Loading Spinner:
+        <ul>
+            <li>ngx-spinner@9.0.2</li>
+            <li>Installation: <code>npm install ngx-spinner@9 --save</code>
+            <li>Guide: https://www.npmjs.com/package/ngx-spinner
         </ul>
     </li>
 </ol>
