@@ -29,7 +29,8 @@ export class MainComponent implements OnInit {
   getCurrentWeatherByCityName() {
 
     // this.pageLoading = true;
-    this.spinner.show();
+    // this.spinner.show();
+    this._weatherService.setShowSpinner(true);
     
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).pipe(
     switchMap(data => {
@@ -44,7 +45,8 @@ export class MainComponent implements OnInit {
           this.oneCallWeatherData = responseWeatherData;
           // console.log("In main.ts this.oneCallWeatherData = \n", this.oneCallWeatherData);
           // this.pageLoading = false;
-          this.spinner.hide();
+          // this.spinner.hide();
+          this._weatherService.setShowSpinner(false);
           this.showErrorDiv = false;
         }, 2000);
       },
@@ -55,7 +57,8 @@ export class MainComponent implements OnInit {
         this.errorMessage = (this.cityName === '' || this.cityName === null) ? 'Please enter city name' : 'Incorrect city name';
         this.showErrorDiv = true;
         // this.pageLoading = false;
-        this.spinner.hide();
+        // this.spinner.hide();
+        this._weatherService.setShowSpinner(false);
       },
       () => {
         // console.log('getCurrentWeatherByCityName Completed');
