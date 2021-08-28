@@ -19,6 +19,7 @@ import { DatePipe } from '@angular/common';
 import { defineLordIconElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
        */
       echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
     }),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
