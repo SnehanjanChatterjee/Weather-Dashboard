@@ -81,4 +81,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
             <li>Guide: https://www.npmjs.com/package/ngx-spinner
         </ul>
     </li>
+    <li> Toast Messages:
+        <ul>
+            <li>ngx-toastr@12.1.0</li>
+            <li>ngx-toastr@12.1.0 Installation: <code>npm install ngx-toastr@12.1.0 --save</code>
+            <li>@angular/animations@9.0.7 Installation: <code>npm install @angular/animations --save</code>
+            <li>Guide: https://www.npmjs.com/package/ngx-toastr/v/12.1.0
+        </ul>
+    </li>
 </ol>

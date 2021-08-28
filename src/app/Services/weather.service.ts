@@ -15,7 +15,8 @@ export class WeatherService {
   constructor(private _http: HttpClient) { }
 
   private unitTypeSubject = new BehaviorSubject<boolean>(false);
-  private showSpinner = new BehaviorSubject<boolean>(false);
+  // private showSpinner = new BehaviorSubject<boolean>(false);
+  private showSpinner = new Subject<boolean>();
 
   loadCurrentWeatherByCityName(cityName: string): Observable<CurrentWeather> {
 

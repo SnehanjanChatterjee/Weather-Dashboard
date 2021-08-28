@@ -24,3 +24,17 @@ export const DAYS: Days[] = [
     { id: 5, day: 'Friday' },
     { id: 6, day: 'Saturday' }
 ];
+
+export const ToastMessageType = {
+    ERROR: 'Error',
+    WARNING: 'Warning',
+    INFO: 'Info',
+    SUCCESS: 'Success'
+};
+
+export const IconClasses = {
+    error: 'toast-error',
+    info: 'toast-info',
+    success: 'toast-success',
+    warning: 'toast-warning',
+};
