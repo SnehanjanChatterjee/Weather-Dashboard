@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "docs-build": "ng build --output-path docs --base-href /Weather-Dashboard/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
