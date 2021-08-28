@@ -13,14 +13,12 @@ html, body {
     font-family: 'Merriweather', sans-serif;
     height: 100%;
     margin: 0;
-
     /* Background Image */
     background-image: var(--url2);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     /* Background Image ends*/
-
     /* Background Color */
     /* background: #C33764;
     background: -webkit-linear-gradient(to bottom, #1D2671, #C33764);
@@ -33,3 +31,15 @@ html, body {
         overflow-y: scroll;
     }
 } */
+
+.ngx-toastr {
+    width: 300px !important;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+    .ngx-toastr {
+        width: 250px !important;
+        font-size: 12px;
+    }
+}
