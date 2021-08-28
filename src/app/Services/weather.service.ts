@@ -26,6 +26,15 @@ export class WeatherService {
     
   }
   
+  loadCurrentWeatherByCoordinates(latitude: number, longitude: number): Observable<CurrentWeather> {
+
+    let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
+    
+    const url = APIUrl + Api.endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + APIKey + '&units=' + unit;
+    return this._http.get<CurrentWeather>(url).pipe(catchError(this.errorHandler));
+    
+  }
+  
   loadOneAPICallDataByCurrentData(currentWeatherData: CurrentWeather, excludes: any): Observable<OneAPICallModel> {
 
     let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;

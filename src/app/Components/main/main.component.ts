@@ -18,12 +18,21 @@ export class MainComponent implements OnInit {
   oneCallWeatherData: OneAPICallModel;
   // pageLoading: boolean = false;
   showErrorDiv: boolean = false;
+  showErrorPopup: boolean = false;
   errorMessage: string = '';
   excludes = [OneCallExcludes.Minutely, OneCallExcludes.Hourly];
+  latitude: number;
+  longitude: number;
+  htmlGeolocationError: string = '';
 
   constructor(private _weatherService: WeatherService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.getLocationByHTMLNavigator();
+    if (this.htmlGeolocationError) {
+      this.showErrorPopup = true;
+      this.errorMessage = this.htmlGeolocationError;
+    }
   }
 
   getCurrentWeatherByCityName() {
@@ -72,6 +81,54 @@ export class MainComponent implements OnInit {
 
   onKeyDown() {
     this.showErrorDiv = false;
+  }
+
+  getLocationByHTMLNavigator() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        if (this.latitude && this.longitude) {
+          this.getCurrentWeatherByGeoLocation();
+        }
+      }, (error) => {
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            this.htmlGeolocationError = "User denied the request for Geolocation."
+            break;
+          case error.POSITION_UNAVAILABLE:
+            this.htmlGeolocationError = "Location information is unavailable."
+            break;
+          case error.TIMEOUT:
+            this.htmlGeolocationError = "The request to get user location timed out."
+            break;
+        }
+      }
+    );
+    } else {
+      this.htmlGeolocationError = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  getCurrentWeatherByGeoLocation() {
+    this._weatherService.setShowSpinner(true);
+    this._weatherService.loadCurrentWeatherByCoordinates(this.latitude, this.longitude).subscribe(
+      responseWeatherData => {
+        if (responseWeatherData) {
+          this.currentWeatherData = responseWeatherData;
+          this._weatherService.setShowSpinner(false);
+          this.cityName = this.currentWeatherData.name;
+          this.getCurrentWeatherByCityName();
+        }
+      },
+      responseWeatherError => {
+        this.currentWeatherData = null;
+        this._weatherService.setShowSpinner(false);
+      },
+      () => {
+        // console.log('getCurrentWeatherByGeoLocation Completed');
+      }
+    );
   }
 
 }
