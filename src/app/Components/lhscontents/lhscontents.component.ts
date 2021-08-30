@@ -3,7 +3,7 @@ import { switchMap } from 'rxjs/operators';
 import { IconUrl } from 'src/app/appConfig';
 import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
-import { CurrentWeather } from 'src/app/Models/weather.models';
+import { CurrentWeatherModel } from 'src/app/Models/weather.models';
 import { LocalDateTime, LocalDateTimeByUnixTimestamp } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
 import * as i18nIsoCountries from 'i18n-iso-countries';
@@ -31,7 +31,7 @@ export class LHSContentsComponent implements OnInit {
   sunsetTime: Date;
   errorMsg: string;
 
-  locationWeatherData: CurrentWeather;
+  locationWeatherData: CurrentWeatherModel;
   OneCallLocationWeatherData: OneAPICallModel;
   excludes: any;
 
@@ -67,7 +67,7 @@ export class LHSContentsComponent implements OnInit {
   }
 
   @Input()
-  set weatherData(data: CurrentWeather) {
+  set weatherData(data: CurrentWeatherModel) {
     this.locationWeatherData = data;
     // if (this.locationWeatherData && this.locationWeatherData.name) {
     //   this.cityName = this.locationWeatherData.name;
@@ -80,7 +80,7 @@ export class LHSContentsComponent implements OnInit {
     // console.log("In LHS excludes = ", this.excludes);
   }
 
-  @Output() onUnitTypeChange: any = new EventEmitter<CurrentWeather>();
+  @Output() onUnitTypeChange: any = new EventEmitter<CurrentWeatherModel>();
 
   ngOnInit(): void {
     i18nIsoCountries.registerLocale(require("i18n-iso-countries/langs/en.json"));
