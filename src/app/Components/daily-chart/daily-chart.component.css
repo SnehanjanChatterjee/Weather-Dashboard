@@ -16,15 +16,15 @@
     margin-left: 50px; */
     width: 900px;
     height: 300px;
-    box-shadow: var(--inside-box-shadow);
-    -webkit-box-shadow: var(--inside-box-shadow);
-    -moz-box-shadow: var(--inside-box-shadow);
+    box-shadow: var(--inside-box-shadow2);
+    -webkit-box-shadow: var(--inside-box-shadow2);
+    -moz-box-shadow: var(--inside-box-shadow2);
 }
 
 .chartCard:hover {
-    box-shadow: var(--box-shadow3), var(--inside-box-shadow);
-    -webkit-box-shadow: var(--box-shadow3), var(--inside-box-shadow);
-    -moz-box-shadow: var(--box-shadow3), var(--inside-box-shadow);
+    box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);
+    -webkit-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);
+    -moz-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);
 }
 
 .chart {
