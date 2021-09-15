@@ -25,4 +25,8 @@ export class WeatherWidgetsComponent implements OnInit {
     this.currentWeather = weather;
   }
 
+  isEmptyObject(obj) {
+    return (obj && (Object.keys(obj).length === 0));
+  }
+
 }

@@ -1,0 +1,23 @@
+.widgetsMainDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.widgetsCard {
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+    margin: 40px 0px 5px 0px;
+    box-shadow: var(--inside-box-shadow);
+    -webkit-box-shadow: var(--inside-box-shadow);
+    -moz-box-shadow: var(--inside-box-shadow);
+}
+
+.widgetsCard:hover {
+    box-shadow: var(--box-shadow3), var(--inside-box-shadow);
+    -webkit-box-shadow: var(--box-shadow3), var(--inside-box-shadow);
+    -moz-box-shadow: var(--box-shadow3), var(--inside-box-shadow);
+}

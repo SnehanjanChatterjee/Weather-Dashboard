@@ -14,14 +14,19 @@
     /* This is not responsive */
     /* margin-right: 430px;
     margin-left: 50px; */
-    width: 800px;
-    height: 350px;
+    width: 900px;
+    height: 300px;
+    box-shadow: var(--inside-box-shadow);
+    -webkit-box-shadow: var(--inside-box-shadow);
+    -moz-box-shadow: var(--inside-box-shadow);
 }
 
 .chartCard:hover {
-    /* box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff; */
-    /* box-shadow: 0 0 11px rgba(33,33,33,.2);  */
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
-    -webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
-    -moz-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--box-shadow3), var(--inside-box-shadow);
+    -webkit-box-shadow: var(--box-shadow3), var(--inside-box-shadow);
+    -moz-box-shadow: var(--box-shadow3), var(--inside-box-shadow);
+}
+
+.chart {
+    height: 300px !important;
 }

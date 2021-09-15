@@ -7,6 +7,12 @@
     --url2: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?dpr=0.800000011920929&auto=format&fit=crop&w=1199&h=800&q=80&cs=tinysrgb&crop=');
     --bg-color1: linear-gradient(to bottom, #1D2671, #C33764);
     --bg-color2: linear-gradient(to left, #283593, #1976d2);
+    --box-shadow1: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    --box-shadow2: 0 0 11px rgba(33, 33, 33, .2);
+    --box-shadow3: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    --box-shadow4: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+    /* --box-shadow5: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+    --inside-box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 html, body {
