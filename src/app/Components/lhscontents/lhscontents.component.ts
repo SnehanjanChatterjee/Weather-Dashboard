@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
-import { IconUrl } from 'src/app/appConfig';
+import { FlagSize, FlagType, FlagURUL, IconUrl } from 'src/app/Constants/url-constants';
 import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeatherModel } from 'src/app/Models/weather.models';
@@ -30,6 +30,7 @@ export class LHSContentsComponent implements OnInit {
   sunriseTime: Date;
   sunsetTime: Date;
   errorMsg: string;
+  countryFlag: string = '';
 
   locationWeatherData: CurrentWeatherModel;
   OneCallLocationWeatherData: OneAPICallModel;
@@ -61,6 +62,7 @@ export class LHSContentsComponent implements OnInit {
         var countries = require("i18n-iso-countries");
         // console.log(countries.getNames("en", {select: "official"}));
         this.countryName = countries.getName(this.locationWeatherData.sys.country, "en", {select: "official"});
+        this.countryFlag = FlagURUL + this.locationWeatherData.sys.country.toString() + FlagType + FlagSize;
       }
       // console.log("IconUrl", this.iconurl, "\n", "currentDatetime", this.currentDatetime);
     }

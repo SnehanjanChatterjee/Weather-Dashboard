@@ -3,9 +3,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { CurrentWeatherModel } from '../Models/weather.models';
-import { Api, APIKey, APIUrl } from '../appConfig';
+import { APIKey } from '../appConfig';
 import { CELCIUS_UNIT, FAHRENHEIT_UNIT, OneCallExcludes } from '../Constants/weather-dashboard-constants';
 import { OneAPICallModel } from '../Models/OneAPICallModel.models';
+import { Api, APIUrl } from '../Constants/url-constants';
 
 @Injectable({
   providedIn: 'root'
