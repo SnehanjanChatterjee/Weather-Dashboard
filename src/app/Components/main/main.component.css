@@ -26,6 +26,8 @@
 @media screen and (max-width: 768px) {
   #mainDiv {
     border-radius: 12px 12px 0px 0px;
+    height: 100%;
+    padding: 5px;
   }
 }
 
