@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrentWeather } from 'src/app/Models/weather.models';
+import { CurrentWeatherModel } from 'src/app/Models/weather.models';
 import { WeatherService } from 'src/app/Services/weather.service';
 import { switchMap } from 'rxjs/operators';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
@@ -17,7 +17,7 @@ import { TitleCase } from 'src/app/Services/weather-helper';
 export class MainComponent implements OnInit {
 
   cityName: string = '';
-  currentWeatherData: CurrentWeather;
+  currentWeatherData: CurrentWeatherModel;
   oneCallWeatherData: OneAPICallModel;
   // pageLoading: boolean = false;
   showErrorDiv: boolean = false;

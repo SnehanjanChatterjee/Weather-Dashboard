@@ -7,6 +7,14 @@
     --url2: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?dpr=0.800000011920929&auto=format&fit=crop&w=1199&h=800&q=80&cs=tinysrgb&crop=');
     --bg-color1: linear-gradient(to bottom, #1D2671, #C33764);
     --bg-color2: linear-gradient(to left, #283593, #1976d2);
+    --box-shadow1: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+    --box-shadow2: 0 0 11px rgba(33, 33, 33, .2);
+    --box-shadow3: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    --box-shadow3-white: 1px 1px 10px #dfe1e6;
+    --box-shadow4: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+    /* --box-shadow5: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+    --inside-box-shadow1: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    --inside-box-shadow2: rgba(10, 37, 64, 0.65) 0px -2px 6px 0px inset;
 }
 
 html, body {
@@ -42,4 +50,20 @@ html, body {
         width: 250px !important;
         font-size: 12px;
     }
+}
+
+/* use --box-shadow3 with --inside-box-shadow1*/
+.glassmorphDiv1 {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* from https://hype4.academy/tools/glassmorphism-generator */
+/* use--box-shadow3-white with --inside-box-shadow2 */
+.glassmorphDiv2 {
+    background: rgba( 255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37);
+    backdrop-filter: blur( 4px);
+    -webkit-backdrop-filter: blur( 4px);
 }

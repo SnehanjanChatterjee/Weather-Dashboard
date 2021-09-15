@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { CurrentWeather } from '../Models/weather.models';
+import { CurrentWeatherModel } from '../Models/weather.models';
 import { Api, APIKey, APIUrl } from '../appConfig';
 import { CELCIUS_UNIT, FAHRENHEIT_UNIT, OneCallExcludes } from '../Constants/weather-dashboard-constants';
 import { OneAPICallModel } from '../Models/OneAPICallModel.models';
@@ -18,25 +18,25 @@ export class WeatherService {
   // private showSpinner = new BehaviorSubject<boolean>(false);
   private showSpinner = new Subject<boolean>();
 
-  loadCurrentWeatherByCityName(cityName: string): Observable<CurrentWeather> {
+  loadCurrentWeatherByCityName(cityName: string): Observable<CurrentWeatherModel> {
 
     let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
     
     const url = APIUrl + Api.endpoints.weather + '?q=' + cityName + '&appid=' + APIKey + '&units=' + unit;
-    return this._http.get<CurrentWeather>(url).pipe(catchError(this.errorHandler));
+    return this._http.get<CurrentWeatherModel>(url).pipe(catchError(this.errorHandler));
     
   }
   
-  loadCurrentWeatherByCoordinates(latitude: number, longitude: number): Observable<CurrentWeather> {
+  loadCurrentWeatherByCoordinates(latitude: number, longitude: number): Observable<CurrentWeatherModel> {
 
     let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
     
     const url = APIUrl + Api.endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + APIKey + '&units=' + unit;
-    return this._http.get<CurrentWeather>(url).pipe(catchError(this.errorHandler));
+    return this._http.get<CurrentWeatherModel>(url).pipe(catchError(this.errorHandler));
     
   }
   
-  loadOneAPICallDataByCurrentData(currentWeatherData: CurrentWeather, excludes: any): Observable<OneAPICallModel> {
+  loadOneAPICallDataByCurrentData(currentWeatherData: CurrentWeatherModel, excludes: any): Observable<OneAPICallModel> {
 
     let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
     

@@ -1,32 +1,23 @@
-.chartDiv {
+.widgetsMainDiv {
+    width: 100%;
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
-@media screen and (max-width: 768px) {
-    .chartDiv {
-        padding: 0px 2px;
-    }
-}
-
-.chartCard {
+.widgetsCard {
+    width: 200px;
+    height: 200px;
     border-radius: 30px;
-    background-color: #fff;
-    /* This is not responsive */
-    /* margin-right: 430px;
-    margin-left: 50px; */
-    width: 900px;
-    height: 300px;
+    margin: 40px 0px 5px 0px;
     box-shadow: var(--inside-box-shadow2);
     -webkit-box-shadow: var(--inside-box-shadow2);
     -moz-box-shadow: var(--inside-box-shadow2);
 }
 
-.chartCard:hover {
+.widgetsCard:hover {
     box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);
     -webkit-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);
     -moz-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);
-}
-
-.chart {
-    height: 300px !important;
 }

@@ -20,13 +20,15 @@ import { defineLordIconElement } from 'lord-icon-element';
 import lottie from 'lottie-web';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
+import { WeatherWidgetsComponent } from './Components/weather-widgets/weather-widgets.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     LHSContentsComponent,
-    DailyChartComponent
+    DailyChartComponent,
+    WeatherWidgetsComponent
   ],
   imports: [
     BrowserModule,

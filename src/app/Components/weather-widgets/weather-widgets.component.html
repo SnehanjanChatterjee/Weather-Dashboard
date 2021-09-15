@@ -1,0 +1,27 @@
+<div *ngIf="OneCallweather && OneCallweather != undefined" class="widgetsMainDiv">
+    <div class="card widgetsCard humidity">
+        <div class="card-body">
+            <span>Humidity  {{OneCallweather.current.humidity}}</span>
+        </div>
+    </div>
+    <div class="card widgetsCard pressure">
+        <div class="card-body">
+            <span>Pressure  {{OneCallweather.current.pressure}}</span>
+        </div>
+    </div>
+    <div class="card widgetsCard uvi">
+        <div class="card-body">
+            <span>UVI  {{OneCallweather.current.uvi}}</span>
+        </div>
+    </div>
+    <div class="card widgetsCard clouds">
+        <div class="card-body">
+            <span>Clouds  {{OneCallweather.current.clouds}}</span>
+        </div>
+    </div>
+    <div class="card widgetsCard wind">
+        <div class="card-body">
+            <span>Wind  {{OneCallweather.current.wind_speed}}</span>
+        </div>
+    </div>
+</div>
