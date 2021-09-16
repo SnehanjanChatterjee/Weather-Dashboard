@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeatherModel } from 'src/app/Models/weather.models';
 
@@ -7,20 +7,59 @@ import { CurrentWeatherModel } from 'src/app/Models/weather.models';
   templateUrl: './weather-widgets.component.html',
   styleUrls: ['./weather-widgets.component.css']
 })
-export class WeatherWidgetsComponent implements OnInit {
+export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
   OneCallweather: OneAPICallModel;
   currentWeather: CurrentWeatherModel;
+  gaugeHumidityElement: ElementRef;
+  gaugeHumidityFillElement: ElementRef;
+  gaugeHumidityCoverElement: ElementRef;
+  gaugeCloudElement: ElementRef;
+  gaugeCloudFillElement: ElementRef;
+  gaugeCloudCoverElement: ElementRef;
+
+  @ViewChild('gaugeHumidity') set gaugeHumidityEl(value: ElementRef) {
+    this.gaugeHumidityElement = value;
+  };
+  @ViewChild('gaugeHumidityFill') set gaugeHumidityFillEl(value: ElementRef) {
+    this.gaugeHumidityFillElement = value;
+  };
+  @ViewChild('gaugeHumidityCover') set gaugeHumidityCoverEl(value: ElementRef) {
+    this.gaugeHumidityCoverElement = value;
+    if (this.OneCallweather && this.gaugeHumidityCoverElement) {
+      this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+    }
+  };
+
+  @ViewChild('gaugeCloud') set gaugeCloudEl(value: ElementRef) {
+    this.gaugeCloudElement = value;
+  };
+  @ViewChild('gaugeCloudFill') set gaugeCloudFillEl(value: ElementRef) {
+    this.gaugeCloudFillElement = value;
+  };
+  @ViewChild('gaugeCloudCover') set gaugeCloudCoverEl(value: ElementRef) {
+    this.gaugeCloudCoverElement = value;
+    if (this.OneCallweather && this.gaugeCloudCoverElement) {
+      this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+    }
+  };
 
   ngOnInit(): void {
   }
 
+  ngAfterViewInit(): void {
+  }
+
   @Input() set weatherData(weather: OneAPICallModel) {
     this.OneCallweather = weather;
+    if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement) {
+      this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+      this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+    }
   }
-  
+
   @Input() set currentWeatherData(weather: CurrentWeatherModel) {
     this.currentWeather = weather;
   }
@@ -29,4 +68,13 @@ export class WeatherWidgetsComponent implements OnInit {
     return (obj && (Object.keys(obj).length === 0));
   }
 
+  setGaugeValue(value: number, element: ElementRef) {
+    if (value < 0 || value > 1) {
+      return;
+    }
+    this.renderer.setStyle(element.nativeElement, 'transform', 'rotate(' + (value / 2) + 'turn)');
+    // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
+  }
+
 }
+
