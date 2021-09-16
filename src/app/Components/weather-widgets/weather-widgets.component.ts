@@ -13,20 +13,36 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
   OneCallweather: OneAPICallModel;
   currentWeather: CurrentWeatherModel;
-  gaugeElement: ElementRef;
-  gaugeFillElement: ElementRef;
-  gaugeCoverElement: ElementRef;
+  gaugeHumidityElement: ElementRef;
+  gaugeHumidityFillElement: ElementRef;
+  gaugeHumidityCoverElement: ElementRef;
+  gaugeCloudElement: ElementRef;
+  gaugeCloudFillElement: ElementRef;
+  gaugeCloudCoverElement: ElementRef;
 
-  @ViewChild('gauge') set gaugeEl(value: ElementRef) {
-    this.gaugeElement = value;
+  @ViewChild('gaugeHumidity') set gaugeHumidityEl(value: ElementRef) {
+    this.gaugeHumidityElement = value;
   };
-  @ViewChild('gaugeFill') set gaugeFillEl(value: ElementRef) {
-    this.gaugeFillElement = value;
+  @ViewChild('gaugeHumidityFill') set gaugeHumidityFillEl(value: ElementRef) {
+    this.gaugeHumidityFillElement = value;
   };
-  @ViewChild('gaugeCover') set gaugeCoverEl(value: ElementRef) {
-    this.gaugeCoverElement = value;
-    if (this.OneCallweather && this.gaugeCoverElement) {
-      this.setGaugeValue(this.OneCallweather.current.humidity * 0.01);
+  @ViewChild('gaugeHumidityCover') set gaugeHumidityCoverEl(value: ElementRef) {
+    this.gaugeHumidityCoverElement = value;
+    if (this.OneCallweather && this.gaugeHumidityCoverElement) {
+      this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+    }
+  };
+
+  @ViewChild('gaugeCloud') set gaugeCloudEl(value: ElementRef) {
+    this.gaugeCloudElement = value;
+  };
+  @ViewChild('gaugeCloudFill') set gaugeCloudFillEl(value: ElementRef) {
+    this.gaugeCloudFillElement = value;
+  };
+  @ViewChild('gaugeCloudCover') set gaugeCloudCoverEl(value: ElementRef) {
+    this.gaugeCloudCoverElement = value;
+    if (this.OneCallweather && this.gaugeCloudCoverElement) {
+      this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
     }
   };
 
@@ -38,8 +54,9 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
   @Input() set weatherData(weather: OneAPICallModel) {
     this.OneCallweather = weather;
-    if (this.OneCallweather && this.gaugeCoverElement) {
-      this.setGaugeValue(this.OneCallweather.current.humidity * 0.01);
+    if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement) {
+      this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+      this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
     }
   }
 
@@ -51,11 +68,11 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
     return (obj && (Object.keys(obj).length === 0));
   }
 
-  setGaugeValue(value) {
+  setGaugeValue(value: number, element: ElementRef) {
     if (value < 0 || value > 1) {
       return;
     }
-    this.renderer.setStyle(this.gaugeFillElement.nativeElement, 'transform', 'rotate(' + (value / 2) + 'turn)');
+    this.renderer.setStyle(element.nativeElement, 'transform', 'rotate(' + (value / 2) + 'turn)');
     // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
   }
 
