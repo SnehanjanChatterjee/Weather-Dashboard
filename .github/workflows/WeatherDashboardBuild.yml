@@ -26,10 +26,20 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
+    - name: Create and update appConfig file
+      run: touch appConfig.js
+      run: echo '${{ secrets.OPENWEATHERMAP_API_KEY }}' > appConfig.js
+
     - run: npm ci
     - run: npm run docs-build
+
     - name: Copy index.html
       run: cp docs/index.html docs/404.html
+
+    - name: Delete appConfig file
+      run: rm appConfig.js
+
   windows-build:
 
     runs-on: windows-latest
@@ -46,7 +56,16 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
+    - name: Create and update appConfig file
+      run: touch appConfig.js
+      run: echo '${{ secrets.OPENWEATHERMAP_API_KEY }}' > appConfig.js
+
     - run: npm ci
     - run: npm run docs-build
+
     - name: Copy index.html
       run: cp docs/index.html docs/404.html
+
+    - name: Delete appConfig file
+      run: rm appConfig.js
