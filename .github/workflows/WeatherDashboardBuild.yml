@@ -50,5 +50,5 @@ jobs:
     - run: npm ci
     - run: npm run docs-build
     
-    - name: Copy index.html 🖨
-    - run: cp docs/index.html docs/404.html
+    - name: Copy index.html
+      run: cp docs/index.html docs/404.html
