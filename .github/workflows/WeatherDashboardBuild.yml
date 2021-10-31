@@ -28,8 +28,9 @@ jobs:
         cache: 'npm'
 
     - name: Create and update appConfig file
-      run: touch appConfig.js
-      run: echo '${{ secrets.OPENWEATHERMAP_API_KEY }}' > appConfig.js
+      run: |
+        touch appConfig.js
+        echo 'export const APIKey = ${{ secrets.OPENWEATHERMAP_API_KEY }}' > appConfig.js
 
     - run: npm ci
     - run: npm run docs-build
@@ -58,8 +59,9 @@ jobs:
         cache: 'npm'
 
     - name: Create and update appConfig file
-      run: touch appConfig.js
-      run: echo '${{ secrets.OPENWEATHERMAP_API_KEY }}' > appConfig.js
+      run: |
+        touch appConfig.js
+        echo 'export const APIKey = ${{ secrets.OPENWEATHERMAP_API_KEY }}' > appConfig.js
 
     - run: npm ci
     - run: npm run docs-build
