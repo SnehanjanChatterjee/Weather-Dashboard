@@ -29,7 +29,7 @@ jobs:
 
     - name: Create and update appConfig file
       run: |
-        touch appConfig.js
+        touch src/app/appConfig.js
         echo 'export const APIKey = ${{ secrets.OPENWEATHERMAP_API_KEY }}' > appConfig.js
 
     - run: npm ci
@@ -60,7 +60,7 @@ jobs:
 
     - name: Create and update appConfig file
       run: |
-        touch appConfig.js
+        touch src/app/appConfig.js
         echo 'export const APIKey = ${{ secrets.OPENWEATHERMAP_API_KEY }}' > appConfig.js
 
     - run: npm ci
