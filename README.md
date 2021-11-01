@@ -89,4 +89,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
             <li>Guide: https://www.npmjs.com/package/ngx-toastr/v/12.1.0
         </ul>
     </li>
+    <li> dotenv
+        <ul>
+            <li><code>npm i -D yargs dotenv</code></li>
+        </ul>
+    </li>
 </ol>
