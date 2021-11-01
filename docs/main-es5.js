@@ -1968,21 +1968,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _appConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../appConfig */
-    "./src/app/appConfig.ts");
-    /* harmony import */
-
-
-    var _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../Constants/weather-dashboard-constants */
     "./src/app/Constants/weather-dashboard-constants.ts");
     /* harmony import */
 
 
-    var _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ../Constants/url-constants */
     "./src/app/Constants/url-constants.ts");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
     /* harmony import */
 
 
@@ -2000,26 +2000,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.unitTypeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](false); // private showSpinner = new BehaviorSubject<boolean>(false);
 
         this.showSpinner = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.Stored_API_Key = src_environments_environment__WEBPACK_IMPORTED_MODULE_5__["environment"].OPENWEATHER_API_KEY;
       }
 
       _createClass(WeatherService, [{
         key: "loadCurrentWeatherByCityName",
         value: function loadCurrentWeatherByCityName(cityName) {
-          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["CELCIUS_UNIT"];
-          var url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.weather + '?q=' + cityName + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["CELCIUS_UNIT"];
+          var url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.weather + '?q=' + cityName + '&appid=' + this.Stored_API_Key + '&units=' + unit;
           return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
         }
       }, {
         key: "loadCurrentWeatherByCoordinates",
         value: function loadCurrentWeatherByCoordinates(latitude, longitude) {
-          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["CELCIUS_UNIT"];
-          var url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["CELCIUS_UNIT"];
+          var url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + this.Stored_API_Key + '&units=' + unit;
           return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
         }
       }, {
         key: "loadOneAPICallDataByCurrentData",
         value: function loadOneAPICallDataByCurrentData(currentWeatherData, excludes) {
-          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["CELCIUS_UNIT"];
+          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["CELCIUS_UNIT"];
           var excludesString = '';
           excludes.forEach(function (value, index) {
             excludesString += value;
@@ -2032,9 +2033,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var url = '';
 
           if (excludesString && excludes.length > 0) {
-            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + '&exclude=' + excludesString + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + '&exclude=' + excludesString + '&appid=' + this.Stored_API_Key + '&units=' + unit;
           } else {
-            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + '&appid=' + this.Stored_API_Key + '&units=' + unit;
           }
 
           return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
@@ -2501,30 +2502,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   },
 
   /***/
-  "./src/app/appConfig.ts":
-  /*!******************************!*\
-    !*** ./src/app/appConfig.ts ***!
-    \******************************/
-
-  /*! exports provided: APIKey */
-
-  /***/
-  function srcAppAppConfigTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "APIKey", function () {
-      return APIKey;
-    });
-
-    var APIKey = '0dd5542d536e51ce47540ed11c8f0ebc';
-    /***/
-  },
-
-  /***/
   "./src/environments/environment.ts":
   /*!*****************************************!*\
     !*** ./src/environments/environment.ts ***!
@@ -2542,23 +2519,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     __webpack_require__.d(__webpack_exports__, "environment", function () {
       return environment;
-    }); // This file can be replaced during build by using the `fileReplacements` array.
-    // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-    // The list of file replacements can be found in `angular.json`.
+    }); // This file was autogenerated by dynamically running setEnv.ts and using dotenv for managing API key secrecy
 
 
     var environment = {
-      production: false
+      production: false,
+      OPENWEATHER_API_KEY: '0dd5542d536e51ce47540ed11c8f0ebc'
     };
-    /*
-     * For easier debugging in development mode, you can import the following file
-     * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
-     *
-     * This import should be commented out in production mode because it will have a negative impact
-     * on performance if an error is thrown.
-     */
-    // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
     /***/
   },
 

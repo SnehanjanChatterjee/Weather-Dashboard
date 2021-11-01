@@ -4,8 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dev-start": "npm run config -- --environment=dev && ng serve",
+    "config": "ts-node ./setEnv.ts",
     "build": "ng build",
     "docs-build": "ng build --output-path docs --base-href /Weather-Dashboard/",
+    "dev-docs-build": "npm run config -- --environment=dev && npm run docs-build",
+    "prod-docs-build": "npm run config -- --environment=prod && ng build --configuration=production --output-path docs --base-href /Weather-Dashboard/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
