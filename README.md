@@ -48,6 +48,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 <ol>
     <li> Angular CLI v9.0.0 </li>
+    <li> NodeJs 14.17.4 </li>
     <li> Bootstrap v5.1.0 </li>
     <li> Angular Material UI </li>
     <li> Font Awesome v4.7.0 </li>
