@@ -37,7 +37,7 @@ export class LHSContentsComponent implements OnInit {
   excludes: any;
 
   @Input()
-  set oneCallWeatherData(data: OneAPICallModel) {
+  set singleCallWeatherData(data: OneAPICallModel) {
     this.OneCallLocationWeatherData = data;
     if(this.OneCallLocationWeatherData) {
 

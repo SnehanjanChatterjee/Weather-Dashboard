@@ -1,5 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientModule } from '@angular/common/http';
+import { async, ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LHSContentsComponent } from './lhscontents.component';
 
 describe('LHSContentsComponent', () => {
@@ -8,9 +9,15 @@ describe('LHSContentsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LHSContentsComponent ]
-    })
-    .compileComponents();
+      imports: [
+        BrowserAnimationsModule,
+        HttpClientModule
+      ],
+      declarations: [LHSContentsComponent],
+      providers: [
+        { provide: ComponentFixtureAutoDetect, useValue: true }
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
