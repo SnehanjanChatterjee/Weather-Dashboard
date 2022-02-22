@@ -1,14 +1,18 @@
 import { HttpClientModule } from '@angular/common/http';
 import { TestBed, async, ComponentFixtureAutoDetect } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { AppComponent } from './app.component';
+import { routing } from './app.routing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        HttpClientModule
+        HttpClientModule,
+        NgxSpinnerModule,
+        routing
       ],
       declarations: [AppComponent],
       providers: [

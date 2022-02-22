@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LHSContentsComponent } from './lhscontents.component';
 
@@ -11,7 +12,8 @@ describe('LHSContentsComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
-        HttpClientModule
+        HttpClientModule,
+        MatSlideToggleModule
       ],
       declarations: [LHSContentsComponent],
       providers: [

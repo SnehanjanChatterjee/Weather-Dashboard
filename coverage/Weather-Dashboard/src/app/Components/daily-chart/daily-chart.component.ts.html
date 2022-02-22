@@ -22,30 +22,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">45.16% </span>
+                <span class="strong">51.61% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/31</span>
+                <span class='fraction'>16/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.29% </span>
+                <span class="strong">42.86% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>3/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.38% </span>
+                <span class="strong">48.28% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/29</span>
+                <span class='fraction'>14/29</span>
             </div>
         
             
@@ -54,7 +54,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -180,28 +180,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -305,9 +305,9 @@ export class DailyChartComponent implements OnInit {
   @Input() cityName: string;
 &nbsp;
   @Input()
-<span class="fstat-no" title="function not covered" >  set w</span>eatherData(data: OneAPICallModel) {
-<span class="cstat-no" title="statement not covered" >    this.chartweatherData = data;</span>
-<span class="cstat-no" title="statement not covered" >    if (this.chartweatherData &amp;&amp; this.chartweatherData.daily &amp;&amp; this.chartweatherData.daily.length &gt; 0) {</span>
+  set weatherData(data: OneAPICallModel) {
+    this.chartweatherData = data;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (this.chartweatherData &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >this.chartweatherData.daily </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >this.chartweatherData.daily.length &gt; 0)</span> {
       // console.log("In daily-chart ", this.chartweatherData);
 <span class="cstat-no" title="statement not covered" >      this.xAxisData = [];</span>
 <span class="cstat-no" title="statement not covered" >      this.seriesData1 = [];</span>
@@ -381,7 +381,7 @@ export class DailyChartComponent implements OnInit {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Feb 23 2022 00:32:01 GMT+0530 (India Standard Time)
+                at Wed Feb 23 2022 01:10:26 GMT+0530 (India Standard Time)
             </div>
         </div>
         <script src="..\..\..\..\prettify.js"></script>

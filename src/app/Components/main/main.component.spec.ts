@@ -3,6 +3,10 @@ import { async, ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@a
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main.component';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
+import { LHSContentsComponent } from '../lhscontents/lhscontents.component';
+import { WeatherWidgetsComponent } from '../weather-widgets/weather-widgets.component';
+import { DailyChartComponent } from '../daily-chart/daily-chart.component';
+import { DatePipe } from '@angular/common';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -12,12 +16,12 @@ describe('MainComponent', () => {
       message?: string,
       title?: string,
       override?: Partial<IndividualConfig>
-    ) => {},
+    ) => { },
     error: (
       message?: string,
       title?: string,
       override?: Partial<IndividualConfig>
-    ) => {},
+    ) => { },
   };
 
   beforeEach(async(() => {
@@ -26,10 +30,11 @@ describe('MainComponent', () => {
         BrowserAnimationsModule,
         HttpClientModule
       ],
-      declarations: [MainComponent],
+      declarations: [MainComponent, LHSContentsComponent, WeatherWidgetsComponent, DailyChartComponent],
       providers: [
         { provide: ComponentFixtureAutoDetect, useValue: true },
-        { provide: ToastrService, useValue: toastrService }
+        { provide: ToastrService, useValue: toastrService },
+        DatePipe
       ]
     }).compileComponents();
   }));
