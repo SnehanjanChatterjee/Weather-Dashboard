@@ -19,6 +19,13 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   gaugeCloudElement: ElementRef;
   gaugeCloudFillElement: ElementRef;
   gaugeCloudCoverElement: ElementRef;
+  widgetNames = {
+    humidity: 'Humidity',
+    pressure: 'Pressure',
+    uvi: 'UVI',
+    cloudiness: 'Cloudiness',
+    wind: 'Wind'
+  }
 
   @ViewChild('gaugeHumidity') set gaugeHumidityEl(value: ElementRef) {
     this.gaugeHumidityElement = value;
@@ -62,10 +69,6 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
   @Input() set currentWeatherData(weather: CurrentWeatherModel) {
     this.currentWeather = weather;
-  }
-
-  isEmptyObject(obj) {
-    return (obj && (Object.keys(obj).length === 0));
   }
 
   setGaugeValue(value: number, element: ElementRef) {
