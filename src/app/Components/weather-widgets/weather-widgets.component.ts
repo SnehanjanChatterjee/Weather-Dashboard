@@ -23,6 +23,7 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
     humidity: 'Humidity',
     pressure: 'Pressure',
     uvi: 'UVI',
+    uv_index: 'UV Index',
     cloudiness: 'Cloudiness',
     wind: 'Wind'
   }
