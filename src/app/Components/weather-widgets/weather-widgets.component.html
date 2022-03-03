@@ -10,7 +10,7 @@
             <div class="widgetMeter">
                 <div #gaugeHumidity class="gauge">
                     <div #gaugeHumidityBody class="gauge__body">
-                        <div #gaugeHumidityFill class="gauge__fill"></div>
+                        <div #gaugeHumidityFill class="gauge__fill" [ngStyle]="{background: setGaugeColourBasedOnLevel(OneCallweather.current.humidity)}"></div>
                         <div #gaugeHumidityCover class="gauge__cover">{{OneCallweather.current.humidity}}%</div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             <div class="widgetMeter">
                 <div #gaugeCloud class="gauge">
                     <div #gaugeCloudBody class="gauge__body">
-                        <div #gaugeCloudFill class="gauge__fill"></div>
+                        <div #gaugeCloudFill class="gauge__fill" [ngStyle]="{background: setGaugeColourBasedOnLevel(OneCallweather.current.clouds)}"></div>
                         <div #gaugeCloudCover class="gauge__cover">{{OneCallweather.current.clouds}}%</div>
                     </div>
                 </div>

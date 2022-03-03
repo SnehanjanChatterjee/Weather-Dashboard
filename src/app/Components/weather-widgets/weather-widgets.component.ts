@@ -79,5 +79,17 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
     // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
   }
 
+  setGaugeColourBasedOnLevel(value: number) {
+    if (value < 20) {
+      return 'red';
+    } else if (value >= 20 && value < 60) {
+      return 'orange';
+    } else if (value >= 60 && value < 90) {
+      return '#eded02';
+    } else if (value >= 90) {
+      return 'green';
+    }
+  }
+
 }
 
