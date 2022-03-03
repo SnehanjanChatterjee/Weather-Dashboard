@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
 
   cityName: string = '';
   currentWeatherData: CurrentWeatherModel;
-  oneCallWeatherData: OneAPICallModel;
+  singleCallWeatherData: OneAPICallModel;
   // pageLoading: boolean = false;
   showErrorDiv: boolean = false;
   showErrorPopup: boolean = false;
@@ -68,8 +68,8 @@ export class MainComponent implements OnInit {
     .subscribe(
       responseWeatherData => {
         window.setTimeout(() => {
-          this.oneCallWeatherData = responseWeatherData;
-          // console.log("In main.ts this.oneCallWeatherData = \n", this.oneCallWeatherData);
+          this.singleCallWeatherData = responseWeatherData;
+          // console.log("In main.ts this.singleCallWeatherData = \n", this.singleCallWeatherData);
           this._weatherService.setShowSpinner(false);
           this.errorMessage = 'Showing weather data for ' + TitleCase(this.cityName);
           this.showToastMessage(this.errorMessage, ToastMessageType.SUCCESS);
@@ -77,7 +77,7 @@ export class MainComponent implements OnInit {
       },
       responseWeatherError => {
         // console.log("responseWeatherError = ", responseWeatherError);
-        this.oneCallWeatherData = null;
+        this.singleCallWeatherData = null;
         this._weatherService.setShowSpinner(false);
         this.errorMessage = (this.cityName === '' || this.cityName === null) ? 'Please enter city name' : 'Incorrect city name';
         this.showToastMessage(this.errorMessage, ToastMessageType.ERROR);
@@ -89,7 +89,7 @@ export class MainComponent implements OnInit {
   }
 
   updateDataOnSwitchSelection(data: any) {
-    this.oneCallWeatherData = data;
+    this.singleCallWeatherData = data;
   }
 
   onKeyDown() {

@@ -1,7 +1,7 @@
 <div class="container-fluid overflow-auto" id="shellDiv">
     <div class="row">
         <div class="col-md-3" style="padding: 0;">
-            <app-lhscontents [weatherData]="currentWeatherData" [oneCallWeatherData]="oneCallWeatherData"
+            <app-lhscontents [weatherData]="currentWeatherData" [singleCallWeatherData]="singleCallWeatherData"
                 [excludesArray]="excludes" (onUnitTypeChange)="updateDataOnSwitchSelection($event)">
             </app-lhscontents>
         </div>
@@ -25,8 +25,8 @@
                         </div>
                     </div>
                 </div>
-                <app-daily-chart [weatherData]="oneCallWeatherData" [cityName]="cityName"></app-daily-chart>
-                <app-weather-widgets [currentWeatherData]="currentWeatherData" [weatherData]="oneCallWeatherData"></app-weather-widgets>
+                <app-daily-chart [weatherData]="singleCallWeatherData" [cityName]="cityName"></app-daily-chart>
+                <app-weather-widgets [currentWeatherData]="currentWeatherData" [weatherData]="singleCallWeatherData"></app-weather-widgets>
             </div>
         </div>
     </div>

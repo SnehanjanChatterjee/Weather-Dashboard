@@ -6,7 +6,9 @@ import { CurrentWeatherModel } from '../Models/weather.models';
 import { CELCIUS_UNIT, FAHRENHEIT_UNIT, OneCallExcludes } from '../Constants/weather-dashboard-constants';
 import { OneAPICallModel } from '../Models/OneAPICallModel.models';
 import { Api, APIUrl } from '../Constants/url-constants';
-import { environment } from 'src/environments/environment';
+import { APIKey } from '../appConfig';
+// import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,8 @@ export class WeatherService {
   private unitTypeSubject = new BehaviorSubject<boolean>(false);
   // private showSpinner = new BehaviorSubject<boolean>(false);
   private showSpinner = new Subject<boolean>();
-  private Stored_API_Key = environment.OPENWEATHER_API_KEY;
+  // private Stored_API_Key = environment.OPENWEATHER_API_KEY;
+  private Stored_API_Key = APIKey;
 
   loadCurrentWeatherByCityName(cityName: string): Observable<CurrentWeatherModel> {
 
