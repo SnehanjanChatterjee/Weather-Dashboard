@@ -7,10 +7,10 @@
             <div class="widgetIconDiv">
                 <img [src]="'../../../assets/images/' + widgetNames.humidity + '.gif'" [alt]="widgetNames.humidity + 'Icon'">
             </div>
-            <div class="widgetMeter">
+            <div class="widgetGaugeMeter">
                 <div #gaugeHumidity class="gauge">
                     <div #gaugeHumidityBody class="gauge__body">
-                        <div #gaugeHumidityFill class="gauge__fill" [ngStyle]="{background: setGaugeColourBasedOnLevel(OneCallweather.current.humidity)}"></div>
+                        <div #gaugeHumidityFill class="gauge__fill" [ngStyle]="{background: setThresholdColour(OneCallweather.current.humidity)}"></div>
                         <div #gaugeHumidityCover class="gauge__cover">{{OneCallweather.current.humidity}}%</div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
             <div class="widgetIconDiv">
                 <img [src]="'../../../assets/images/' + widgetNames.pressure + '.gif'" [alt]="widgetNames.pressure + 'Icon'">
             </div>
-            <div class="widgetMeter">
+            <div class="widgetGaugeMeter">
                 <span>{{OneCallweather.current.pressure}} hPa</span>
             </div>
         </div>
@@ -38,7 +38,13 @@
             <div class="widgetIconDiv">
                 <img [src]="'../../../assets/images/' + widgetNames.uvi + '.gif'" [alt]="widgetNames.uvi + 'Icon'">
             </div>
-            <div class="widgetMeter">
+            <div class="widgetGaugeMeter">
+                <div #gaugeUVI class="gauge">
+                    <div #gaugeUVIBody class="gauge__body">
+                        <div #gaugeUVIFill class="gauge__fill" [ngStyle]="{background: setUVIThresholdColour(OneCallweather.current.uvi)}"></div>
+                        <div #gaugeUVICover class="gauge__cover">{{OneCallweather.current.uvi}}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -50,10 +56,10 @@
             <div class="widgetIconDiv">
                 <img [src]="'../../../assets/images/' + widgetNames.cloudiness + '.gif'" [alt]="widgetNames.cloudiness + 'Icon'">
             </div>
-            <div class="widgetMeter">
+            <div class="widgetGaugeMeter">
                 <div #gaugeCloud class="gauge">
                     <div #gaugeCloudBody class="gauge__body">
-                        <div #gaugeCloudFill class="gauge__fill" [ngStyle]="{background: setGaugeColourBasedOnLevel(OneCallweather.current.clouds)}"></div>
+                        <div #gaugeCloudFill class="gauge__fill" [ngStyle]="{background: setThresholdColour(OneCallweather.current.clouds)}"></div>
                         <div #gaugeCloudCover class="gauge__cover">{{OneCallweather.current.clouds}}%</div>
                     </div>
                 </div>
@@ -68,7 +74,7 @@
             <div class="widgetIconDiv">
                 <img [src]="'../../../assets/images/' + widgetNames.wind + '.gif'" [alt]="widgetNames.wind + 'Icon'">
             </div>
-            <div class="widgetMeter">
+            <div class="">
             </div>
         </div>
     </div>
