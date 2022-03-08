@@ -338,7 +338,7 @@ class LHSContentsComponent {
         this.countryFlag = '';
         this.onUnitTypeChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
-    set oneCallWeatherData(data) {
+    set singleCallWeatherData(data) {
         this.OneCallLocationWeatherData = data;
         if (this.OneCallLocationWeatherData) {
             this.iconurl = src_app_Constants_url_constants__WEBPACK_IMPORTED_MODULE_2__["IconUrl"] + this.OneCallLocationWeatherData.current.weather[0].icon + '@4x.png';
@@ -401,7 +401,7 @@ class LHSContentsComponent {
     }
 }
 LHSContentsComponent.ɵfac = function LHSContentsComponent_Factory(t) { return new (t || LHSContentsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_6__["WeatherService"])); };
-LHSContentsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LHSContentsComponent, selectors: [["app-lhscontents"]], inputs: { oneCallWeatherData: "oneCallWeatherData", weatherData: "weatherData", excludesArray: "excludesArray" }, outputs: { onUnitTypeChange: "onUnitTypeChange" }, decls: 11, vars: 2, consts: [["id", "mainLHSDiv"], [1, "unitToggler"], [1, "unitTogglerContentCel"], [1, "unitTogglerContent"], ["color", "primary", 3, "ngModel", "ngModelChange", "change"], [1, "unitTogglerContentFah"], ["class", "tempCityInfo", 4, "ngIf"], [1, "tempCityInfo"], [1, "temp"], [1, "tempValue"], [4, "ngIf"], [1, "tempMinMax", "my-2"], [1, "tempMin"], [1, "tempMinValue"], [1, "tempMax"], [1, "tempMaxValue"], [1, "sunRiseSunset", "my-2"], [1, "sunRiseDiv"], ["aria-hidden", "true", 1, "fa", "fa-sun-o"], [1, "sunSetDiv"], ["aria-hidden", "true", 1, "fa", "fa-moon-o"], [1, "weatherIconDiv"], ["alt", "Icon", 1, "weatherIcon", 3, "src"], [1, "weatherDesc"], [1, "cityInfo", "mx-1"], ["alt", "Country Flag", 3, "src"], ["src", "https://cdn.lordicon.com/zzcjjxew.json", "trigger", "loop", "colors", "primary:#ffffff,secondary:#ffffff", 2, "width", "50px", "height", "50px"], [1, "timeInfo", "my-2", "d-grid", "gap-2"], [1, "timeInfoDate"], ["src", "https://cdn.lordicon.com/gmzxduhd.json", "trigger", "loop", "colors", "primary:#ffffff,secondary:#ffffff", 2, "width", "50px", "height", "50px"], [1, "timeInfoTime"], ["src", "https://cdn.lordicon.com/kbtmbyzy.json", "trigger", "loop", "colors", "primary:#ffffff,secondary:#ffffff", 2, "width", "50px", "height", "50px"]], template: function LHSContentsComponent_Template(rf, ctx) { if (rf & 1) {
+LHSContentsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LHSContentsComponent, selectors: [["app-lhscontents"]], inputs: { singleCallWeatherData: "singleCallWeatherData", weatherData: "weatherData", excludesArray: "excludesArray" }, outputs: { onUnitTypeChange: "onUnitTypeChange" }, decls: 11, vars: 2, consts: [["id", "mainLHSDiv"], [1, "unitToggler"], [1, "unitTogglerContentCel"], [1, "unitTogglerContent"], ["color", "primary", 3, "ngModel", "ngModelChange", "change"], [1, "unitTogglerContentFah"], ["class", "tempCityInfo", 4, "ngIf"], [1, "tempCityInfo"], [1, "temp"], [1, "tempValue"], [4, "ngIf"], [1, "tempMinMax", "my-2"], [1, "tempMin"], [1, "tempMinValue"], [1, "tempMax"], [1, "tempMaxValue"], [1, "sunRiseSunset", "my-2"], [1, "sunRiseDiv"], ["aria-hidden", "true", 1, "fa", "fa-sun-o"], [1, "sunSetDiv"], ["aria-hidden", "true", 1, "fa", "fa-moon-o"], [1, "weatherIconDiv"], ["alt", "Icon", 1, "weatherIcon", 3, "src"], [1, "weatherDesc"], [1, "cityInfo", "mx-1"], ["alt", "Country Flag", 3, "src"], ["src", "https://cdn.lordicon.com/zzcjjxew.json", "trigger", "loop", "colors", "primary:#ffffff,secondary:#ffffff", 2, "width", "50px", "height", "50px"], [1, "timeInfo", "my-2", "d-grid", "gap-2"], [1, "timeInfoDate"], ["src", "https://cdn.lordicon.com/gmzxduhd.json", "trigger", "loop", "colors", "primary:#ffffff,secondary:#ffffff", 2, "width", "50px", "height", "50px"], [1, "timeInfoTime"], ["src", "https://cdn.lordicon.com/kbtmbyzy.json", "trigger", "loop", "colors", "primary:#ffffff,secondary:#ffffff", 2, "width", "50px", "height", "50px"]], template: function LHSContentsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -435,7 +435,7 @@ LHSContentsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
                 templateUrl: './lhscontents.component.html',
                 styleUrls: ['./lhscontents.component.css']
             }]
-    }], function () { return [{ type: src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_6__["WeatherService"] }]; }, { oneCallWeatherData: [{
+    }], function () { return [{ type: src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_6__["WeatherService"] }]; }, { singleCallWeatherData: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], weatherData: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
@@ -536,15 +536,15 @@ class MainComponent {
         }))
             .subscribe(responseWeatherData => {
             window.setTimeout(() => {
-                this.oneCallWeatherData = responseWeatherData;
-                // console.log("In main.ts this.oneCallWeatherData = \n", this.oneCallWeatherData);
+                this.singleCallWeatherData = responseWeatherData;
+                // console.log("In main.ts this.singleCallWeatherData = \n", this.singleCallWeatherData);
                 this._weatherService.setShowSpinner(false);
                 this.errorMessage = 'Showing weather data for ' + Object(src_app_Services_weather_helper__WEBPACK_IMPORTED_MODULE_3__["TitleCase"])(this.cityName);
                 this.showToastMessage(this.errorMessage, src_app_Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_2__["ToastMessageType"].SUCCESS);
             }, 2000);
         }, responseWeatherError => {
             // console.log("responseWeatherError = ", responseWeatherError);
-            this.oneCallWeatherData = null;
+            this.singleCallWeatherData = null;
             this._weatherService.setShowSpinner(false);
             this.errorMessage = (this.cityName === '' || this.cityName === null) ? 'Please enter city name' : 'Incorrect city name';
             this.showToastMessage(this.errorMessage, src_app_Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_2__["ToastMessageType"].ERROR);
@@ -553,7 +553,7 @@ class MainComponent {
         });
     }
     updateDataOnSwitchSelection(data) {
-        this.oneCallWeatherData = data;
+        this.singleCallWeatherData = data;
     }
     onKeyDown() {
         // this.showErrorDiv = false;
@@ -620,7 +620,7 @@ class MainComponent {
     }
 }
 MainComponent.ɵfac = function MainComponent_Factory(t) { return new (t || MainComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_4__["WeatherService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_spinner__WEBPACK_IMPORTED_MODULE_5__["NgxSpinnerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrService"])); };
-MainComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MainComponent, selectors: [["app-main"]], decls: 15, vars: 12, consts: [["id", "shellDiv", 1, "container-fluid", "overflow-auto"], [1, "row"], [1, "col-md-3", 2, "padding", "0"], [3, "weatherData", "oneCallWeatherData", "excludesArray", "onUnitTypeChange"], [1, "col-md-9", 2, "padding", "0"], ["id", "mainDiv", 1, "glassmorphDiv2"], ["id", "searchDiv", 3, "ngStyle"], ["id", "searchDivInput", 1, "input-group"], [1, "input-group", "mb-3"], ["id", "basic-addon1", 1, "input-group-text"], ["src", "https://cdn.lordicon.com/msoeawqm.json", "trigger", "click", "colors", "primary:#121331,secondary:#08a88a", "stroke", "100", 3, "click"], ["type", "text", "placeholder", "Enter City Name", "aria-label", "Username", "aria-describedby", "basic-addon1", 1, "form-control", 3, "ngModel", "ngModelChange", "keyup.enter", "keydown"], ["class", "input-group-text", "id", "basic-addon1", 3, "click", 4, "ngIf"], [3, "weatherData", "cityName"], [3, "currentWeatherData", "weatherData"], ["id", "basic-addon1", 1, "input-group-text", 3, "click"], [1, "fa", "fa-times"]], template: function MainComponent_Template(rf, ctx) { if (rf & 1) {
+MainComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MainComponent, selectors: [["app-main"]], decls: 15, vars: 12, consts: [["id", "shellDiv", 1, "container-fluid", "overflow-auto"], [1, "row"], [1, "col-md-3", 2, "padding", "0"], [3, "weatherData", "singleCallWeatherData", "excludesArray", "onUnitTypeChange"], [1, "col-md-9", 2, "padding", "0"], ["id", "mainDiv", 1, "glassmorphDiv2"], ["id", "searchDiv", 3, "ngStyle"], ["id", "searchDivInput", 1, "input-group"], [1, "input-group", "mb-3"], ["id", "basic-addon1", 1, "input-group-text"], ["src", "https://cdn.lordicon.com/msoeawqm.json", "trigger", "click", "colors", "primary:#121331,secondary:#08a88a", "stroke", "100", 3, "click"], ["type", "text", "placeholder", "Enter City Name", "aria-label", "Username", "aria-describedby", "basic-addon1", 1, "form-control", 3, "ngModel", "ngModelChange", "keyup.enter", "keydown"], ["class", "input-group-text", "id", "basic-addon1", 3, "click", 4, "ngIf"], [3, "weatherData", "cityName"], [3, "currentWeatherData", "weatherData"], ["id", "basic-addon1", 1, "input-group-text", 3, "click"], [1, "fa", "fa-times"]], template: function MainComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -653,7 +653,7 @@ MainComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("weatherData", ctx.currentWeatherData)("oneCallWeatherData", ctx.oneCallWeatherData)("excludesArray", ctx.excludes);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("weatherData", ctx.currentWeatherData)("singleCallWeatherData", ctx.singleCallWeatherData)("excludesArray", ctx.excludes);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](10, _c0, ctx.showErrorDiv ? 150 : 100));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
@@ -661,9 +661,9 @@ MainComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.cityName);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("weatherData", ctx.oneCallWeatherData)("cityName", ctx.cityName);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("weatherData", ctx.singleCallWeatherData)("cityName", ctx.cityName);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("currentWeatherData", ctx.currentWeatherData)("weatherData", ctx.oneCallWeatherData);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("currentWeatherData", ctx.currentWeatherData)("weatherData", ctx.singleCallWeatherData);
     } }, directives: [_lhscontents_lhscontents_component__WEBPACK_IMPORTED_MODULE_7__["LHSContentsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgStyle"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _daily_chart_daily_chart_component__WEBPACK_IMPORTED_MODULE_10__["DailyChartComponent"], _weather_widgets_weather_widgets_component__WEBPACK_IMPORTED_MODULE_11__["WeatherWidgetsComponent"]], styles: ["#shellDiv[_ngcontent-%COMP%] {\r\n  height: 100vh;\r\n  overflow: auto;\r\n}\r\n\r\n#mainDiv[_ngcontent-%COMP%] {\r\n  border-radius: 12px 0px 0px 12px;\r\n  border: 1px solid rgba(209, 213, 219, 0.3);\r\n  display: flex;\r\n  flex-direction: column;\r\n  \r\n  justify-content: flex-start;\r\n  \r\n  \r\n  width: 100%;\r\n  height: 100vh;\r\n  \r\n  z-index: 10;\r\n}\r\n\r\n@media screen and (max-width: 768px) {\r\n  #mainDiv[_ngcontent-%COMP%] {\r\n    border-radius: 12px 12px 0px 0px;\r\n    height: 100%;\r\n    padding: 5px;\r\n    margin: 0px;\r\n  }\r\n}\r\n\r\n#searchDiv[_ngcontent-%COMP%] {\r\n  max-width: 100%;\r\n  \r\n  border-radius: 12px;\r\n  height: 100px;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n#searchDivInput[_ngcontent-%COMP%] {\r\n  width: 60%;\r\n}\r\n\r\n.input-group-text[_ngcontent-%COMP%] {\r\n  border-radius: 30px;\r\n  background-color: white;\r\n  height: 40px;\r\n  width: 50px;\r\n}\r\n\r\n.form-control[_ngcontent-%COMP%] {\r\n  border-radius: 30px;\r\n  height: 40px;\r\n}\r\n\r\n.loader[_ngcontent-%COMP%] {\r\n  color: blue;\r\n  font-size: 40px;\r\n  text-indent: -9999em;\r\n  overflow: hidden;\r\n  width: 1em;\r\n  height: 1em;\r\n  border-radius: 50%;\r\n  \r\n  \r\n  transform: translateZ(0);\r\n  -webkit-animation: load6 1.7s infinite ease, round 1.7s infinite ease;\r\n  animation: load6 1.7s infinite ease, round 1.7s infinite ease;\r\n  top: 50%;\r\n  left: 50%;\r\n  position: absolute;\r\n  z-index: 9999;\r\n}\r\n\r\n@-webkit-keyframes load6 {\r\n  0% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;\r\n  }\r\n  5%, 95% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;\r\n  }\r\n  10%, 59% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;\r\n  }\r\n  20% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;\r\n  }\r\n  38% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;\r\n  }\r\n  100% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;\r\n  }\r\n}\r\n\r\n@keyframes load6 {\r\n  0% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;\r\n  }\r\n  5%, 95% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;\r\n  }\r\n  10%, 59% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;\r\n  }\r\n  20% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;\r\n  }\r\n  38% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;\r\n  }\r\n  100% {\r\n    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;\r\n  }\r\n}\r\n\r\n@-webkit-keyframes round {\r\n  0% {\r\n    transform: rotate(0deg);\r\n  }\r\n  100% {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n@keyframes round {\r\n  0% {\r\n    transform: rotate(0deg);\r\n  }\r\n  100% {\r\n    transform: rotate(360deg);\r\n  }\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQ29tcG9uZW50cy9tYWluL21haW4uY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7RUFDYixjQUFjO0FBQ2hCOztBQUVBO0VBQ0UsZ0NBQWdDO0VBQ2hDLDBDQUEwQztFQUMxQyxhQUFhO0VBQ2Isc0JBQXNCO0VBQ3RCLHVIQUF1SDtFQUN2SCwyQkFBMkI7RUFDM0IsaUhBQWlIO0VBQ2pILHlCQUF5QjtFQUN6QixXQUFXO0VBQ1gsYUFBYTtFQUNiLHFCQUFxQjtFQUNyQixXQUFXO0FBQ2I7O0FBRUE7RUFDRTtJQUNFLGdDQUFnQztJQUNoQyxZQUFZO0lBQ1osWUFBWTtJQUNaLFdBQVc7RUFDYjtBQUNGOztBQUVBO0VBQ0UsZUFBZTtFQUNmLDZCQUE2QjtFQUM3QixtQkFBbUI7RUFDbkIsYUFBYTtFQUNiLGFBQWE7RUFDYixzQkFBc0I7RUFDdEIsdUJBQXVCO0VBQ3ZCLG1CQUFtQjtBQUNyQjs7QUFFQTtFQUNFLFVBQVU7QUFDWjs7QUFFQTtFQUNFLG1CQUFtQjtFQUNuQix1QkFBdUI7RUFDdkIsWUFBWTtFQUNaLFdBQVc7QUFDYjs7QUFFQTtFQUNFLG1CQUFtQjtFQUNuQixZQUFZO0FBQ2Q7O0FBRUE7RUFDRSxXQUFXO0VBQ1gsZUFBZTtFQUNmLG9CQUFvQjtFQUNwQixnQkFBZ0I7RUFDaEIsVUFBVTtFQUNWLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsdUJBQXVCO0VBQ3ZCLHdCQUF3QjtFQUd4Qix3QkFBd0I7RUFDeEIscUVBQXFFO0VBQ3JFLDZEQUE2RDtFQUM3RCxRQUFRO0VBQ1IsU0FBUztFQUNULGtCQUFrQjtFQUNsQixhQUFhO0FBQ2Y7O0FBRUE7RUFDRTtJQUNFLG1IQUFtSDtFQUNySDtFQUNBO0lBQ0UsbUhBQW1IO0VBQ3JIO0VBQ0E7SUFDRSxtSkFBbUo7RUFDcko7RUFDQTtJQUNFLGtKQUFrSjtFQUNwSjtFQUNBO0lBQ0UsZ0pBQWdKO0VBQ2xKO0VBQ0E7SUFDRSxtSEFBbUg7RUFDckg7QUFDRjs7QUFFQTtFQUNFO0lBQ0UsbUhBQW1IO0VBQ3JIO0VBQ0E7SUFDRSxtSEFBbUg7RUFDckg7RUFDQTtJQUNFLG1KQUFtSjtFQUNySjtFQUNBO0lBQ0Usa0pBQWtKO0VBQ3BKO0VBQ0E7SUFDRSxnSkFBZ0o7RUFDbEo7RUFDQTtJQUNFLG1IQUFtSDtFQUNySDtBQUNGOztBQUVBO0VBQ0U7SUFFRSx1QkFBdUI7RUFDekI7RUFDQTtJQUVFLHlCQUF5QjtFQUMzQjtBQUNGOztBQUVBO0VBQ0U7SUFFRSx1QkFBdUI7RUFDekI7RUFDQTtJQUVFLHlCQUF5QjtFQUMzQjtBQUNGIiwiZmlsZSI6InNyYy9hcHAvQ29tcG9uZW50cy9tYWluL21haW4uY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNzaGVsbERpdiB7XHJcbiAgaGVpZ2h0OiAxMDB2aDtcclxuICBvdmVyZmxvdzogYXV0bztcclxufVxyXG5cclxuI21haW5EaXYge1xyXG4gIGJvcmRlci1yYWRpdXM6IDEycHggMHB4IDBweCAxMnB4O1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjA5LCAyMTMsIDIxOSwgMC4zKTtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgLyogQWxvbmcgdGhlIGNyb3NzIGF4aXMsIHRoZSBjcm9zcy1heGlzIHNpemUgaXMgdGhlIG1heGltdW0gb2YgdGhlIGZsZXgtZ3JvdywgZmxleC1zaHJpbmssIGFuZCBmbGV4LWJhc2lzIHByb3BlcnRpZXMuICovXHJcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LXN0YXJ0O1xyXG4gIC8qIEFsb25nIHRoZSBtYWluIGF4aXMsIHRoZSBtYWluLWF4aXMgc2l6ZSBpcyB0aGUgc3VtIG9mIHRoZSBmbGV4LWdyb3csIGZsZXgtc2hyaW5rLCBhbmQgZmxleC1iYXNpcyBwcm9wZXJ0aWVzLiAqL1xyXG4gIC8qIGFsaWduLWl0ZW1zOiBjZW50ZXI7ICovXHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgaGVpZ2h0OiAxMDB2aDtcclxuICAvKiBwb3NpdGlvbjogZml4ZWQ7ICovXHJcbiAgei1pbmRleDogMTA7XHJcbn1cclxuXHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDc2OHB4KSB7XHJcbiAgI21haW5EaXYge1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTJweCAxMnB4IDBweCAwcHg7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICBwYWRkaW5nOiA1cHg7XHJcbiAgICBtYXJnaW46IDBweDtcclxuICB9XHJcbn1cclxuXHJcbiNzZWFyY2hEaXYge1xyXG4gIG1heC13aWR0aDogMTAwJTtcclxuICAvKiBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTsgKi9cclxuICBib3JkZXItcmFkaXVzOiAxMnB4O1xyXG4gIGhlaWdodDogMTAwcHg7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbn1cclxuXHJcbiNzZWFyY2hEaXZJbnB1dCB7XHJcbiAgd2lkdGg6IDYwJTtcclxufVxyXG5cclxuLmlucHV0LWdyb3VwLXRleHQge1xyXG4gIGJvcmRlci1yYWRpdXM6IDMwcHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbiAgaGVpZ2h0OiA0MHB4O1xyXG4gIHdpZHRoOiA1MHB4O1xyXG59XHJcblxyXG4uZm9ybS1jb250cm9sIHtcclxuICBib3JkZXItcmFkaXVzOiAzMHB4O1xyXG4gIGhlaWdodDogNDBweDtcclxufVxyXG5cclxuLmxvYWRlciB7XHJcbiAgY29sb3I6IGJsdWU7XHJcbiAgZm9udC1zaXplOiA0MHB4O1xyXG4gIHRleHQtaW5kZW50OiAtOTk5OWVtO1xyXG4gIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgd2lkdGg6IDFlbTtcclxuICBoZWlnaHQ6IDFlbTtcclxuICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgLyogbWFyZ2luOiA3MnB4IGF1dG87ICovXHJcbiAgLyogcG9zaXRpb246IHJlbGF0aXZlOyAqL1xyXG4gIC13ZWJraXQtdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xyXG4gIC1tcy10cmFuc2Zvcm06IHRyYW5zbGF0ZVooMCk7XHJcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVaKDApO1xyXG4gIC13ZWJraXQtYW5pbWF0aW9uOiBsb2FkNiAxLjdzIGluZmluaXRlIGVhc2UsIHJvdW5kIDEuN3MgaW5maW5pdGUgZWFzZTtcclxuICBhbmltYXRpb246IGxvYWQ2IDEuN3MgaW5maW5pdGUgZWFzZSwgcm91bmQgMS43cyBpbmZpbml0ZSBlYXNlO1xyXG4gIHRvcDogNTAlO1xyXG4gIGxlZnQ6IDUwJTtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgei1pbmRleDogOTk5OTtcclxufVxyXG5cclxuQC13ZWJraXQta2V5ZnJhbWVzIGxvYWQ2IHtcclxuICAwJSB7XHJcbiAgICBib3gtc2hhZG93OiAwIC0wLjgzZW0gMCAtMC40ZW0sIDAgLTAuODNlbSAwIC0wLjQyZW0sIDAgLTAuODNlbSAwIC0wLjQ0ZW0sIDAgLTAuODNlbSAwIC0wLjQ2ZW0sIDAgLTAuODNlbSAwIC0wLjQ3N2VtO1xyXG4gIH1cclxuICA1JSwgOTUlIHtcclxuICAgIGJveC1zaGFkb3c6IDAgLTAuODNlbSAwIC0wLjRlbSwgMCAtMC44M2VtIDAgLTAuNDJlbSwgMCAtMC44M2VtIDAgLTAuNDRlbSwgMCAtMC44M2VtIDAgLTAuNDZlbSwgMCAtMC44M2VtIDAgLTAuNDc3ZW07XHJcbiAgfVxyXG4gIDEwJSwgNTklIHtcclxuICAgIGJveC1zaGFkb3c6IDAgLTAuODNlbSAwIC0wLjRlbSwgLTAuMDg3ZW0gLTAuODI1ZW0gMCAtMC40MmVtLCAtMC4xNzNlbSAtMC44MTJlbSAwIC0wLjQ0ZW0sIC0wLjI1NmVtIC0wLjc4OWVtIDAgLTAuNDZlbSwgLTAuMjk3ZW0gLTAuNzc1ZW0gMCAtMC40NzdlbTtcclxuICB9XHJcbiAgMjAlIHtcclxuICAgIGJveC1zaGFkb3c6IDAgLTAuODNlbSAwIC0wLjRlbSwgLTAuMzM4ZW0gLTAuNzU4ZW0gMCAtMC40MmVtLCAtMC41NTVlbSAtMC42MTdlbSAwIC0wLjQ0ZW0sIC0wLjY3MWVtIC0wLjQ4OGVtIDAgLTAuNDZlbSwgLTAuNzQ5ZW0gLTAuMzRlbSAwIC0wLjQ3N2VtO1xyXG4gIH1cclxuICAzOCUge1xyXG4gICAgYm94LXNoYWRvdzogMCAtMC44M2VtIDAgLTAuNGVtLCAtMC4zNzdlbSAtMC43NGVtIDAgLTAuNDJlbSwgLTAuNjQ1ZW0gLTAuNTIyZW0gMCAtMC40NGVtLCAtMC43NzVlbSAtMC4yOTdlbSAwIC0wLjQ2ZW0sIC0wLjgyZW0gLTAuMDllbSAwIC0wLjQ3N2VtO1xyXG4gIH1cclxuICAxMDAlIHtcclxuICAgIGJveC1zaGFkb3c6IDAgLTAuODNlbSAwIC0wLjRlbSwgMCAtMC44M2VtIDAgLTAuNDJlbSwgMCAtMC44M2VtIDAgLTAuNDRlbSwgMCAtMC44M2VtIDAgLTAuNDZlbSwgMCAtMC44M2VtIDAgLTAuNDc3ZW07XHJcbiAgfVxyXG59XHJcblxyXG5Aa2V5ZnJhbWVzIGxvYWQ2IHtcclxuICAwJSB7XHJcbiAgICBib3gtc2hhZG93OiAwIC0wLjgzZW0gMCAtMC40ZW0sIDAgLTAuODNlbSAwIC0wLjQyZW0sIDAgLTAuODNlbSAwIC0wLjQ0ZW0sIDAgLTAuODNlbSAwIC0wLjQ2ZW0sIDAgLTAuODNlbSAwIC0wLjQ3N2VtO1xyXG4gIH1cclxuICA1JSwgOTUlIHtcclxuICAgIGJveC1zaGFkb3c6IDAgLTAuODNlbSAwIC0wLjRlbSwgMCAtMC44M2VtIDAgLTAuNDJlbSwgMCAtMC44M2VtIDAgLTAuNDRlbSwgMCAtMC44M2VtIDAgLTAuNDZlbSwgMCAtMC44M2VtIDAgLTAuNDc3ZW07XHJcbiAgfVxyXG4gIDEwJSwgNTklIHtcclxuICAgIGJveC1zaGFkb3c6IDAgLTAuODNlbSAwIC0wLjRlbSwgLTAuMDg3ZW0gLTAuODI1ZW0gMCAtMC40MmVtLCAtMC4xNzNlbSAtMC44MTJlbSAwIC0wLjQ0ZW0sIC0wLjI1NmVtIC0wLjc4OWVtIDAgLTAuNDZlbSwgLTAuMjk3ZW0gLTAuNzc1ZW0gMCAtMC40NzdlbTtcclxuICB9XHJcbiAgMjAlIHtcclxuICAgIGJveC1zaGFkb3c6IDAgLTAuODNlbSAwIC0wLjRlbSwgLTAuMzM4ZW0gLTAuNzU4ZW0gMCAtMC40MmVtLCAtMC41NTVlbSAtMC42MTdlbSAwIC0wLjQ0ZW0sIC0wLjY3MWVtIC0wLjQ4OGVtIDAgLTAuNDZlbSwgLTAuNzQ5ZW0gLTAuMzRlbSAwIC0wLjQ3N2VtO1xyXG4gIH1cclxuICAzOCUge1xyXG4gICAgYm94LXNoYWRvdzogMCAtMC44M2VtIDAgLTAuNGVtLCAtMC4zNzdlbSAtMC43NGVtIDAgLTAuNDJlbSwgLTAuNjQ1ZW0gLTAuNTIyZW0gMCAtMC40NGVtLCAtMC43NzVlbSAtMC4yOTdlbSAwIC0wLjQ2ZW0sIC0wLjgyZW0gLTAuMDllbSAwIC0wLjQ3N2VtO1xyXG4gIH1cclxuICAxMDAlIHtcclxuICAgIGJveC1zaGFkb3c6IDAgLTAuODNlbSAwIC0wLjRlbSwgMCAtMC44M2VtIDAgLTAuNDJlbSwgMCAtMC44M2VtIDAgLTAuNDRlbSwgMCAtMC44M2VtIDAgLTAuNDZlbSwgMCAtMC44M2VtIDAgLTAuNDc3ZW07XHJcbiAgfVxyXG59XHJcblxyXG5ALXdlYmtpdC1rZXlmcmFtZXMgcm91bmQge1xyXG4gIDAlIHtcclxuICAgIC13ZWJraXQtdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7XHJcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTtcclxuICB9XHJcbiAgMTAwJSB7XHJcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogcm90YXRlKDM2MGRlZyk7XHJcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpO1xyXG4gIH1cclxufVxyXG5cclxuQGtleWZyYW1lcyByb3VuZCB7XHJcbiAgMCUge1xyXG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTtcclxuICAgIHRyYW5zZm9ybTogcm90YXRlKDBkZWcpO1xyXG4gIH1cclxuICAxMDAlIHtcclxuICAgIC13ZWJraXQtdHJhbnNmb3JtOiByb3RhdGUoMzYwZGVnKTtcclxuICAgIHRyYW5zZm9ybTogcm90YXRlKDM2MGRlZyk7XHJcbiAgfVxyXG59Il19 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MainComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
@@ -698,84 +698,185 @@ const _c2 = ["gaugeHumidityCover"];
 const _c3 = ["gaugeCloud"];
 const _c4 = ["gaugeCloudFill"];
 const _c5 = ["gaugeCloudCover"];
+const _c6 = ["gaugeUVI"];
+const _c7 = ["gaugeUVIFill"];
+const _c8 = ["gaugeUVICover"];
+const _c9 = ["gaugeWind"];
+const _c10 = ["gaugeWindFill"];
+const _c11 = ["gaugeWindCover"];
+const _c12 = function (a0) { return { background: a0 }; };
 function WeatherWidgetsComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Humidity");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 6, 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "img", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 8, 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "div", 10, 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 12, 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 10, 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "div", 12, 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 14, 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "span", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "0");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "span", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "100");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "img", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "div", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Cloudiness");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 8, 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 10, 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "div", 12, 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div", 14, 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 6, 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 8, 19);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](34, "div", 10, 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "div", 12, 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "span", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "0");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "span", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, "8+");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "div", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](49);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](51, "img", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "div", 8, 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "div", 10, 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](57, "div", 12, 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "div", 14, 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "span", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64, "0");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "span", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66, "100");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "div", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](71);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "div", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](73, "img", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "div", 8, 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "div", 10, 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](79, "div", 12, 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "div", 14, 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](83);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "span", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](85, "m/hr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](86, "div", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "span", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](88, "0");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "span", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](90, "73+");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.widgetNames.humidity);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", "../../../assets/images/" + ctx_r11.widgetNames.humidity + ".gif", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("alt", ctx_r11.widgetNames.humidity + "Icon");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](20, _c12, ctx_r11.setThresholdColour(ctx_r11.OneCallweather.current.humidity)));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r11.OneCallweather.current.humidity, "%");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.widgetNames.uv_index);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", "../../../assets/images/" + ctx_r11.widgetNames.uvi + ".gif", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("alt", ctx_r11.widgetNames.uvi + "Icon");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](22, _c12, ctx_r11.setUVIThresholdColour(ctx_r11.OneCallweather.current.uvi)));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Pressure ", ctx_r11.OneCallweather.current.pressure, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.OneCallweather.current.uvi);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.widgetNames.cloudiness);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", "../../../assets/images/" + ctx_r11.widgetNames.cloudiness + ".gif", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("alt", ctx_r11.widgetNames.cloudiness + "Icon");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](24, _c12, ctx_r11.setThresholdColour(ctx_r11.OneCallweather.current.clouds)));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("UVI ", ctx_r11.OneCallweather.current.uvi, "");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](15);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r11.OneCallweather.current.clouds, "%");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.widgetNames.wind);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", "../../../assets/images/" + ctx_r11.widgetNames.wind + ".gif", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("alt", ctx_r11.widgetNames.wind + "Icon");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](26, _c12, ctx_r11.setWindThresholdColour(ctx_r11.OneCallweather.current.wind_speed)));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Wind ", ctx_r11.OneCallweather.current.wind_speed, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.OneCallweather.current.wind_speed);
 } }
 class WeatherWidgetsComponent {
     constructor(renderer) {
         this.renderer = renderer;
+        this.widgetNames = {
+            humidity: 'Humidity',
+            pressure: 'Pressure',
+            uvi: 'UVI',
+            uv_index: 'UV Index',
+            cloudiness: 'Cloudiness',
+            wind: 'Wind'
+        };
     }
     set gaugeHumidityEl(value) {
         this.gaugeHumidityElement = value;
@@ -788,7 +889,7 @@ class WeatherWidgetsComponent {
     set gaugeHumidityCoverEl(value) {
         this.gaugeHumidityCoverElement = value;
         if (this.OneCallweather && this.gaugeHumidityCoverElement) {
-            this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
         }
     }
     ;
@@ -803,7 +904,37 @@ class WeatherWidgetsComponent {
     set gaugeCloudCoverEl(value) {
         this.gaugeCloudCoverElement = value;
         if (this.OneCallweather && this.gaugeCloudCoverElement) {
-            this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+        }
+    }
+    ;
+    set gaugeUVIEl(value) {
+        this.gaugeUVIElement = value;
+    }
+    ;
+    set gaugeUVIFillEl(value) {
+        this.gaugeUVIFillElement = value;
+    }
+    ;
+    set gaugeUVICoverEl(value) {
+        this.gaugeUVICoverElement = value;
+        if (this.OneCallweather && this.gaugeUVICoverElement) {
+            this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+        }
+    }
+    ;
+    set gaugeWindEl(value) {
+        this.gaugeWindElement = value;
+    }
+    ;
+    set gaugeWindFillEl(value) {
+        this.gaugeWindFillElement = value;
+    }
+    ;
+    set gaugeWindCoverEl(value) {
+        this.gaugeWindCoverElement = value;
+        if (this.OneCallweather && this.gaugeWindCoverElement) {
+            this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
         }
     }
     ;
@@ -813,23 +944,104 @@ class WeatherWidgetsComponent {
     }
     set weatherData(weather) {
         this.OneCallweather = weather;
-        if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement) {
-            this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
-            this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+        if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
+            this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
         }
     }
     set currentWeatherData(weather) {
         this.currentWeather = weather;
     }
-    isEmptyObject(obj) {
-        return (obj && (Object.keys(obj).length === 0));
-    }
-    setGaugeValue(value, element) {
-        if (value < 0 || value > 1) {
+    setGaugeTurnValue(value, fillElement) {
+        const rounded = Math.round(value * 10) / 10;
+        let rotateBy = (rounded / 2);
+        if (value > 0 && rounded === 0) {
+            rotateBy = 0.1;
+        }
+        if (value <= 0 || value > 1) {
             return;
         }
-        this.renderer.setStyle(element.nativeElement, 'transform', 'rotate(' + (value / 2) + 'turn)');
+        this.renderer.setStyle(fillElement.nativeElement, 'transform', 'rotate(' + (rotateBy) + 'turn)');
         // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
+        // console.log("value = ", value);
+        // console.log("rounded = ", rounded);
+        // console.log("rotateBy = ", rotateBy);
+        // console.log("element.nativeElement = ", fillElement.nativeElement);
+        // console.log("------------------");
+    }
+    setThresholdColour(value) {
+        if (value <= 0) {
+            return '#b4c0be';
+        }
+        else if (value > 0 && value <= 20) {
+            return 'red';
+        }
+        else if (value > 20 && value <= 60) {
+            return 'orange';
+        }
+        else if (value > 60 && value <= 90) {
+            return '#eded02';
+        }
+        else if (value > 90) {
+            return 'green';
+        }
+    }
+    setUVIThresholdColour(value) {
+        if (value <= 0) {
+            return '#b4c0be';
+        }
+        else if (value > 0 && value <= 2) { // You can safely enjoy being outside!
+            return 'green';
+        }
+        else if (value > 2 && value <= 7) { // Seek shade during midday hours! Slip on a shirt, slop on sunscreen and slap on hat!
+            return '#eded02';
+        }
+        else if (value > 7) { // Avoid being outside during midday hours! Make sure you seek shade! Shirt, sunscreen and hat are a must!
+            return 'red';
+        }
+    }
+    setWindThresholdColour(value) {
+        if (value <= 1) {
+            return '#b4c0be';
+        }
+        else if (value > 1 && value <= 3) {
+            return '#50eded';
+        }
+        else if (value > 3 && value <= 7) {
+            return '#14d7d7';
+        }
+        else if (value > 7 && value <= 12) {
+            return '#00cc00';
+        }
+        else if (value > 12 && value <= 18) {
+            return '#00ff00';
+        }
+        else if (value > 18 && value <= 24) {
+            return '#99ff33';
+        }
+        else if (value > 24 && value <= 31) {
+            return '#ccff33';
+        }
+        else if (value > 31 && value <= 38) {
+            return '#ffff00';
+        }
+        else if (value > 38 && value <= 46) {
+            return '#ffcc00';
+        }
+        else if (value > 46 && value <= 54) {
+            return '#ff9933';
+        }
+        else if (value > 54 && value <= 63) {
+            return '#ff9933';
+        }
+        else if (value > 63 && value <= 72) {
+            return '#ff5050';
+        }
+        else if (value > 72) {
+            return '#ff0000';
+        }
     }
 }
 WeatherWidgetsComponent.ɵfac = function WeatherWidgetsComponent_Factory(t) { return new (t || WeatherWidgetsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"])); };
@@ -840,6 +1052,12 @@ WeatherWidgetsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c3, true);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c4, true);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c5, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c6, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c7, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c8, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c9, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c10, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c11, true);
     } if (rf & 2) {
         var _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeHumidityEl = _t.first);
@@ -848,11 +1066,17 @@ WeatherWidgetsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeCloudEl = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeCloudFillEl = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeCloudCoverEl = _t.first);
-    } }, inputs: { weatherData: "weatherData", currentWeatherData: "currentWeatherData" }, decls: 1, vars: 1, consts: [["class", "widgetsMainDiv", 4, "ngIf"], [1, "widgetsMainDiv"], [1, "card", "widgetsCard", "humidity"], [1, "card-body", "widgetsCardBody"], [1, "widgetTitle"], [1, "widgetBody"], [1, "gauge"], ["gaugeHumidity", ""], [1, "gauge__body"], ["gaugeHumidityBody", ""], [1, "gauge__fill"], ["gaugeHumidityFill", ""], [1, "gauge__cover"], ["gaugeHumidityCover", ""], [1, "card", "widgetsCard", "pressure"], [1, "card-body"], [1, "card", "widgetsCard", "uvi"], [1, "card", "widgetsCard", "clouds"], ["gaugeCloud", ""], ["gaugeCloudBody", ""], ["gaugeCloudFill", ""], ["gaugeCloudCover", ""], [1, "card", "widgetsCard", "wind"]], template: function WeatherWidgetsComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, WeatherWidgetsComponent_div_0_Template, 43, 5, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeUVIEl = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeUVIFillEl = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeUVICoverEl = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeWindEl = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeWindFillEl = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeWindCoverEl = _t.first);
+    } }, inputs: { weatherData: "weatherData", currentWeatherData: "currentWeatherData" }, decls: 1, vars: 1, consts: [["class", "widgetsMainDiv", 4, "ngIf"], [1, "widgetsMainDiv"], [1, "card", "widgetsCard", "humidity"], [1, "card-body", "widgetsCardBody"], [1, "widgetTitle"], [1, "widgetIconDiv"], [3, "src", "alt"], [1, "widgetGaugeMeter"], [1, "gauge"], ["gaugeHumidity", ""], [1, "gauge__body"], ["gaugeHumidityBody", ""], [1, "gauge__fill", 3, "ngStyle"], ["gaugeHumidityFill", ""], [1, "gauge__cover"], ["gaugeHumidityCover", ""], [1, "gaugeThresholdsDiv"], [1, "start"], [1, "end"], [1, "card", "widgetsCard", "uvi"], ["gaugeUVI", ""], ["gaugeUVIBody", ""], ["gaugeUVIFill", ""], ["gaugeUVICover", ""], [1, "card", "widgetsCard", "clouds"], ["gaugeCloud", ""], ["gaugeCloudBody", ""], ["gaugeCloudFill", ""], ["gaugeCloudCover", ""], [1, "card", "widgetsCard", "wind"], ["gaugeWind", ""], ["gaugeWindBody", ""], ["gaugeWindFill", ""], ["gaugeWindCover", ""], [1, "widgetUnitDiv"]], template: function WeatherWidgetsComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, WeatherWidgetsComponent_div_0_Template, 91, 28, "div", 0);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.OneCallweather && ctx.OneCallweather != undefined);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"]], styles: [".widgetsMainDiv[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%] {\r\n    width: 200px;\r\n    height: 200px;\r\n    border-radius: 30px;\r\n    margin: 40px 0px 5px 0px;\r\n    box-shadow: var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%]:hover {\r\n    box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCardBody[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n}\r\n\r\n.widgetTitle[_ngcontent-%COMP%] {\r\n    text-align: center;\r\n    font-size: 20px;\r\n}\r\n\r\n.widgetBody[_ngcontent-%COMP%] {\r\n    margin: auto;\r\n    padding: 30px 5px;\r\n}\r\n\r\n.gauge[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    max-width: 150px;\r\n    \r\n    font-size: 24px;\r\n    color: #004033;\r\n}\r\n\r\n.gauge__body[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    height: 0;\r\n    padding-bottom: 50%;\r\n    background: #b4c0be;\r\n    position: relative;\r\n    border-top-left-radius: 100% 200%;\r\n    border-top-right-radius: 100% 200%;\r\n    overflow: hidden;\r\n}\r\n\r\n.gauge__fill[_ngcontent-%COMP%] {\r\n    position: absolute;\r\n    top: 100%;\r\n    left: 0;\r\n    width: inherit;\r\n    height: 100%;\r\n    background: #7a5aec;\r\n    transform-origin: center top;\r\n    transform: rotate(0.25turn);\r\n    transition: transform 0.2s ease-out;\r\n}\r\n\r\n.gauge__cover[_ngcontent-%COMP%] {\r\n    width: 75%;\r\n    height: 150%;\r\n    background: #ffffff;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 25%;\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    \r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding-bottom: 25%;\r\n    box-sizing: border-box;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQ29tcG9uZW50cy93ZWF0aGVyLXdpZGdldHMvd2VhdGhlci13aWRnZXRzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXO0lBQ1gsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQiw2QkFBNkI7SUFDN0IsZUFBZTtBQUNuQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHdCQUF3QjtJQUN4QixxQ0FBcUM7SUFDckMsNkNBQTZDO0lBQzdDLDBDQUEwQztBQUM5Qzs7QUFFQTtJQUNJLCtEQUErRDtJQUMvRCx1RUFBdUU7SUFDdkUsb0VBQW9FO0FBQ3hFOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksV0FBVztJQUNYLGdCQUFnQjtJQUNoQix1Q0FBdUM7SUFDdkMsZUFBZTtJQUNmLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsU0FBUztJQUNULG1CQUFtQjtJQUNuQixtQkFBbUI7SUFDbkIsa0JBQWtCO0lBQ2xCLGlDQUFpQztJQUNqQyxrQ0FBa0M7SUFDbEMsZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFNBQVM7SUFDVCxPQUFPO0lBQ1AsY0FBYztJQUNkLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsNEJBQTRCO0lBQzVCLDJCQUEyQjtJQUMzQixtQ0FBbUM7QUFDdkM7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsWUFBWTtJQUNaLG1CQUFtQjtJQUNuQixrQkFBa0I7SUFDbEIsa0JBQWtCO0lBQ2xCLFFBQVE7SUFDUixTQUFTO0lBQ1QsMkJBQTJCO0lBQzNCLFNBQVM7SUFDVCxhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHVCQUF1QjtJQUN2QixtQkFBbUI7SUFDbkIsc0JBQXNCO0FBQzFCIiwiZmlsZSI6InNyYy9hcHAvQ29tcG9uZW50cy93ZWF0aGVyLXdpZGdldHMvd2VhdGhlci13aWRnZXRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud2lkZ2V0c01haW5EaXYge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtZXZlbmx5O1xyXG4gICAgZmxleC13cmFwOiB3cmFwO1xyXG59XHJcblxyXG4ud2lkZ2V0c0NhcmQge1xyXG4gICAgd2lkdGg6IDIwMHB4O1xyXG4gICAgaGVpZ2h0OiAyMDBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDMwcHg7XHJcbiAgICBtYXJnaW46IDQwcHggMHB4IDVweCAwcHg7XHJcbiAgICBib3gtc2hhZG93OiB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG4gICAgLXdlYmtpdC1ib3gtc2hhZG93OiB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG4gICAgLW1vei1ib3gtc2hhZG93OiB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG59XHJcblxyXG4ud2lkZ2V0c0NhcmQ6aG92ZXIge1xyXG4gICAgYm94LXNoYWRvdzogdmFyKC0tYm94LXNoYWRvdzMtd2hpdGUpLCB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG4gICAgLXdlYmtpdC1ib3gtc2hhZG93OiB2YXIoLS1ib3gtc2hhZG93My13aGl0ZSksIHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtbW96LWJveC1zaGFkb3c6IHZhcigtLWJveC1zaGFkb3czLXdoaXRlKSwgdmFyKC0taW5zaWRlLWJveC1zaGFkb3cyKTtcclxufVxyXG5cclxuLndpZGdldHNDYXJkQm9keSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLndpZGdldFRpdGxlIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxufVxyXG5cclxuLndpZGdldEJvZHkge1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgcGFkZGluZzogMzBweCA1cHg7XHJcbn1cclxuXHJcbi5nYXVnZSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIG1heC13aWR0aDogMTUwcHg7XHJcbiAgICAvKiBmb250LWZhbWlseTogXCJSb2JvdG9cIiwgc2Fucy1zZXJpZjsgKi9cclxuICAgIGZvbnQtc2l6ZTogMjRweDtcclxuICAgIGNvbG9yOiAjMDA0MDMzO1xyXG59XHJcblxyXG4uZ2F1Z2VfX2JvZHkge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDA7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogNTAlO1xyXG4gICAgYmFja2dyb3VuZDogI2I0YzBiZTtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDEwMCUgMjAwJTtcclxuICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAxMDAlIDIwMCU7XHJcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xyXG59XHJcblxyXG4uZ2F1Z2VfX2ZpbGwge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAxMDAlO1xyXG4gICAgbGVmdDogMDtcclxuICAgIHdpZHRoOiBpbmhlcml0O1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgYmFja2dyb3VuZDogIzdhNWFlYztcclxuICAgIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlciB0b3A7XHJcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwLjI1dHVybik7XHJcbiAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4ycyBlYXNlLW91dDtcclxufVxyXG5cclxuLmdhdWdlX19jb3ZlciB7XHJcbiAgICB3aWR0aDogNzUlO1xyXG4gICAgaGVpZ2h0OiAxNTAlO1xyXG4gICAgYmFja2dyb3VuZDogI2ZmZmZmZjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMjUlO1xyXG4gICAgbGVmdDogNTAlO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xyXG4gICAgLyogVGV4dCAqL1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIHBhZGRpbmctYm90dG9tOiAyNSU7XHJcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG59Il19 */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_1__["NgStyle"]], styles: [".widgetsMainDiv[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    flex-wrap: wrap;\r\n    margin-top: 20px;\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%] {\r\n    width: 200px;\r\n    height: 200px;\r\n    border-radius: 30px;\r\n    margin: 40px 0px 5px 0px;\r\n    box-shadow: var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%]:hover {\r\n    box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCardBody[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n}\r\n\r\n.widgetTitle[_ngcontent-%COMP%] {\r\n    text-align: center;\r\n    font-size: 20px;\r\n    margin-top: -8px;\r\n}\r\n\r\n.widgetIconDiv[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    height: 30%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: 5px 0px 5px;\r\n}\r\n\r\n.widgetIconDiv[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\r\n    width: 60px;\r\n    height: 60px;\r\n}\r\n\r\n.widgetGaugeMeter[_ngcontent-%COMP%] {\r\n    margin: auto;\r\n    padding: 5px 5px 4px;\r\n    \r\n    width: 130px;\r\n}\r\n\r\n.gauge[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    max-width: 150px;\r\n    \r\n    font-size: 18px;\r\n    color: #004033;\r\n}\r\n\r\n.gauge__body[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    height: 0;\r\n    padding-bottom: 50%;\r\n    background: #b4c0be;\r\n    position: relative;\r\n    border-top-left-radius: 100% 200%;\r\n    border-top-right-radius: 100% 200%;\r\n    overflow: hidden;\r\n}\r\n\r\n.gauge__fill[_ngcontent-%COMP%] {\r\n    position: absolute;\r\n    top: 100%;\r\n    left: 0;\r\n    width: inherit;\r\n    height: 100%;\r\n    \r\n    transform-origin: center top;\r\n    transform: rotate(0.25turn);\r\n    transition: transform 0.2s ease-out;\r\n}\r\n\r\n.gauge__cover[_ngcontent-%COMP%] {\r\n    width: 75%;\r\n    height: 150%;\r\n    background: #ffffff;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 25%;\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    \r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding-bottom: 25%;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.gaugeThresholdsDiv[_ngcontent-%COMP%] {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin-right: -8px;\r\n}\r\n\r\n.widgetUnitDiv[_ngcontent-%COMP%] {\r\n    font-size: 16px;\r\n    margin-left: 2px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQ29tcG9uZW50cy93ZWF0aGVyLXdpZGdldHMvd2VhdGhlci13aWRnZXRzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXO0lBQ1gsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQiw2QkFBNkI7SUFDN0IsZUFBZTtJQUNmLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHdCQUF3QjtJQUN4QixxQ0FBcUM7SUFDckMsNkNBQTZDO0lBQzdDLDBDQUEwQztBQUM5Qzs7QUFFQTtJQUNJLCtEQUErRDtJQUMvRCx1RUFBdUU7SUFDdkUsb0VBQW9FO0FBQ3hFOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsV0FBVztJQUNYLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFdBQVc7SUFDWCxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLG9CQUFvQjtJQUNwQixrQkFBa0I7SUFDbEIsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFdBQVc7SUFDWCxnQkFBZ0I7SUFDaEIsdUNBQXVDO0lBQ3ZDLGVBQWU7SUFDZixjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksV0FBVztJQUNYLFNBQVM7SUFDVCxtQkFBbUI7SUFDbkIsbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixpQ0FBaUM7SUFDakMsa0NBQWtDO0lBQ2xDLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixTQUFTO0lBQ1QsT0FBTztJQUNQLGNBQWM7SUFDZCxZQUFZO0lBQ1oseUJBQXlCO0lBQ3pCLDRCQUE0QjtJQUM1QiwyQkFBMkI7SUFDM0IsbUNBQW1DO0FBQ3ZDOztBQUVBO0lBQ0ksVUFBVTtJQUNWLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsa0JBQWtCO0lBQ2xCLGtCQUFrQjtJQUNsQixRQUFRO0lBQ1IsU0FBUztJQUNULDJCQUEyQjtJQUMzQixTQUFTO0lBQ1QsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLHNCQUFzQjtBQUMxQjs7QUFFQTtJQUNJLGFBQWE7SUFDYiw4QkFBOEI7SUFDOUIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksZUFBZTtJQUNmLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL0NvbXBvbmVudHMvd2VhdGhlci13aWRnZXRzL3dlYXRoZXItd2lkZ2V0cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndpZGdldHNNYWluRGl2IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcclxuICAgIGZsZXgtd3JhcDogd3JhcDtcclxuICAgIG1hcmdpbi10b3A6IDIwcHg7XHJcbn1cclxuXHJcbi53aWRnZXRzQ2FyZCB7XHJcbiAgICB3aWR0aDogMjAwcHg7XHJcbiAgICBoZWlnaHQ6IDIwMHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMzBweDtcclxuICAgIG1hcmdpbjogNDBweCAwcHggNXB4IDBweDtcclxuICAgIGJveC1zaGFkb3c6IHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtbW96LWJveC1zaGFkb3c6IHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbn1cclxuXHJcbi53aWRnZXRzQ2FyZDpob3ZlciB7XHJcbiAgICBib3gtc2hhZG93OiB2YXIoLS1ib3gtc2hhZG93My13aGl0ZSksIHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IHZhcigtLWJveC1zaGFkb3czLXdoaXRlKSwgdmFyKC0taW5zaWRlLWJveC1zaGFkb3cyKTtcclxuICAgIC1tb3otYm94LXNoYWRvdzogdmFyKC0tYm94LXNoYWRvdzMtd2hpdGUpLCB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG59XHJcblxyXG4ud2lkZ2V0c0NhcmRCb2R5IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4ud2lkZ2V0VGl0bGUge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1zaXplOiAyMHB4O1xyXG4gICAgbWFyZ2luLXRvcDogLThweDtcclxufVxyXG5cclxuLndpZGdldEljb25EaXYge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDMwJTtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBtYXJnaW46IDVweCAwcHggNXB4O1xyXG59XHJcblxyXG4ud2lkZ2V0SWNvbkRpdiBpbWcge1xyXG4gICAgd2lkdGg6IDYwcHg7XHJcbiAgICBoZWlnaHQ6IDYwcHg7XHJcbn1cclxuXHJcbi53aWRnZXRHYXVnZU1ldGVyIHtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIHBhZGRpbmc6IDVweCA1cHggNHB4O1xyXG4gICAgLyogaGVpZ2h0OiA0MHB4OyAqL1xyXG4gICAgd2lkdGg6IDEzMHB4O1xyXG59XHJcblxyXG4uZ2F1Z2Uge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBtYXgtd2lkdGg6IDE1MHB4O1xyXG4gICAgLyogZm9udC1mYW1pbHk6IFwiUm9ib3RvXCIsIHNhbnMtc2VyaWY7ICovXHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICBjb2xvcjogIzAwNDAzMztcclxufVxyXG5cclxuLmdhdWdlX19ib2R5IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAwO1xyXG4gICAgcGFkZGluZy1ib3R0b206IDUwJTtcclxuICAgIGJhY2tncm91bmQ6ICNiNGMwYmU7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAxMDAlIDIwMCU7XHJcbiAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMTAwJSAyMDAlO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG5cclxuLmdhdWdlX19maWxsIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMTAwJTtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICB3aWR0aDogaW5oZXJpdDtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIC8qIGJhY2tncm91bmQ6ICM3YTVhZWM7ICovXHJcbiAgICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXIgdG9wO1xyXG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMC4yNXR1cm4pO1xyXG4gICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMnMgZWFzZS1vdXQ7XHJcbn1cclxuXHJcbi5nYXVnZV9fY292ZXIge1xyXG4gICAgd2lkdGg6IDc1JTtcclxuICAgIGhlaWdodDogMTUwJTtcclxuICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDI1JTtcclxuICAgIGxlZnQ6IDUwJTtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcclxuICAgIC8qIFRleHQgKi9cclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMjUlO1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxufVxyXG5cclxuLmdhdWdlVGhyZXNob2xkc0RpdiB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAtOHB4O1xyXG59XHJcblxyXG4ud2lkZ2V0VW5pdERpdiB7XHJcbiAgICBmb250LXNpemU6IDE2cHg7XHJcbiAgICBtYXJnaW4tbGVmdDogMnB4O1xyXG59Il19 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](WeatherWidgetsComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -878,6 +1102,24 @@ WeatherWidgetsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         }], gaugeCloudCoverEl: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
             args: ['gaugeCloudCover']
+        }], gaugeUVIEl: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['gaugeUVI']
+        }], gaugeUVIFillEl: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['gaugeUVIFill']
+        }], gaugeUVICoverEl: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['gaugeUVICover']
+        }], gaugeWindEl: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['gaugeWind']
+        }], gaugeWindFillEl: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['gaugeWindFill']
+        }], gaugeWindCoverEl: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['gaugeWindCover']
         }], weatherData: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], currentWeatherData: [{
@@ -1038,9 +1280,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _appConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../appConfig */ "./src/app/appConfig.ts");
-/* harmony import */ var _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Constants/weather-dashboard-constants */ "./src/app/Constants/weather-dashboard-constants.ts");
-/* harmony import */ var _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Constants/url-constants */ "./src/app/Constants/url-constants.ts");
+/* harmony import */ var _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Constants/weather-dashboard-constants */ "./src/app/Constants/weather-dashboard-constants.ts");
+/* harmony import */ var _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Constants/url-constants */ "./src/app/Constants/url-constants.ts");
+/* harmony import */ var _appConfig__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../appConfig */ "./src/app/appConfig.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
 
 
@@ -1050,25 +1292,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { environment } from 'src/environments/environment';
 class WeatherService {
     constructor(_http) {
         this._http = _http;
         this.unitTypeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](false);
         // private showSpinner = new BehaviorSubject<boolean>(false);
         this.showSpinner = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        // private Stored_API_Key = environment.OPENWEATHER_API_KEY;
+        this.Stored_API_Key = _appConfig__WEBPACK_IMPORTED_MODULE_5__["APIKey"];
     }
     loadCurrentWeatherByCityName(cityName) {
-        let unit = (this.unitTypeSubject.getValue()) ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["CELCIUS_UNIT"];
-        const url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.weather + '?q=' + cityName + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+        let unit = (this.unitTypeSubject.getValue()) ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["CELCIUS_UNIT"];
+        const url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.weather + '?q=' + cityName + '&appid=' + this.Stored_API_Key + '&units=' + unit;
         return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
     }
     loadCurrentWeatherByCoordinates(latitude, longitude) {
-        let unit = (this.unitTypeSubject.getValue()) ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["CELCIUS_UNIT"];
-        const url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+        let unit = (this.unitTypeSubject.getValue()) ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["CELCIUS_UNIT"];
+        const url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + this.Stored_API_Key + '&units=' + unit;
         return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
     }
     loadOneAPICallDataByCurrentData(currentWeatherData, excludes) {
-        let unit = (this.unitTypeSubject.getValue()) ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["CELCIUS_UNIT"];
+        let unit = (this.unitTypeSubject.getValue()) ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["CELCIUS_UNIT"];
         let excludesString = '';
         excludes.forEach((value, index) => {
             excludesString += value;
@@ -1079,12 +1324,12 @@ class WeatherService {
         // console.log(excludesString);
         let url = '';
         if (excludesString && excludes.length > 0) {
-            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon +
-                '&exclude=' + excludesString + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon +
+                '&exclude=' + excludesString + '&appid=' + this.Stored_API_Key + '&units=' + unit;
         }
         else {
-            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon +
-                '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon +
+                '&appid=' + this.Stored_API_Key + '&units=' + unit;
         }
         return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
     }

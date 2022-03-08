@@ -653,7 +653,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }
 
       _createClass(LHSContentsComponent, [{
-        key: "oneCallWeatherData",
+        key: "singleCallWeatherData",
         set: function set(data) {
           this.OneCallLocationWeatherData = data;
 
@@ -743,7 +743,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       type: LHSContentsComponent,
       selectors: [["app-lhscontents"]],
       inputs: {
-        oneCallWeatherData: "oneCallWeatherData",
+        singleCallWeatherData: "singleCallWeatherData",
         weatherData: "weatherData",
         excludesArray: "excludesArray"
       },
@@ -829,7 +829,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           type: src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_6__["WeatherService"]
         }];
       }, {
-        oneCallWeatherData: [{
+        singleCallWeatherData: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }],
         weatherData: [{
@@ -1021,7 +1021,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             return _this4._weatherService.loadOneAPICallDataByCurrentData(data, _this4.excludes);
           })).subscribe(function (responseWeatherData) {
             window.setTimeout(function () {
-              _this4.oneCallWeatherData = responseWeatherData; // console.log("In main.ts this.oneCallWeatherData = \n", this.oneCallWeatherData);
+              _this4.singleCallWeatherData = responseWeatherData; // console.log("In main.ts this.singleCallWeatherData = \n", this.singleCallWeatherData);
 
               _this4._weatherService.setShowSpinner(false);
 
@@ -1031,7 +1031,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }, 2000);
           }, function (responseWeatherError) {
             // console.log("responseWeatherError = ", responseWeatherError);
-            _this4.oneCallWeatherData = null;
+            _this4.singleCallWeatherData = null;
 
             _this4._weatherService.setShowSpinner(false);
 
@@ -1044,7 +1044,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "updateDataOnSwitchSelection",
         value: function updateDataOnSwitchSelection(data) {
-          this.oneCallWeatherData = data;
+          this.singleCallWeatherData = data;
         }
       }, {
         key: "onKeyDown",
@@ -1144,7 +1144,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       selectors: [["app-main"]],
       decls: 15,
       vars: 12,
-      consts: [["id", "shellDiv", 1, "container-fluid", "overflow-auto"], [1, "row"], [1, "col-md-3", 2, "padding", "0"], [3, "weatherData", "oneCallWeatherData", "excludesArray", "onUnitTypeChange"], [1, "col-md-9", 2, "padding", "0"], ["id", "mainDiv", 1, "glassmorphDiv2"], ["id", "searchDiv", 3, "ngStyle"], ["id", "searchDivInput", 1, "input-group"], [1, "input-group", "mb-3"], ["id", "basic-addon1", 1, "input-group-text"], ["src", "https://cdn.lordicon.com/msoeawqm.json", "trigger", "click", "colors", "primary:#121331,secondary:#08a88a", "stroke", "100", 3, "click"], ["type", "text", "placeholder", "Enter City Name", "aria-label", "Username", "aria-describedby", "basic-addon1", 1, "form-control", 3, "ngModel", "ngModelChange", "keyup.enter", "keydown"], ["class", "input-group-text", "id", "basic-addon1", 3, "click", 4, "ngIf"], [3, "weatherData", "cityName"], [3, "currentWeatherData", "weatherData"], ["id", "basic-addon1", 1, "input-group-text", 3, "click"], [1, "fa", "fa-times"]],
+      consts: [["id", "shellDiv", 1, "container-fluid", "overflow-auto"], [1, "row"], [1, "col-md-3", 2, "padding", "0"], [3, "weatherData", "singleCallWeatherData", "excludesArray", "onUnitTypeChange"], [1, "col-md-9", 2, "padding", "0"], ["id", "mainDiv", 1, "glassmorphDiv2"], ["id", "searchDiv", 3, "ngStyle"], ["id", "searchDivInput", 1, "input-group"], [1, "input-group", "mb-3"], ["id", "basic-addon1", 1, "input-group-text"], ["src", "https://cdn.lordicon.com/msoeawqm.json", "trigger", "click", "colors", "primary:#121331,secondary:#08a88a", "stroke", "100", 3, "click"], ["type", "text", "placeholder", "Enter City Name", "aria-label", "Username", "aria-describedby", "basic-addon1", 1, "form-control", 3, "ngModel", "ngModelChange", "keyup.enter", "keydown"], ["class", "input-group-text", "id", "basic-addon1", 3, "click", 4, "ngIf"], [3, "weatherData", "cityName"], [3, "currentWeatherData", "weatherData"], ["id", "basic-addon1", 1, "input-group-text", 3, "click"], [1, "fa", "fa-times"]],
       template: function MainComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -1221,7 +1221,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         if (rf & 2) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("weatherData", ctx.currentWeatherData)("oneCallWeatherData", ctx.oneCallWeatherData)("excludesArray", ctx.excludes);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("weatherData", ctx.currentWeatherData)("singleCallWeatherData", ctx.singleCallWeatherData)("excludesArray", ctx.excludes);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
@@ -1237,11 +1237,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("weatherData", ctx.oneCallWeatherData)("cityName", ctx.cityName);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("weatherData", ctx.singleCallWeatherData)("cityName", ctx.cityName);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("currentWeatherData", ctx.currentWeatherData)("weatherData", ctx.oneCallWeatherData);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("currentWeatherData", ctx.currentWeatherData)("weatherData", ctx.singleCallWeatherData);
         }
       },
       directives: [_lhscontents_lhscontents_component__WEBPACK_IMPORTED_MODULE_7__["LHSContentsComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgStyle"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], _daily_chart_daily_chart_component__WEBPACK_IMPORTED_MODULE_10__["DailyChartComponent"], _weather_widgets_weather_widgets_component__WEBPACK_IMPORTED_MODULE_11__["WeatherWidgetsComponent"]],
@@ -1309,6 +1309,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _c3 = ["gaugeCloud"];
     var _c4 = ["gaugeCloudFill"];
     var _c5 = ["gaugeCloudCover"];
+    var _c6 = ["gaugeUVI"];
+    var _c7 = ["gaugeUVIFill"];
+    var _c8 = ["gaugeUVICover"];
+    var _c9 = ["gaugeWind"];
+    var _c10 = ["gaugeWindFill"];
+    var _c11 = ["gaugeWindCover"];
+
+    var _c12 = function _c12(a0) {
+      return {
+        background: a0
+      };
+    };
 
     function WeatherWidgetsComponent_div_0_Template(rf, ctx) {
       if (rf & 1) {
@@ -1322,7 +1334,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Humidity");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1330,15 +1342,39 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 6, 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "img", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 8, 9);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "div", 10, 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 10, 11);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 12, 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "div", 12, 13);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 14, 15);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 16);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "span", 17);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "0");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "span", 18);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "100");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1350,29 +1386,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 19);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "div", 3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "span");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "img", 6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 8, 20);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 10, 21);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "div", 12, 22);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div", 14, 23);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1380,31 +1424,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div", 16);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "span", 17);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 4);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "span");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Cloudiness");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "0");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "span", 18);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 5);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 6, 18);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 8, 19);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](34, "div", 10, 20);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "div", 12, 21);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, "8+");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1416,15 +1446,125 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "div", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "div", 4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "span");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](49);
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "div", 5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](51, "img", 6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "div", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "div", 8, 25);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "div", 10, 26);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](57, "div", 12, 27);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "div", 14, 28);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](61);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "div", 16);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "span", 17);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64, "0");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "span", 18);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66, "100");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "div", 29);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "div", 3);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "div", 4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "span");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](71);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "div", 5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](73, "img", 6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "div", 7);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "div", 8, 30);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "div", 10, 31);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](79, "div", 12, 32);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "div", 14, 33);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](83);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "span", 34);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](85, "m/hr");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](86, "div", 16);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "span", 17);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](88, "0");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "span", 18);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](90, "73+");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1438,25 +1578,69 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       if (rf & 2) {
         var ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.widgetNames.humidity);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", "../../../assets/images/" + ctx_r11.widgetNames.humidity + ".gif", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("alt", ctx_r11.widgetNames.humidity + "Icon");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](20, _c12, ctx_r11.setThresholdColour(ctx_r11.OneCallweather.current.humidity)));
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r11.OneCallweather.current.humidity, "%");
 
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.widgetNames.uv_index);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", "../../../assets/images/" + ctx_r11.widgetNames.uvi + ".gif", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("alt", ctx_r11.widgetNames.uvi + "Icon");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](22, _c12, ctx_r11.setUVIThresholdColour(ctx_r11.OneCallweather.current.uvi)));
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Pressure ", ctx_r11.OneCallweather.current.pressure, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.OneCallweather.current.uvi);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.widgetNames.cloudiness);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", "../../../assets/images/" + ctx_r11.widgetNames.cloudiness + ".gif", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("alt", ctx_r11.widgetNames.cloudiness + "Icon");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](24, _c12, ctx_r11.setThresholdColour(ctx_r11.OneCallweather.current.clouds)));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("UVI ", ctx_r11.OneCallweather.current.uvi, "");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](15);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r11.OneCallweather.current.clouds, "%");
 
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.widgetNames.wind);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", "../../../assets/images/" + ctx_r11.widgetNames.wind + ".gif", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("alt", ctx_r11.widgetNames.wind + "Icon");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](26, _c12, ctx_r11.setWindThresholdColour(ctx_r11.OneCallweather.current.wind_speed)));
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Wind ", ctx_r11.OneCallweather.current.wind_speed, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.OneCallweather.current.wind_speed);
       }
     }
 
@@ -1467,6 +1651,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         _classCallCheck(this, WeatherWidgetsComponent);
 
         this.renderer = renderer;
+        this.widgetNames = {
+          humidity: 'Humidity',
+          pressure: 'Pressure',
+          uvi: 'UVI',
+          uv_index: 'UV Index',
+          cloudiness: 'Cloudiness',
+          wind: 'Wind'
+        };
       }
 
       _createClass(WeatherWidgetsComponent, [{
@@ -1485,7 +1677,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.gaugeHumidityCoverElement = value;
 
           if (this.OneCallweather && this.gaugeHumidityCoverElement) {
-            this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
           }
         }
       }, {
@@ -1504,7 +1696,45 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.gaugeCloudCoverElement = value;
 
           if (this.OneCallweather && this.gaugeCloudCoverElement) {
-            this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+          }
+        }
+      }, {
+        key: "gaugeUVIEl",
+        set: function set(value) {
+          this.gaugeUVIElement = value;
+        }
+      }, {
+        key: "gaugeUVIFillEl",
+        set: function set(value) {
+          this.gaugeUVIFillElement = value;
+        }
+      }, {
+        key: "gaugeUVICoverEl",
+        set: function set(value) {
+          this.gaugeUVICoverElement = value;
+
+          if (this.OneCallweather && this.gaugeUVICoverElement) {
+            this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+          }
+        }
+      }, {
+        key: "gaugeWindEl",
+        set: function set(value) {
+          this.gaugeWindElement = value;
+        }
+      }, {
+        key: "gaugeWindFillEl",
+        set: function set(value) {
+          this.gaugeWindFillElement = value;
+        }
+      }, {
+        key: "gaugeWindCoverEl",
+        set: function set(value) {
+          this.gaugeWindCoverElement = value;
+
+          if (this.OneCallweather && this.gaugeWindCoverElement) {
+            this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
           }
         }
       }, {
@@ -1518,9 +1748,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         set: function set(weather) {
           this.OneCallweather = weather;
 
-          if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement) {
-            this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
-            this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+          if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
+            this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+            this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
           }
         }
       }, {
@@ -1529,18 +1761,87 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.currentWeather = weather;
         }
       }, {
-        key: "isEmptyObject",
-        value: function isEmptyObject(obj) {
-          return obj && Object.keys(obj).length === 0;
-        }
-      }, {
-        key: "setGaugeValue",
-        value: function setGaugeValue(value, element) {
-          if (value < 0 || value > 1) {
+        key: "setGaugeTurnValue",
+        value: function setGaugeTurnValue(value, fillElement) {
+          var rounded = Math.round(value * 10) / 10;
+          var rotateBy = rounded / 2;
+
+          if (value > 0 && rounded === 0) {
+            rotateBy = 0.1;
+          }
+
+          if (value <= 0 || value > 1) {
             return;
           }
 
-          this.renderer.setStyle(element.nativeElement, 'transform', 'rotate(' + value / 2 + 'turn)'); // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
+          this.renderer.setStyle(fillElement.nativeElement, 'transform', 'rotate(' + rotateBy + 'turn)'); // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
+          // console.log("value = ", value);
+          // console.log("rounded = ", rounded);
+          // console.log("rotateBy = ", rotateBy);
+          // console.log("element.nativeElement = ", fillElement.nativeElement);
+          // console.log("------------------");
+        }
+      }, {
+        key: "setThresholdColour",
+        value: function setThresholdColour(value) {
+          if (value <= 0) {
+            return '#b4c0be';
+          } else if (value > 0 && value <= 20) {
+            return 'red';
+          } else if (value > 20 && value <= 60) {
+            return 'orange';
+          } else if (value > 60 && value <= 90) {
+            return '#eded02';
+          } else if (value > 90) {
+            return 'green';
+          }
+        }
+      }, {
+        key: "setUVIThresholdColour",
+        value: function setUVIThresholdColour(value) {
+          if (value <= 0) {
+            return '#b4c0be';
+          } else if (value > 0 && value <= 2) {
+            // You can safely enjoy being outside!
+            return 'green';
+          } else if (value > 2 && value <= 7) {
+            // Seek shade during midday hours! Slip on a shirt, slop on sunscreen and slap on hat!
+            return '#eded02';
+          } else if (value > 7) {
+            // Avoid being outside during midday hours! Make sure you seek shade! Shirt, sunscreen and hat are a must!
+            return 'red';
+          }
+        }
+      }, {
+        key: "setWindThresholdColour",
+        value: function setWindThresholdColour(value) {
+          if (value <= 1) {
+            return '#b4c0be';
+          } else if (value > 1 && value <= 3) {
+            return '#50eded';
+          } else if (value > 3 && value <= 7) {
+            return '#14d7d7';
+          } else if (value > 7 && value <= 12) {
+            return '#00cc00';
+          } else if (value > 12 && value <= 18) {
+            return '#00ff00';
+          } else if (value > 18 && value <= 24) {
+            return '#99ff33';
+          } else if (value > 24 && value <= 31) {
+            return '#ccff33';
+          } else if (value > 31 && value <= 38) {
+            return '#ffff00';
+          } else if (value > 38 && value <= 46) {
+            return '#ffcc00';
+          } else if (value > 46 && value <= 54) {
+            return '#ff9933';
+          } else if (value > 54 && value <= 63) {
+            return '#ff9933';
+          } else if (value > 63 && value <= 72) {
+            return '#ff5050';
+          } else if (value > 72) {
+            return '#ff0000';
+          }
         }
       }]);
 
@@ -1567,6 +1868,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c4, true);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c5, true);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c6, true);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c7, true);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c8, true);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c9, true);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c10, true);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c11, true);
         }
 
         if (rf & 2) {
@@ -1578,6 +1891,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeCloudEl = _t.first);
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeCloudFillEl = _t.first);
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeCloudCoverEl = _t.first);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeUVIEl = _t.first);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeUVIFillEl = _t.first);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeUVICoverEl = _t.first);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeWindEl = _t.first);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeWindFillEl = _t.first);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.gaugeWindCoverEl = _t.first);
         }
       },
       inputs: {
@@ -1586,18 +1905,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       },
       decls: 1,
       vars: 1,
-      consts: [["class", "widgetsMainDiv", 4, "ngIf"], [1, "widgetsMainDiv"], [1, "card", "widgetsCard", "humidity"], [1, "card-body", "widgetsCardBody"], [1, "widgetTitle"], [1, "widgetBody"], [1, "gauge"], ["gaugeHumidity", ""], [1, "gauge__body"], ["gaugeHumidityBody", ""], [1, "gauge__fill"], ["gaugeHumidityFill", ""], [1, "gauge__cover"], ["gaugeHumidityCover", ""], [1, "card", "widgetsCard", "pressure"], [1, "card-body"], [1, "card", "widgetsCard", "uvi"], [1, "card", "widgetsCard", "clouds"], ["gaugeCloud", ""], ["gaugeCloudBody", ""], ["gaugeCloudFill", ""], ["gaugeCloudCover", ""], [1, "card", "widgetsCard", "wind"]],
+      consts: [["class", "widgetsMainDiv", 4, "ngIf"], [1, "widgetsMainDiv"], [1, "card", "widgetsCard", "humidity"], [1, "card-body", "widgetsCardBody"], [1, "widgetTitle"], [1, "widgetIconDiv"], [3, "src", "alt"], [1, "widgetGaugeMeter"], [1, "gauge"], ["gaugeHumidity", ""], [1, "gauge__body"], ["gaugeHumidityBody", ""], [1, "gauge__fill", 3, "ngStyle"], ["gaugeHumidityFill", ""], [1, "gauge__cover"], ["gaugeHumidityCover", ""], [1, "gaugeThresholdsDiv"], [1, "start"], [1, "end"], [1, "card", "widgetsCard", "uvi"], ["gaugeUVI", ""], ["gaugeUVIBody", ""], ["gaugeUVIFill", ""], ["gaugeUVICover", ""], [1, "card", "widgetsCard", "clouds"], ["gaugeCloud", ""], ["gaugeCloudBody", ""], ["gaugeCloudFill", ""], ["gaugeCloudCover", ""], [1, "card", "widgetsCard", "wind"], ["gaugeWind", ""], ["gaugeWindBody", ""], ["gaugeWindFill", ""], ["gaugeWindCover", ""], [1, "widgetUnitDiv"]],
       template: function WeatherWidgetsComponent_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, WeatherWidgetsComponent_div_0_Template, 43, 5, "div", 0);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, WeatherWidgetsComponent_div_0_Template, 91, 28, "div", 0);
         }
 
         if (rf & 2) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.OneCallweather && ctx.OneCallweather != undefined);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"]],
-      styles: [".widgetsMainDiv[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    flex-wrap: wrap;\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%] {\r\n    width: 200px;\r\n    height: 200px;\r\n    border-radius: 30px;\r\n    margin: 40px 0px 5px 0px;\r\n    box-shadow: var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%]:hover {\r\n    box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCardBody[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n}\r\n\r\n.widgetTitle[_ngcontent-%COMP%] {\r\n    text-align: center;\r\n    font-size: 20px;\r\n}\r\n\r\n.widgetBody[_ngcontent-%COMP%] {\r\n    margin: auto;\r\n    padding: 30px 5px;\r\n}\r\n\r\n.gauge[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    max-width: 150px;\r\n    \r\n    font-size: 24px;\r\n    color: #004033;\r\n}\r\n\r\n.gauge__body[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    height: 0;\r\n    padding-bottom: 50%;\r\n    background: #b4c0be;\r\n    position: relative;\r\n    border-top-left-radius: 100% 200%;\r\n    border-top-right-radius: 100% 200%;\r\n    overflow: hidden;\r\n}\r\n\r\n.gauge__fill[_ngcontent-%COMP%] {\r\n    position: absolute;\r\n    top: 100%;\r\n    left: 0;\r\n    width: inherit;\r\n    height: 100%;\r\n    background: #7a5aec;\r\n    transform-origin: center top;\r\n    transform: rotate(0.25turn);\r\n    transition: transform 0.2s ease-out;\r\n}\r\n\r\n.gauge__cover[_ngcontent-%COMP%] {\r\n    width: 75%;\r\n    height: 150%;\r\n    background: #ffffff;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 25%;\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    \r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding-bottom: 25%;\r\n    box-sizing: border-box;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQ29tcG9uZW50cy93ZWF0aGVyLXdpZGdldHMvd2VhdGhlci13aWRnZXRzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXO0lBQ1gsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQiw2QkFBNkI7SUFDN0IsZUFBZTtBQUNuQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHdCQUF3QjtJQUN4QixxQ0FBcUM7SUFDckMsNkNBQTZDO0lBQzdDLDBDQUEwQztBQUM5Qzs7QUFFQTtJQUNJLCtEQUErRDtJQUMvRCx1RUFBdUU7SUFDdkUsb0VBQW9FO0FBQ3hFOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGVBQWU7QUFDbkI7O0FBRUE7SUFDSSxZQUFZO0lBQ1osaUJBQWlCO0FBQ3JCOztBQUVBO0lBQ0ksV0FBVztJQUNYLGdCQUFnQjtJQUNoQix1Q0FBdUM7SUFDdkMsZUFBZTtJQUNmLGNBQWM7QUFDbEI7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsU0FBUztJQUNULG1CQUFtQjtJQUNuQixtQkFBbUI7SUFDbkIsa0JBQWtCO0lBQ2xCLGlDQUFpQztJQUNqQyxrQ0FBa0M7SUFDbEMsZ0JBQWdCO0FBQ3BCOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLFNBQVM7SUFDVCxPQUFPO0lBQ1AsY0FBYztJQUNkLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsNEJBQTRCO0lBQzVCLDJCQUEyQjtJQUMzQixtQ0FBbUM7QUFDdkM7O0FBRUE7SUFDSSxVQUFVO0lBQ1YsWUFBWTtJQUNaLG1CQUFtQjtJQUNuQixrQkFBa0I7SUFDbEIsa0JBQWtCO0lBQ2xCLFFBQVE7SUFDUixTQUFTO0lBQ1QsMkJBQTJCO0lBQzNCLFNBQVM7SUFDVCxhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHVCQUF1QjtJQUN2QixtQkFBbUI7SUFDbkIsc0JBQXNCO0FBQzFCIiwiZmlsZSI6InNyYy9hcHAvQ29tcG9uZW50cy93ZWF0aGVyLXdpZGdldHMvd2VhdGhlci13aWRnZXRzLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIud2lkZ2V0c01haW5EaXYge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcclxuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtZXZlbmx5O1xyXG4gICAgZmxleC13cmFwOiB3cmFwO1xyXG59XHJcblxyXG4ud2lkZ2V0c0NhcmQge1xyXG4gICAgd2lkdGg6IDIwMHB4O1xyXG4gICAgaGVpZ2h0OiAyMDBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDMwcHg7XHJcbiAgICBtYXJnaW46IDQwcHggMHB4IDVweCAwcHg7XHJcbiAgICBib3gtc2hhZG93OiB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG4gICAgLXdlYmtpdC1ib3gtc2hhZG93OiB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG4gICAgLW1vei1ib3gtc2hhZG93OiB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG59XHJcblxyXG4ud2lkZ2V0c0NhcmQ6aG92ZXIge1xyXG4gICAgYm94LXNoYWRvdzogdmFyKC0tYm94LXNoYWRvdzMtd2hpdGUpLCB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG4gICAgLXdlYmtpdC1ib3gtc2hhZG93OiB2YXIoLS1ib3gtc2hhZG93My13aGl0ZSksIHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtbW96LWJveC1zaGFkb3c6IHZhcigtLWJveC1zaGFkb3czLXdoaXRlKSwgdmFyKC0taW5zaWRlLWJveC1zaGFkb3cyKTtcclxufVxyXG5cclxuLndpZGdldHNDYXJkQm9keSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLndpZGdldFRpdGxlIHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtc2l6ZTogMjBweDtcclxufVxyXG5cclxuLndpZGdldEJvZHkge1xyXG4gICAgbWFyZ2luOiBhdXRvO1xyXG4gICAgcGFkZGluZzogMzBweCA1cHg7XHJcbn1cclxuXHJcbi5nYXVnZSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIG1heC13aWR0aDogMTUwcHg7XHJcbiAgICAvKiBmb250LWZhbWlseTogXCJSb2JvdG9cIiwgc2Fucy1zZXJpZjsgKi9cclxuICAgIGZvbnQtc2l6ZTogMjRweDtcclxuICAgIGNvbG9yOiAjMDA0MDMzO1xyXG59XHJcblxyXG4uZ2F1Z2VfX2JvZHkge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDA7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogNTAlO1xyXG4gICAgYmFja2dyb3VuZDogI2I0YzBiZTtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIGJvcmRlci10b3AtbGVmdC1yYWRpdXM6IDEwMCUgMjAwJTtcclxuICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAxMDAlIDIwMCU7XHJcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xyXG59XHJcblxyXG4uZ2F1Z2VfX2ZpbGwge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAxMDAlO1xyXG4gICAgbGVmdDogMDtcclxuICAgIHdpZHRoOiBpbmhlcml0O1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgYmFja2dyb3VuZDogIzdhNWFlYztcclxuICAgIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlciB0b3A7XHJcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwLjI1dHVybik7XHJcbiAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMC4ycyBlYXNlLW91dDtcclxufVxyXG5cclxuLmdhdWdlX19jb3ZlciB7XHJcbiAgICB3aWR0aDogNzUlO1xyXG4gICAgaGVpZ2h0OiAxNTAlO1xyXG4gICAgYmFja2dyb3VuZDogI2ZmZmZmZjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMjUlO1xyXG4gICAgbGVmdDogNTAlO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xyXG4gICAgLyogVGV4dCAqL1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIHBhZGRpbmctYm90dG9tOiAyNSU7XHJcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xyXG59Il19 */"]
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_1__["NgStyle"]],
+      styles: [".widgetsMainDiv[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    flex-wrap: wrap;\r\n    margin-top: 20px;\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%] {\r\n    width: 200px;\r\n    height: 200px;\r\n    border-radius: 30px;\r\n    margin: 40px 0px 5px 0px;\r\n    box-shadow: var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%]:hover {\r\n    box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCardBody[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n}\r\n\r\n.widgetTitle[_ngcontent-%COMP%] {\r\n    text-align: center;\r\n    font-size: 20px;\r\n    margin-top: -8px;\r\n}\r\n\r\n.widgetIconDiv[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    height: 30%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: 5px 0px 5px;\r\n}\r\n\r\n.widgetIconDiv[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\r\n    width: 60px;\r\n    height: 60px;\r\n}\r\n\r\n.widgetGaugeMeter[_ngcontent-%COMP%] {\r\n    margin: auto;\r\n    padding: 5px 5px 4px;\r\n    \r\n    width: 130px;\r\n}\r\n\r\n.gauge[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    max-width: 150px;\r\n    \r\n    font-size: 18px;\r\n    color: #004033;\r\n}\r\n\r\n.gauge__body[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    height: 0;\r\n    padding-bottom: 50%;\r\n    background: #b4c0be;\r\n    position: relative;\r\n    border-top-left-radius: 100% 200%;\r\n    border-top-right-radius: 100% 200%;\r\n    overflow: hidden;\r\n}\r\n\r\n.gauge__fill[_ngcontent-%COMP%] {\r\n    position: absolute;\r\n    top: 100%;\r\n    left: 0;\r\n    width: inherit;\r\n    height: 100%;\r\n    \r\n    transform-origin: center top;\r\n    transform: rotate(0.25turn);\r\n    transition: transform 0.2s ease-out;\r\n}\r\n\r\n.gauge__cover[_ngcontent-%COMP%] {\r\n    width: 75%;\r\n    height: 150%;\r\n    background: #ffffff;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 25%;\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    \r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding-bottom: 25%;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.gaugeThresholdsDiv[_ngcontent-%COMP%] {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin-right: -8px;\r\n}\r\n\r\n.widgetUnitDiv[_ngcontent-%COMP%] {\r\n    font-size: 16px;\r\n    margin-left: 2px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQ29tcG9uZW50cy93ZWF0aGVyLXdpZGdldHMvd2VhdGhlci13aWRnZXRzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXO0lBQ1gsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQiw2QkFBNkI7SUFDN0IsZUFBZTtJQUNmLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHdCQUF3QjtJQUN4QixxQ0FBcUM7SUFDckMsNkNBQTZDO0lBQzdDLDBDQUEwQztBQUM5Qzs7QUFFQTtJQUNJLCtEQUErRDtJQUMvRCx1RUFBdUU7SUFDdkUsb0VBQW9FO0FBQ3hFOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsV0FBVztJQUNYLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFdBQVc7SUFDWCxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLG9CQUFvQjtJQUNwQixrQkFBa0I7SUFDbEIsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFdBQVc7SUFDWCxnQkFBZ0I7SUFDaEIsdUNBQXVDO0lBQ3ZDLGVBQWU7SUFDZixjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksV0FBVztJQUNYLFNBQVM7SUFDVCxtQkFBbUI7SUFDbkIsbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixpQ0FBaUM7SUFDakMsa0NBQWtDO0lBQ2xDLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixTQUFTO0lBQ1QsT0FBTztJQUNQLGNBQWM7SUFDZCxZQUFZO0lBQ1oseUJBQXlCO0lBQ3pCLDRCQUE0QjtJQUM1QiwyQkFBMkI7SUFDM0IsbUNBQW1DO0FBQ3ZDOztBQUVBO0lBQ0ksVUFBVTtJQUNWLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsa0JBQWtCO0lBQ2xCLGtCQUFrQjtJQUNsQixRQUFRO0lBQ1IsU0FBUztJQUNULDJCQUEyQjtJQUMzQixTQUFTO0lBQ1QsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLHNCQUFzQjtBQUMxQjs7QUFFQTtJQUNJLGFBQWE7SUFDYiw4QkFBOEI7SUFDOUIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksZUFBZTtJQUNmLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL0NvbXBvbmVudHMvd2VhdGhlci13aWRnZXRzL3dlYXRoZXItd2lkZ2V0cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndpZGdldHNNYWluRGl2IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcclxuICAgIGZsZXgtd3JhcDogd3JhcDtcclxuICAgIG1hcmdpbi10b3A6IDIwcHg7XHJcbn1cclxuXHJcbi53aWRnZXRzQ2FyZCB7XHJcbiAgICB3aWR0aDogMjAwcHg7XHJcbiAgICBoZWlnaHQ6IDIwMHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMzBweDtcclxuICAgIG1hcmdpbjogNDBweCAwcHggNXB4IDBweDtcclxuICAgIGJveC1zaGFkb3c6IHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtbW96LWJveC1zaGFkb3c6IHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbn1cclxuXHJcbi53aWRnZXRzQ2FyZDpob3ZlciB7XHJcbiAgICBib3gtc2hhZG93OiB2YXIoLS1ib3gtc2hhZG93My13aGl0ZSksIHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IHZhcigtLWJveC1zaGFkb3czLXdoaXRlKSwgdmFyKC0taW5zaWRlLWJveC1zaGFkb3cyKTtcclxuICAgIC1tb3otYm94LXNoYWRvdzogdmFyKC0tYm94LXNoYWRvdzMtd2hpdGUpLCB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG59XHJcblxyXG4ud2lkZ2V0c0NhcmRCb2R5IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4ud2lkZ2V0VGl0bGUge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1zaXplOiAyMHB4O1xyXG4gICAgbWFyZ2luLXRvcDogLThweDtcclxufVxyXG5cclxuLndpZGdldEljb25EaXYge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDMwJTtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBtYXJnaW46IDVweCAwcHggNXB4O1xyXG59XHJcblxyXG4ud2lkZ2V0SWNvbkRpdiBpbWcge1xyXG4gICAgd2lkdGg6IDYwcHg7XHJcbiAgICBoZWlnaHQ6IDYwcHg7XHJcbn1cclxuXHJcbi53aWRnZXRHYXVnZU1ldGVyIHtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIHBhZGRpbmc6IDVweCA1cHggNHB4O1xyXG4gICAgLyogaGVpZ2h0OiA0MHB4OyAqL1xyXG4gICAgd2lkdGg6IDEzMHB4O1xyXG59XHJcblxyXG4uZ2F1Z2Uge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBtYXgtd2lkdGg6IDE1MHB4O1xyXG4gICAgLyogZm9udC1mYW1pbHk6IFwiUm9ib3RvXCIsIHNhbnMtc2VyaWY7ICovXHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICBjb2xvcjogIzAwNDAzMztcclxufVxyXG5cclxuLmdhdWdlX19ib2R5IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAwO1xyXG4gICAgcGFkZGluZy1ib3R0b206IDUwJTtcclxuICAgIGJhY2tncm91bmQ6ICNiNGMwYmU7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAxMDAlIDIwMCU7XHJcbiAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMTAwJSAyMDAlO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG5cclxuLmdhdWdlX19maWxsIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMTAwJTtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICB3aWR0aDogaW5oZXJpdDtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIC8qIGJhY2tncm91bmQ6ICM3YTVhZWM7ICovXHJcbiAgICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXIgdG9wO1xyXG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMC4yNXR1cm4pO1xyXG4gICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMnMgZWFzZS1vdXQ7XHJcbn1cclxuXHJcbi5nYXVnZV9fY292ZXIge1xyXG4gICAgd2lkdGg6IDc1JTtcclxuICAgIGhlaWdodDogMTUwJTtcclxuICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDI1JTtcclxuICAgIGxlZnQ6IDUwJTtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcclxuICAgIC8qIFRleHQgKi9cclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMjUlO1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxufVxyXG5cclxuLmdhdWdlVGhyZXNob2xkc0RpdiB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAtOHB4O1xyXG59XHJcblxyXG4ud2lkZ2V0VW5pdERpdiB7XHJcbiAgICBmb250LXNpemU6IDE2cHg7XHJcbiAgICBtYXJnaW4tbGVmdDogMnB4O1xyXG59Il19 */"]
     });
     /*@__PURE__*/
 
@@ -1637,6 +1956,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         gaugeCloudCoverEl: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
           args: ['gaugeCloudCover']
+        }],
+        gaugeUVIEl: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+          args: ['gaugeUVI']
+        }],
+        gaugeUVIFillEl: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+          args: ['gaugeUVIFill']
+        }],
+        gaugeUVICoverEl: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+          args: ['gaugeUVICover']
+        }],
+        gaugeWindEl: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+          args: ['gaugeWind']
+        }],
+        gaugeWindFillEl: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+          args: ['gaugeWindFill']
+        }],
+        gaugeWindCoverEl: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+          args: ['gaugeWindCover']
         }],
         weatherData: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
@@ -1968,27 +2311,28 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _appConfig__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../appConfig */
-    "./src/app/appConfig.ts");
-    /* harmony import */
-
-
-    var _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../Constants/weather-dashboard-constants */
     "./src/app/Constants/weather-dashboard-constants.ts");
     /* harmony import */
 
 
-    var _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ../Constants/url-constants */
     "./src/app/Constants/url-constants.ts");
     /* harmony import */
 
 
+    var _appConfig__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../appConfig */
+    "./src/app/appConfig.ts");
+    /* harmony import */
+
+
     var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @angular/common/http */
-    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js"); // import { environment } from 'src/environments/environment';
+
 
     var WeatherService =
     /*#__PURE__*/
@@ -1999,27 +2343,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this._http = _http;
         this.unitTypeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](false); // private showSpinner = new BehaviorSubject<boolean>(false);
 
-        this.showSpinner = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"]();
+        this.showSpinner = new rxjs__WEBPACK_IMPORTED_MODULE_1__["Subject"](); // private Stored_API_Key = environment.OPENWEATHER_API_KEY;
+
+        this.Stored_API_Key = _appConfig__WEBPACK_IMPORTED_MODULE_5__["APIKey"];
       }
 
       _createClass(WeatherService, [{
         key: "loadCurrentWeatherByCityName",
         value: function loadCurrentWeatherByCityName(cityName) {
-          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["CELCIUS_UNIT"];
-          var url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.weather + '?q=' + cityName + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["CELCIUS_UNIT"];
+          var url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.weather + '?q=' + cityName + '&appid=' + this.Stored_API_Key + '&units=' + unit;
           return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
         }
       }, {
         key: "loadCurrentWeatherByCoordinates",
         value: function loadCurrentWeatherByCoordinates(latitude, longitude) {
-          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["CELCIUS_UNIT"];
-          var url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["CELCIUS_UNIT"];
+          var url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + this.Stored_API_Key + '&units=' + unit;
           return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
         }
       }, {
         key: "loadOneAPICallDataByCurrentData",
         value: function loadOneAPICallDataByCurrentData(currentWeatherData, excludes) {
-          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_4__["CELCIUS_UNIT"];
+          var unit = this.unitTypeSubject.getValue() ? _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["FAHRENHEIT_UNIT"] : _Constants_weather_dashboard_constants__WEBPACK_IMPORTED_MODULE_3__["CELCIUS_UNIT"];
           var excludesString = '';
           excludes.forEach(function (value, index) {
             excludesString += value;
@@ -2032,9 +2378,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var url = '';
 
           if (excludesString && excludes.length > 0) {
-            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + '&exclude=' + excludesString + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + '&exclude=' + excludesString + '&appid=' + this.Stored_API_Key + '&units=' + unit;
           } else {
-            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_5__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + '&appid=' + _appConfig__WEBPACK_IMPORTED_MODULE_3__["APIKey"] + '&units=' + unit;
+            url = _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["APIUrl"] + _Constants_url_constants__WEBPACK_IMPORTED_MODULE_4__["Api"].endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon + '&appid=' + this.Stored_API_Key + '&units=' + unit;
           }
 
           return this._http.get(url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorHandler));
