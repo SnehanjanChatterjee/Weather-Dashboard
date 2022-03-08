@@ -74,7 +74,7 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   @ViewChild('gaugeUVICover') set gaugeUVICoverEl(value: ElementRef) {
     this.gaugeUVICoverElement = value;
     if (this.OneCallweather && this.gaugeUVICoverElement) {
-      this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+      this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
     }
   };
 
@@ -87,7 +87,7 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   @ViewChild('gaugeWindCover') set gaugeWindCoverEl(value: ElementRef) {
     this.gaugeWindCoverElement = value;
     if (this.OneCallweather && this.gaugeWindCoverElement) {
-      this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
+      this.setGaugeRoundedTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
     }
   };
 
@@ -101,9 +101,9 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
     this.OneCallweather = weather;
     if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
       this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
-      this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+      this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
       this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
-      this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
+      this.setGaugeRoundedTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
     }
   }
 
@@ -112,6 +112,14 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   }
 
   setGaugeTurnValue(value: number, fillElement: ElementRef) {
+    if (value <= 0 || value > 1) {
+      return;
+    }
+    this.renderer.setStyle(fillElement.nativeElement, 'transform', 'rotate(' + (value / 2) + 'turn)');
+    // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
+  }
+
+  setGaugeRoundedTurnValue(value: number, fillElement: ElementRef) {
     const rounded = Math.round(value * 10) / 10;
     let rotateBy = (rounded / 2);
 
@@ -124,12 +132,6 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
     }
     this.renderer.setStyle(fillElement.nativeElement, 'transform', 'rotate(' + (rotateBy) + 'turn)');
     // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
-
-    // console.log("value = ", value);
-    // console.log("rounded = ", rounded);
-    // console.log("rotateBy = ", rotateBy);
-    // console.log("element.nativeElement = ", fillElement.nativeElement);
-    // console.log("------------------");
   }
 
   setThresholdColour(value: number) {

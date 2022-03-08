@@ -919,7 +919,7 @@ class WeatherWidgetsComponent {
     set gaugeUVICoverEl(value) {
         this.gaugeUVICoverElement = value;
         if (this.OneCallweather && this.gaugeUVICoverElement) {
-            this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+            this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
         }
     }
     ;
@@ -934,7 +934,7 @@ class WeatherWidgetsComponent {
     set gaugeWindCoverEl(value) {
         this.gaugeWindCoverElement = value;
         if (this.OneCallweather && this.gaugeWindCoverElement) {
-            this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
+            this.setGaugeRoundedTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
         }
     }
     ;
@@ -946,15 +946,22 @@ class WeatherWidgetsComponent {
         this.OneCallweather = weather;
         if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
             this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
-            this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+            this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
             this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
-            this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
+            this.setGaugeRoundedTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
         }
     }
     set currentWeatherData(weather) {
         this.currentWeather = weather;
     }
     setGaugeTurnValue(value, fillElement) {
+        if (value <= 0 || value > 1) {
+            return;
+        }
+        this.renderer.setStyle(fillElement.nativeElement, 'transform', 'rotate(' + (value / 2) + 'turn)');
+        // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
+    }
+    setGaugeRoundedTurnValue(value, fillElement) {
         const rounded = Math.round(value * 10) / 10;
         let rotateBy = (rounded / 2);
         if (value > 0 && rounded === 0) {
@@ -965,11 +972,6 @@ class WeatherWidgetsComponent {
         }
         this.renderer.setStyle(fillElement.nativeElement, 'transform', 'rotate(' + (rotateBy) + 'turn)');
         // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
-        // console.log("value = ", value);
-        // console.log("rounded = ", rounded);
-        // console.log("rotateBy = ", rotateBy);
-        // console.log("element.nativeElement = ", fillElement.nativeElement);
-        // console.log("------------------");
     }
     setThresholdColour(value) {
         if (value <= 0) {
