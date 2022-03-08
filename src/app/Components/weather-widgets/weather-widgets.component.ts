@@ -26,6 +26,10 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   gaugeUVIFillElement: ElementRef;
   gaugeUVICoverElement: ElementRef;
 
+  gaugeWindElement: ElementRef;
+  gaugeWindFillElement: ElementRef;
+  gaugeWindCoverElement: ElementRef;
+
   widgetNames = {
     humidity: 'Humidity',
     pressure: 'Pressure',
@@ -44,7 +48,7 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   @ViewChild('gaugeHumidityCover') set gaugeHumidityCoverEl(value: ElementRef) {
     this.gaugeHumidityCoverElement = value;
     if (this.OneCallweather && this.gaugeHumidityCoverElement) {
-      this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+      this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
     }
   };
 
@@ -57,7 +61,7 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   @ViewChild('gaugeCloudCover') set gaugeCloudCoverEl(value: ElementRef) {
     this.gaugeCloudCoverElement = value;
     if (this.OneCallweather && this.gaugeCloudCoverElement) {
-      this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+      this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
     }
   };
 
@@ -70,7 +74,20 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   @ViewChild('gaugeUVICover') set gaugeUVICoverEl(value: ElementRef) {
     this.gaugeUVICoverElement = value;
     if (this.OneCallweather && this.gaugeUVICoverElement) {
-      this.setGaugeValue(this.OneCallweather.current.uvi / 8, this.gaugeUVICoverElement);
+      this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+    }
+  };
+
+  @ViewChild('gaugeWind') set gaugeWindEl(value: ElementRef) {
+    this.gaugeWindElement = value;
+  };
+  @ViewChild('gaugeWindFill') set gaugeWindFillEl(value: ElementRef) {
+    this.gaugeWindFillElement = value;
+  };
+  @ViewChild('gaugeWindCover') set gaugeWindCoverEl(value: ElementRef) {
+    this.gaugeWindCoverElement = value;
+    if (this.OneCallweather && this.gaugeWindCoverElement) {
+      this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
     }
   };
 
@@ -82,10 +99,11 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
   @Input() set weatherData(weather: OneAPICallModel) {
     this.OneCallweather = weather;
-    if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement) {
-      this.setGaugeValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
-      this.setGaugeValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
-      this.setGaugeValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+    if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
+      this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
+      this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+      this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
+      this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
     }
   }
 
@@ -93,12 +111,25 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
     this.currentWeather = weather;
   }
 
-  setGaugeValue(value: number, element: ElementRef) {
+  setGaugeTurnValue(value: number, fillElement: ElementRef) {
+    const rounded = Math.round(value * 10) / 10;
+    let rotateBy = (rounded / 2);
+
+    if (value > 0 && rounded === 0) {
+      rotateBy = 0.1;
+    }
+
     if (value <= 0 || value > 1) {
       return;
     }
-    this.renderer.setStyle(element.nativeElement, 'transform', 'rotate(' + (value / 2) + 'turn)');
+    this.renderer.setStyle(fillElement.nativeElement, 'transform', 'rotate(' + (rotateBy) + 'turn)');
     // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
+
+    // console.log("value = ", value);
+    // console.log("rounded = ", rounded);
+    // console.log("rotateBy = ", rotateBy);
+    // console.log("element.nativeElement = ", fillElement.nativeElement);
+    // console.log("------------------");
   }
 
   setThresholdColour(value: number) {
@@ -124,6 +155,36 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
       return '#eded02';
     } else if (value > 7) { // Avoid being outside during midday hours! Make sure you seek shade! Shirt, sunscreen and hat are a must!
       return 'red';
+    }
+  }
+
+  setWindThresholdColour(value: number) {
+    if (value <= 1) {
+      return '#b4c0be';
+    } else if (value > 1 && value <= 3) {
+      return '#50eded';
+    } else if (value > 3 && value <= 7) {
+      return '#14d7d7';
+    } else if (value > 7 && value <= 12) {
+      return '#00cc00';
+    } else if (value > 12 && value <= 18) {
+      return '#00ff00';
+    } else if (value > 18 && value <= 24) {
+      return '#99ff33';
+    } else if (value > 24 && value <= 31) {
+      return '#ccff33';
+    } else if (value > 31 && value <= 38) {
+      return '#ffff00';
+    } else if (value > 38 && value <= 46) {
+      return '#ffcc00';
+    } else if (value > 46 && value <= 54) {
+      return '#ff9933';
+    } else if (value > 54 && value <= 63) {
+      return '#ff9933';
+    } else if (value > 63 && value <= 72) {
+      return '#ff5050';
+    } else if (value > 72) {
+      return '#ff0000';
     }
   }
 
