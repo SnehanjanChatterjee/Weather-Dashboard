@@ -14,6 +14,10 @@
                         <div #gaugeHumidityCover class="gauge__cover">{{OneCallweather.current.humidity}}%</div>
                     </div>
                 </div>
+                <div class="gaugeThresholdsDiv">
+                    <span class="start">0</span>
+                    <span class="end">100</span>
+                </div>
             </div>
         </div>
     </div>
@@ -45,6 +49,10 @@
                         <div #gaugeUVICover class="gauge__cover">{{OneCallweather.current.uvi}}</div>
                     </div>
                 </div>
+                <div class="gaugeThresholdsDiv">
+                    <span class="start">0</span>
+                    <span class="end">8+</span>
+                </div>
             </div>
         </div>
     </div>
@@ -63,6 +71,10 @@
                         <div #gaugeCloudCover class="gauge__cover">{{OneCallweather.current.clouds}}%</div>
                     </div>
                 </div>
+                <div class="gaugeThresholdsDiv">
+                    <span class="start">0</span>
+                    <span class="end">100</span>
+                </div>
             </div>
         </div>
     </div>
@@ -78,8 +90,12 @@
                 <div #gaugeWind class="gauge">
                     <div #gaugeWindBody class="gauge__body">
                         <div #gaugeWindFill class="gauge__fill" [ngStyle]="{background: setWindThresholdColour(OneCallweather.current.wind_speed)}"></div>
-                        <div #gaugeWindCover class="gauge__cover">{{OneCallweather.current.wind_speed}}</div>
+                        <div #gaugeWindCover class="gauge__cover">{{OneCallweather.current.wind_speed}}<span class="widgetUnitDiv">m/hr</span></div>
                     </div>
+                </div>
+                <div class="gaugeThresholdsDiv">
+                    <span class="start">0</span>
+                    <span class="end">73+</span>
                 </div>
             </div>
         </div>
