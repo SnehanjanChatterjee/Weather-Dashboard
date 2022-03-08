@@ -2,48 +2,102 @@
     <div class="card widgetsCard humidity">
         <div class="card-body widgetsCardBody">
             <div class="widgetTitle">
-                <span>Humidity</span>
-                <!-- <img src="" alt="Humidity Icon"> -->
+                <span>{{widgetNames.humidity}}</span>
             </div>
-            <div class="widgetBody">
+            <div class="widgetIconDiv">
+                <img [src]="'../../../assets/images/' + widgetNames.humidity + '.gif'" [alt]="widgetNames.humidity + 'Icon'">
+            </div>
+            <div class="widgetGaugeMeter">
                 <div #gaugeHumidity class="gauge">
                     <div #gaugeHumidityBody class="gauge__body">
-                        <div #gaugeHumidityFill class="gauge__fill"></div>
+                        <div #gaugeHumidityFill class="gauge__fill" [ngStyle]="{background: setThresholdColour(OneCallweather.current.humidity)}"></div>
                         <div #gaugeHumidityCover class="gauge__cover">{{OneCallweather.current.humidity}}%</div>
                     </div>
+                </div>
+                <div class="gaugeThresholdsDiv">
+                    <span class="start">0</span>
+                    <span class="end">100</span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card widgetsCard pressure">
-        <div class="card-body">
-            <span>Pressure {{OneCallweather.current.pressure}}</span>
+    <!-- <div class="card widgetsCard pressure">
+        <div class="card-body widgetsCardBody">
+            <div class="widgetTitle">
+                <span>{{widgetNames.pressure}}</span>
+            </div>
+            <div class="widgetIconDiv">
+                <img [src]="'../../../assets/images/' + widgetNames.pressure + '.gif'" [alt]="widgetNames.pressure + 'Icon'">
+            </div>
+            <div class="widgetGaugeMeter">
+                <span>{{OneCallweather.current.pressure}} hPa</span>
+            </div>
         </div>
-    </div>
+    </div> -->
     <div class="card widgetsCard uvi">
-        <div class="card-body">
-            <span>UVI {{OneCallweather.current.uvi}}</span>
+        <div class="card-body widgetsCardBody">
+            <div class="widgetTitle">
+                <span>{{widgetNames.uv_index}}</span>
+            </div>
+            <div class="widgetIconDiv">
+                <img [src]="'../../../assets/images/' + widgetNames.uvi + '.gif'" [alt]="widgetNames.uvi + 'Icon'">
+            </div>
+            <div class="widgetGaugeMeter">
+                <div #gaugeUVI class="gauge">
+                    <div #gaugeUVIBody class="gauge__body">
+                        <div #gaugeUVIFill class="gauge__fill" [ngStyle]="{background: setUVIThresholdColour(OneCallweather.current.uvi)}"></div>
+                        <div #gaugeUVICover class="gauge__cover">{{OneCallweather.current.uvi}}</div>
+                    </div>
+                </div>
+                <div class="gaugeThresholdsDiv">
+                    <span class="start">0</span>
+                    <span class="end">8+</span>
+                </div>
+            </div>
         </div>
     </div>
     <div class="card widgetsCard clouds">
         <div class="card-body widgetsCardBody">
             <div class="widgetTitle">
-                <span>Cloudiness</span>
-                <!-- <img src="" alt="Cloud Icon"> -->
+                <span>{{widgetNames.cloudiness}}</span>
             </div>
-            <div class="widgetBody">
+            <div class="widgetIconDiv">
+                <img [src]="'../../../assets/images/' + widgetNames.cloudiness + '.gif'" [alt]="widgetNames.cloudiness + 'Icon'">
+            </div>
+            <div class="widgetGaugeMeter">
                 <div #gaugeCloud class="gauge">
                     <div #gaugeCloudBody class="gauge__body">
-                        <div #gaugeCloudFill class="gauge__fill"></div>
+                        <div #gaugeCloudFill class="gauge__fill" [ngStyle]="{background: setThresholdColour(OneCallweather.current.clouds)}"></div>
                         <div #gaugeCloudCover class="gauge__cover">{{OneCallweather.current.clouds}}%</div>
                     </div>
+                </div>
+                <div class="gaugeThresholdsDiv">
+                    <span class="start">0</span>
+                    <span class="end">100</span>
                 </div>
             </div>
         </div>
     </div>
     <div class="card widgetsCard wind">
-        <div class="card-body">
-            <span>Wind {{OneCallweather.current.wind_speed}}</span>
+        <div class="card-body widgetsCardBody">
+            <div class="widgetTitle">
+                <span>{{widgetNames.wind}}</span>
+            </div>
+            <div class="widgetIconDiv">
+                <img [src]="'../../../assets/images/' + widgetNames.wind + '.gif'" [alt]="widgetNames.wind + 'Icon'">
+            </div>
+            <div class="widgetGaugeMeter">
+                <div #gaugeWind class="gauge">
+                    <div #gaugeWindBody class="gauge__body">
+                        <div #gaugeWindFill class="gauge__fill" [ngStyle]="{background: setWindThresholdColour(OneCallweather.current.wind_speed)}"></div>
+                        <div #gaugeWindCover class="gauge__cover">{{OneCallweather.current.wind_speed}}<span class="widgetUnitDiv">m/hr</span></div>
+                    </div>
+                </div>
+                <div class="gaugeThresholdsDiv">
+                    <span class="start">0</span>
+                    <span class="end">73+</span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
