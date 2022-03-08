@@ -1715,7 +1715,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.gaugeUVICoverElement = value;
 
           if (this.OneCallweather && this.gaugeUVICoverElement) {
-            this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+            this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
           }
         }
       }, {
@@ -1734,7 +1734,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.gaugeWindCoverElement = value;
 
           if (this.OneCallweather && this.gaugeWindCoverElement) {
-            this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
+            this.setGaugeRoundedTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
           }
         }
       }, {
@@ -1750,9 +1750,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
             this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
-            this.setGaugeTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
+            this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
             this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
-            this.setGaugeTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
+            this.setGaugeRoundedTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
           }
         }
       }, {
@@ -1763,6 +1763,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "setGaugeTurnValue",
         value: function setGaugeTurnValue(value, fillElement) {
+          if (value <= 0 || value > 1) {
+            return;
+          }
+
+          this.renderer.setStyle(fillElement.nativeElement, 'transform', 'rotate(' + value / 2 + 'turn)'); // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
+        }
+      }, {
+        key: "setGaugeRoundedTurnValue",
+        value: function setGaugeRoundedTurnValue(value, fillElement) {
           var rounded = Math.round(value * 10) / 10;
           var rotateBy = rounded / 2;
 
@@ -1775,11 +1784,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           this.renderer.setStyle(fillElement.nativeElement, 'transform', 'rotate(' + rotateBy + 'turn)'); // this.renderer.createText(this.gaugeCoverElement.nativeElement, value);
-          // console.log("value = ", value);
-          // console.log("rounded = ", rounded);
-          // console.log("rotateBy = ", rotateBy);
-          // console.log("element.nativeElement = ", fillElement.nativeElement);
-          // console.log("------------------");
         }
       }, {
         key: "setThresholdColour",
