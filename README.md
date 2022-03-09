@@ -95,4 +95,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
             <li><code>npm i -D yargs dotenv</code></li>
         </ul>
     </li>
+    <li> Country Icons
+        <ul>
+            <li>https://www.countryflagsapi.com/</li>
+        </ul>
+    </li>
 </ol>
