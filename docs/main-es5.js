@@ -1300,7 +1300,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! src/app/Services/weather.service */
+    "./src/app/Services/weather.service.ts");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
@@ -1541,7 +1547,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "span", 34);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](85, "m/hr");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](85);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1589,7 +1595,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](20, _c12, ctx_r11.setThresholdColour(ctx_r11.OneCallweather.current.humidity)));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](21, _c12, ctx_r11.setThresholdColour(ctx_r11.OneCallweather.current.humidity)));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
@@ -1605,7 +1611,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](22, _c12, ctx_r11.setUVIThresholdColour(ctx_r11.OneCallweather.current.uvi)));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](23, _c12, ctx_r11.setUVIThresholdColour(ctx_r11.OneCallweather.current.uvi)));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
@@ -1621,7 +1627,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](24, _c12, ctx_r11.setThresholdColour(ctx_r11.OneCallweather.current.clouds)));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](25, _c12, ctx_r11.setThresholdColour(ctx_r11.OneCallweather.current.clouds)));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
@@ -1637,21 +1643,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](26, _c12, ctx_r11.setWindThresholdColour(ctx_r11.OneCallweather.current.wind_speed)));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngStyle", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](27, _c12, ctx_r11.setWindThresholdColour(ctx_r11.OneCallweather.current.wind_speed)));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.OneCallweather.current.wind_speed);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.windSpeedUnit);
       }
     }
 
     var WeatherWidgetsComponent =
     /*#__PURE__*/
     function () {
-      function WeatherWidgetsComponent(renderer) {
+      function WeatherWidgetsComponent(renderer, _weatherSrvc) {
         _classCallCheck(this, WeatherWidgetsComponent);
 
         this.renderer = renderer;
+        this._weatherSrvc = _weatherSrvc;
         this.widgetNames = {
           humidity: 'Humidity',
           pressure: 'Pressure',
@@ -1660,6 +1671,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           cloudiness: 'Cloudiness',
           wind: 'Wind'
         };
+        this.windSpeedUnit = '';
       }
 
       _createClass(WeatherWidgetsComponent, [{
@@ -1740,7 +1752,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          var _this7 = this;
+
+          this._weatherSrvc.getUnitType().subscribe(function (unitType) {
+            _this7.windSpeedUnit = unitType ? 'mi/hr' : 'm/s'; // unitType = true means Celcius (metric) unit.
+          });
+        }
       }, {
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {}
@@ -1854,7 +1872,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     WeatherWidgetsComponent.ɵfac = function WeatherWidgetsComponent_Factory(t) {
-      return new (t || WeatherWidgetsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]));
+      return new (t || WeatherWidgetsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_1__["WeatherService"]));
     };
 
     WeatherWidgetsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -1913,14 +1931,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       consts: [["class", "widgetsMainDiv", 4, "ngIf"], [1, "widgetsMainDiv"], [1, "card", "widgetsCard", "humidity"], [1, "card-body", "widgetsCardBody"], [1, "widgetTitle"], [1, "widgetIconDiv"], [3, "src", "alt"], [1, "widgetGaugeMeter"], [1, "gauge"], ["gaugeHumidity", ""], [1, "gauge__body"], ["gaugeHumidityBody", ""], [1, "gauge__fill", 3, "ngStyle"], ["gaugeHumidityFill", ""], [1, "gauge__cover"], ["gaugeHumidityCover", ""], [1, "gaugeThresholdsDiv"], [1, "start"], [1, "end"], [1, "card", "widgetsCard", "uvi"], ["gaugeUVI", ""], ["gaugeUVIBody", ""], ["gaugeUVIFill", ""], ["gaugeUVICover", ""], [1, "card", "widgetsCard", "clouds"], ["gaugeCloud", ""], ["gaugeCloudBody", ""], ["gaugeCloudFill", ""], ["gaugeCloudCover", ""], [1, "card", "widgetsCard", "wind"], ["gaugeWind", ""], ["gaugeWindBody", ""], ["gaugeWindFill", ""], ["gaugeWindCover", ""], [1, "widgetUnitDiv"]],
       template: function WeatherWidgetsComponent_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, WeatherWidgetsComponent_div_0_Template, 91, 28, "div", 0);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, WeatherWidgetsComponent_div_0_Template, 91, 29, "div", 0);
         }
 
         if (rf & 2) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.OneCallweather && ctx.OneCallweather != undefined);
         }
       },
-      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_1__["NgStyle"]],
+      directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["NgStyle"]],
       styles: [".widgetsMainDiv[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-evenly;\r\n    flex-wrap: wrap;\r\n    margin-top: 20px;\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%] {\r\n    width: 200px;\r\n    height: 200px;\r\n    border-radius: 30px;\r\n    margin: 40px 0px 5px 0px;\r\n    box-shadow: var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCard[_ngcontent-%COMP%]:hover {\r\n    box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -webkit-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n    -moz-box-shadow: var(--box-shadow3-white), var(--inside-box-shadow2);\r\n}\r\n\r\n.widgetsCardBody[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n}\r\n\r\n.widgetTitle[_ngcontent-%COMP%] {\r\n    text-align: center;\r\n    font-size: 20px;\r\n    margin-top: -8px;\r\n}\r\n\r\n.widgetIconDiv[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    height: 30%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    margin: 5px 0px 5px;\r\n}\r\n\r\n.widgetIconDiv[_ngcontent-%COMP%]   img[_ngcontent-%COMP%] {\r\n    width: 60px;\r\n    height: 60px;\r\n}\r\n\r\n.widgetGaugeMeter[_ngcontent-%COMP%] {\r\n    margin: auto;\r\n    padding: 5px 5px 4px;\r\n    \r\n    width: 130px;\r\n}\r\n\r\n.gauge[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    max-width: 150px;\r\n    \r\n    font-size: 18px;\r\n    color: #004033;\r\n}\r\n\r\n.gauge__body[_ngcontent-%COMP%] {\r\n    width: 100%;\r\n    height: 0;\r\n    padding-bottom: 50%;\r\n    background: #b4c0be;\r\n    position: relative;\r\n    border-top-left-radius: 100% 200%;\r\n    border-top-right-radius: 100% 200%;\r\n    overflow: hidden;\r\n}\r\n\r\n.gauge__fill[_ngcontent-%COMP%] {\r\n    position: absolute;\r\n    top: 100%;\r\n    left: 0;\r\n    width: inherit;\r\n    height: 100%;\r\n    \r\n    transform-origin: center top;\r\n    transform: rotate(0.25turn);\r\n    transition: transform 0.2s ease-out;\r\n}\r\n\r\n.gauge__cover[_ngcontent-%COMP%] {\r\n    width: 75%;\r\n    height: 150%;\r\n    background: #ffffff;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n    top: 25%;\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    \r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    padding-bottom: 25%;\r\n    box-sizing: border-box;\r\n}\r\n\r\n.gaugeThresholdsDiv[_ngcontent-%COMP%] {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    margin-right: -8px;\r\n}\r\n\r\n.widgetUnitDiv[_ngcontent-%COMP%] {\r\n    font-size: 16px;\r\n    margin-left: 2px;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvQ29tcG9uZW50cy93ZWF0aGVyLXdpZGdldHMvd2VhdGhlci13aWRnZXRzLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxXQUFXO0lBQ1gsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQiw2QkFBNkI7SUFDN0IsZUFBZTtJQUNmLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLFlBQVk7SUFDWixhQUFhO0lBQ2IsbUJBQW1CO0lBQ25CLHdCQUF3QjtJQUN4QixxQ0FBcUM7SUFDckMsNkNBQTZDO0lBQzdDLDBDQUEwQztBQUM5Qzs7QUFFQTtJQUNJLCtEQUErRDtJQUMvRCx1RUFBdUU7SUFDdkUsb0VBQW9FO0FBQ3hFOztBQUVBO0lBQ0ksV0FBVztBQUNmOztBQUVBO0lBQ0ksa0JBQWtCO0lBQ2xCLGVBQWU7SUFDZixnQkFBZ0I7QUFDcEI7O0FBRUE7SUFDSSxXQUFXO0lBQ1gsV0FBVztJQUNYLGFBQWE7SUFDYix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLG1CQUFtQjtBQUN2Qjs7QUFFQTtJQUNJLFdBQVc7SUFDWCxZQUFZO0FBQ2hCOztBQUVBO0lBQ0ksWUFBWTtJQUNaLG9CQUFvQjtJQUNwQixrQkFBa0I7SUFDbEIsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLFdBQVc7SUFDWCxnQkFBZ0I7SUFDaEIsdUNBQXVDO0lBQ3ZDLGVBQWU7SUFDZixjQUFjO0FBQ2xCOztBQUVBO0lBQ0ksV0FBVztJQUNYLFNBQVM7SUFDVCxtQkFBbUI7SUFDbkIsbUJBQW1CO0lBQ25CLGtCQUFrQjtJQUNsQixpQ0FBaUM7SUFDakMsa0NBQWtDO0lBQ2xDLGdCQUFnQjtBQUNwQjs7QUFFQTtJQUNJLGtCQUFrQjtJQUNsQixTQUFTO0lBQ1QsT0FBTztJQUNQLGNBQWM7SUFDZCxZQUFZO0lBQ1oseUJBQXlCO0lBQ3pCLDRCQUE0QjtJQUM1QiwyQkFBMkI7SUFDM0IsbUNBQW1DO0FBQ3ZDOztBQUVBO0lBQ0ksVUFBVTtJQUNWLFlBQVk7SUFDWixtQkFBbUI7SUFDbkIsa0JBQWtCO0lBQ2xCLGtCQUFrQjtJQUNsQixRQUFRO0lBQ1IsU0FBUztJQUNULDJCQUEyQjtJQUMzQixTQUFTO0lBQ1QsYUFBYTtJQUNiLG1CQUFtQjtJQUNuQix1QkFBdUI7SUFDdkIsbUJBQW1CO0lBQ25CLHNCQUFzQjtBQUMxQjs7QUFFQTtJQUNJLGFBQWE7SUFDYiw4QkFBOEI7SUFDOUIsa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksZUFBZTtJQUNmLGdCQUFnQjtBQUNwQiIsImZpbGUiOiJzcmMvYXBwL0NvbXBvbmVudHMvd2VhdGhlci13aWRnZXRzL3dlYXRoZXItd2lkZ2V0cy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndpZGdldHNNYWluRGl2IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWV2ZW5seTtcclxuICAgIGZsZXgtd3JhcDogd3JhcDtcclxuICAgIG1hcmdpbi10b3A6IDIwcHg7XHJcbn1cclxuXHJcbi53aWRnZXRzQ2FyZCB7XHJcbiAgICB3aWR0aDogMjAwcHg7XHJcbiAgICBoZWlnaHQ6IDIwMHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMzBweDtcclxuICAgIG1hcmdpbjogNDBweCAwcHggNXB4IDBweDtcclxuICAgIGJveC1zaGFkb3c6IHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtbW96LWJveC1zaGFkb3c6IHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbn1cclxuXHJcbi53aWRnZXRzQ2FyZDpob3ZlciB7XHJcbiAgICBib3gtc2hhZG93OiB2YXIoLS1ib3gtc2hhZG93My13aGl0ZSksIHZhcigtLWluc2lkZS1ib3gtc2hhZG93Mik7XHJcbiAgICAtd2Via2l0LWJveC1zaGFkb3c6IHZhcigtLWJveC1zaGFkb3czLXdoaXRlKSwgdmFyKC0taW5zaWRlLWJveC1zaGFkb3cyKTtcclxuICAgIC1tb3otYm94LXNoYWRvdzogdmFyKC0tYm94LXNoYWRvdzMtd2hpdGUpLCB2YXIoLS1pbnNpZGUtYm94LXNoYWRvdzIpO1xyXG59XHJcblxyXG4ud2lkZ2V0c0NhcmRCb2R5IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4ud2lkZ2V0VGl0bGUge1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1zaXplOiAyMHB4O1xyXG4gICAgbWFyZ2luLXRvcDogLThweDtcclxufVxyXG5cclxuLndpZGdldEljb25EaXYge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDMwJTtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBtYXJnaW46IDVweCAwcHggNXB4O1xyXG59XHJcblxyXG4ud2lkZ2V0SWNvbkRpdiBpbWcge1xyXG4gICAgd2lkdGg6IDYwcHg7XHJcbiAgICBoZWlnaHQ6IDYwcHg7XHJcbn1cclxuXHJcbi53aWRnZXRHYXVnZU1ldGVyIHtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIHBhZGRpbmc6IDVweCA1cHggNHB4O1xyXG4gICAgLyogaGVpZ2h0OiA0MHB4OyAqL1xyXG4gICAgd2lkdGg6IDEzMHB4O1xyXG59XHJcblxyXG4uZ2F1Z2Uge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBtYXgtd2lkdGg6IDE1MHB4O1xyXG4gICAgLyogZm9udC1mYW1pbHk6IFwiUm9ib3RvXCIsIHNhbnMtc2VyaWY7ICovXHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICBjb2xvcjogIzAwNDAzMztcclxufVxyXG5cclxuLmdhdWdlX19ib2R5IHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgaGVpZ2h0OiAwO1xyXG4gICAgcGFkZGluZy1ib3R0b206IDUwJTtcclxuICAgIGJhY2tncm91bmQ6ICNiNGMwYmU7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiAxMDAlIDIwMCU7XHJcbiAgICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogMTAwJSAyMDAlO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxufVxyXG5cclxuLmdhdWdlX19maWxsIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMTAwJTtcclxuICAgIGxlZnQ6IDA7XHJcbiAgICB3aWR0aDogaW5oZXJpdDtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIC8qIGJhY2tncm91bmQ6ICM3YTVhZWM7ICovXHJcbiAgICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXIgdG9wO1xyXG4gICAgdHJhbnNmb3JtOiByb3RhdGUoMC4yNXR1cm4pO1xyXG4gICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuMnMgZWFzZS1vdXQ7XHJcbn1cclxuXHJcbi5nYXVnZV9fY292ZXIge1xyXG4gICAgd2lkdGg6IDc1JTtcclxuICAgIGhlaWdodDogMTUwJTtcclxuICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDI1JTtcclxuICAgIGxlZnQ6IDUwJTtcclxuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcclxuICAgIC8qIFRleHQgKi9cclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMjUlO1xyXG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxufVxyXG5cclxuLmdhdWdlVGhyZXNob2xkc0RpdiB7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAtOHB4O1xyXG59XHJcblxyXG4ud2lkZ2V0VW5pdERpdiB7XHJcbiAgICBmb250LXNpemU6IDE2cHg7XHJcbiAgICBtYXJnaW4tbGVmdDogMnB4O1xyXG59Il19 */"]
     });
     /*@__PURE__*/
@@ -1936,6 +1954,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }], function () {
         return [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]
+        }, {
+          type: src_app_Services_weather_service__WEBPACK_IMPORTED_MODULE_1__["WeatherService"]
         }];
       }, {
         gaugeHumidityEl: [{
@@ -2512,7 +2532,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
     var AppComponent = function AppComponent(_weatherService, spinner) {
-      var _this7 = this;
+      var _this8 = this;
 
       _classCallCheck(this, AppComponent);
 
@@ -2522,9 +2542,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       this._weatherService.getShowSpinner().subscribe(function (showSpinner) {
         if (showSpinner) {
-          _this7.spinner.show();
+          _this8.spinner.show();
         } else {
-          _this7.spinner.hide();
+          _this8.spinner.hide();
         }
       });
     };
