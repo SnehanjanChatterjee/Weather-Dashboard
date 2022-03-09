@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeatherModel } from 'src/app/Models/weather.models';
+import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
   selector: 'app-weather-widgets',
@@ -9,7 +10,7 @@ import { CurrentWeatherModel } from 'src/app/Models/weather.models';
 })
 export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
-  constructor(private renderer: Renderer2) { }
+  constructor(private renderer: Renderer2, private _weatherSrvc: WeatherService) { }
 
   OneCallweather: OneAPICallModel;
   currentWeather: CurrentWeatherModel;
@@ -38,6 +39,8 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
     cloudiness: 'Cloudiness',
     wind: 'Wind'
   }
+
+  windSpeedUnit = '';
 
   @ViewChild('gaugeHumidity') set gaugeHumidityEl(value: ElementRef) {
     this.gaugeHumidityElement = value;
@@ -92,6 +95,9 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   };
 
   ngOnInit(): void {
+    this._weatherSrvc.getUnitType().subscribe((unitType: boolean) => {
+      this.windSpeedUnit = unitType ? 'mi/hr' : 'm/s'; // unitType = true means Celcius (metric) unit.
+    });
   }
 
   ngAfterViewInit(): void {
