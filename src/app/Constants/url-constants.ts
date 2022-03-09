@@ -14,3 +14,11 @@ export const Api = {
 export const FlagURUL = 'https://www.countryflags.io/';
 export const FlagType = "/shiny";
 export const FlagSize = "/64.png";
+
+// https://www.countryflagsapi.com/
+export const ContryFlagsAPI_URL = 'https://countryflagsapi.com/';
+export const ContryFlagsAPI_FILE_TYPE = {
+    PNG: 'png/',
+    SVG: 'svg/'
+};
+// export const ContryFlagsAPI_CODE = "/64.png";
