@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CurrentWeatherModel } from 'src/app/Models/weather.models';
 import { WeatherService } from 'src/app/Services/weather.service';
 import { switchMap } from 'rxjs/operators';
@@ -37,15 +37,16 @@ export class MainComponent implements OnInit {
     progressAnimation: 'increasing',
     toastClass: 'ngx-toastr',
     positionClass: 'toast-top-right',
-    titleClass:	'toast-title',
+    titleClass: 'toast-title',
     messageClass: 'toast-message',
     tapToDismiss: true,
     onActivateTick: false,
     preventDuplicates: true,
     iconClasses: IconClasses
   }
+  @ViewChild("myinput") myInputField: ElementRef;
 
-  constructor(private _weatherService: WeatherService, private spinner: NgxSpinnerService, private toastr: ToastrService) { 
+  constructor(private _weatherService: WeatherService, private spinner: NgxSpinnerService, private toastr: ToastrService) {
     if (this.cityName === '' || this.cityName === null) {
       this.getLocationByHTMLNavigator();
     }
@@ -57,35 +58,35 @@ export class MainComponent implements OnInit {
   getCurrentWeatherByCityName() {
 
     this._weatherService.setShowSpinner(true);
-    
+
     this._weatherService.loadCurrentWeatherByCityName(this.cityName).pipe(
-    switchMap(data => {
-      this.currentWeatherData = data;
-      // console.log("In main currentWeatherData = \n", this.currentWeatherData);
-      // console.log("In main excludes =", this.excludes);
-      return this._weatherService.loadOneAPICallDataByCurrentData(data, this.excludes);
-    }))
-    .subscribe(
-      responseWeatherData => {
-        window.setTimeout(() => {
-          this.singleCallWeatherData = responseWeatherData;
-          // console.log("In main.ts this.singleCallWeatherData = \n", this.singleCallWeatherData);
+      switchMap(data => {
+        this.currentWeatherData = data;
+        // console.log("In main currentWeatherData = \n", this.currentWeatherData);
+        // console.log("In main excludes =", this.excludes);
+        return this._weatherService.loadOneAPICallDataByCurrentData(data, this.excludes);
+      }))
+      .subscribe(
+        responseWeatherData => {
+          window.setTimeout(() => {
+            this.singleCallWeatherData = responseWeatherData;
+            // console.log("In main.ts this.singleCallWeatherData = \n", this.singleCallWeatherData);
+            this._weatherService.setShowSpinner(false);
+            this.errorMessage = 'Showing weather data for ' + TitleCase(this.cityName);
+            this.showToastMessage(this.errorMessage, ToastMessageType.SUCCESS);
+          }, 2000);
+        },
+        responseWeatherError => {
+          // console.log("responseWeatherError = ", responseWeatherError);
+          this.singleCallWeatherData = null;
           this._weatherService.setShowSpinner(false);
-          this.errorMessage = 'Showing weather data for ' + TitleCase(this.cityName);
-          this.showToastMessage(this.errorMessage, ToastMessageType.SUCCESS);
-        }, 2000);
-      },
-      responseWeatherError => {
-        // console.log("responseWeatherError = ", responseWeatherError);
-        this.singleCallWeatherData = null;
-        this._weatherService.setShowSpinner(false);
-        this.errorMessage = (this.cityName === '' || this.cityName === null) ? 'Please enter city name' : 'Incorrect city name';
-        this.showToastMessage(this.errorMessage, ToastMessageType.ERROR);
-      },
-      () => {
-        // console.log('getCurrentWeatherByCityName Completed');
-      }
-    );
+          this.errorMessage = (this.cityName === '' || this.cityName === null) ? 'Please enter city name' : 'Incorrect city name';
+          this.showToastMessage(this.errorMessage, ToastMessageType.ERROR);
+        },
+        () => {
+          // console.log('getCurrentWeatherByCityName Completed');
+        }
+      );
   }
 
   updateDataOnSwitchSelection(data: any) {
@@ -121,7 +122,7 @@ export class MainComponent implements OnInit {
             break;
         }
       }
-    );
+      );
     } else {
       this.htmlGeolocationMessage = 'Geolocation is not supported by this browser.';
       this.showToastMessage(this.htmlGeolocationMessage, ToastMessageType.WARNING);
@@ -154,11 +155,16 @@ export class MainComponent implements OnInit {
   showToastMessage(message: string, errorType: string) {
     if (errorType === ToastMessageType.ERROR) {
       this.toastr.error(message, ToastMessageType.ERROR, this.toastMessageObject);
-    } else if (errorType === ToastMessageType.SUCCESS){
+    } else if (errorType === ToastMessageType.SUCCESS) {
       this.toastr.success(message, ToastMessageType.SUCCESS, this.toastMessageObject);
-    } else if (errorType === ToastMessageType.WARNING){
+    } else if (errorType === ToastMessageType.WARNING) {
       this.toastr.success(message, ToastMessageType.WARNING, this.toastMessageObject);
     }
+  }
+
+  clearInputField() {
+    this.cityName = '';
+    this.myInputField.nativeElement.focus();
   }
 
 }

@@ -19,8 +19,8 @@
                             </span>
                             <input type="text" class="form-control" placeholder="Enter City Name" aria-label="Username"
                                 aria-describedby="basic-addon1" [(ngModel)]="cityName"
-                                (keyup.enter)="getCurrentWeatherByCityName()" (keydown)="onKeyDown()">
-                            <span *ngIf="cityName" class="input-group-text" id="basic-addon1" (click)="cityName=''"><i
+                                (keyup.enter)="getCurrentWeatherByCityName()" (keydown)="onKeyDown()" #myinput>
+                            <span *ngIf="cityName" class="input-group-text" id="basic-addon1" (click)="clearInputField()"><i
                                     class="fa fa-times"></i></span>
                         </div>
                     </div>
