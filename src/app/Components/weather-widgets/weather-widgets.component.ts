@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { CurrentWeatherModel } from 'src/app/Models/weather.models';
 import { WeatherService } from 'src/app/Services/weather.service';
@@ -6,11 +6,12 @@ import { WeatherService } from 'src/app/Services/weather.service';
 @Component({
   selector: 'app-weather-widgets',
   templateUrl: './weather-widgets.component.html',
-  styleUrls: ['./weather-widgets.component.css']
+  styleUrls: ['./weather-widgets.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
-  constructor(private renderer: Renderer2, private _weatherSrvc: WeatherService) { }
+  constructor(private renderer: Renderer2, private _weatherSrvc: WeatherService, private _changeDetectorRef: ChangeDetectorRef) { }
 
   OneCallweather: OneAPICallModel;
   currentWeather: CurrentWeatherModel;
@@ -105,6 +106,7 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
   @Input() set weatherData(weather: OneAPICallModel) {
     this.OneCallweather = weather;
+    this._changeDetectorRef.markForCheck();
     if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
       this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
       this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
@@ -115,6 +117,7 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
   @Input() set currentWeatherData(weather: CurrentWeatherModel) {
     this.currentWeather = weather;
+    this._changeDetectorRef.markForCheck();
   }
 
   setGaugeTurnValue(value: number, fillElement: ElementRef) {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { switchMap } from 'rxjs/operators';
 import { ContryFlagsAPI_FILE_TYPE, ContryFlagsAPI_URL, FlagSize, FlagType, FlagURUL, IconUrl } from 'src/app/Constants/url-constants';
 import { CELCIUS, FAHRENHEIT } from 'src/app/Constants/weather-dashboard-constants';
@@ -11,11 +11,12 @@ import * as i18nIsoCountries from 'i18n-iso-countries';
 @Component({
   selector: 'app-lhscontents',
   templateUrl: './lhscontents.component.html',
-  styleUrls: ['./lhscontents.component.css']
+  styleUrls: ['./lhscontents.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LHSContentsComponent implements OnInit {
 
-  constructor(private _weatherService: WeatherService) { }
+  constructor(private _weatherService: WeatherService, private _changeDetectorRef: ChangeDetectorRef) { }
 
   cityName: string = '';
   countryName: string = '';
@@ -39,6 +40,7 @@ export class LHSContentsComponent implements OnInit {
   @Input()
   set singleCallWeatherData(data: OneAPICallModel) {
     this.OneCallLocationWeatherData = data;
+    this._changeDetectorRef.markForCheck();
     if(this.OneCallLocationWeatherData) {
 
       this.iconurl = IconUrl + this.OneCallLocationWeatherData.current.weather[0].icon + '@4x.png';
@@ -72,6 +74,7 @@ export class LHSContentsComponent implements OnInit {
   @Input()
   set weatherData(data: CurrentWeatherModel) {
     this.locationWeatherData = data;
+    this._changeDetectorRef.markForCheck();
     // if (this.locationWeatherData && this.locationWeatherData.name) {
     //   this.cityName = this.locationWeatherData.name;
     // }
