@@ -154,9 +154,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         set: function set(data) {
           var _this2 = this;
 
-          this.chartweatherData = data;
-
-          this._changeDetectorRef.markForCheck();
+          this.chartweatherData = data; // this._changeDetectorRef.markForCheck();
 
           if (this.chartweatherData && this.chartweatherData.daily && this.chartweatherData.daily.length > 0) {
             // console.log("In daily-chart ", this.chartweatherData);
@@ -663,9 +661,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _createClass(LHSContentsComponent, [{
         key: "singleCallWeatherData",
         set: function set(data) {
-          this.OneCallLocationWeatherData = data;
-
-          this._changeDetectorRef.markForCheck();
+          this.OneCallLocationWeatherData = data; // this._changeDetectorRef.markForCheck();
 
           if (this.OneCallLocationWeatherData) {
             this.iconurl = src_app_Constants_url_constants__WEBPACK_IMPORTED_MODULE_2__["IconUrl"] + this.OneCallLocationWeatherData.current.weather[0].icon + '@4x.png';
@@ -699,12 +695,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "weatherData",
         set: function set(data) {
-          this.locationWeatherData = data;
-
-          this._changeDetectorRef.markForCheck(); // if (this.locationWeatherData && this.locationWeatherData.name) {
+          this.locationWeatherData = data; // this._changeDetectorRef.markForCheck();
+          // if (this.locationWeatherData && this.locationWeatherData.name) {
           //   this.cityName = this.locationWeatherData.name;
           // }
-
         }
       }, {
         key: "excludesArray",
@@ -1807,9 +1801,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "weatherData",
         set: function set(weather) {
-          this.OneCallweather = weather;
-
-          this._changeDetectorRef.markForCheck();
+          this.OneCallweather = weather; // this._changeDetectorRef.markForCheck();
 
           if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
             this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
@@ -1821,9 +1813,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "currentWeatherData",
         set: function set(weather) {
-          this.currentWeather = weather;
-
-          this._changeDetectorRef.markForCheck();
+          this.currentWeather = weather; // this._changeDetectorRef.markForCheck();
         }
       }, {
         key: "setGaugeTurnValue",
