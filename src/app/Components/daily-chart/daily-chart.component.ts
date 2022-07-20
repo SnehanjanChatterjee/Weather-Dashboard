@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { EChartOption } from 'echarts';
 import { min } from 'rxjs/operators';
 import { DAYS } from 'src/app/Constants/weather-dashboard-constants';
@@ -10,7 +10,8 @@ import { WeatherService } from 'src/app/Services/weather.service';
 @Component({
   selector: 'app-daily-chart',
   templateUrl: './daily-chart.component.html',
-  styleUrls: ['./daily-chart.component.css']
+  styleUrls: ['./daily-chart.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DailyChartComponent implements OnInit {
 
@@ -24,7 +25,7 @@ export class DailyChartComponent implements OnInit {
   unitTypeValue: string;
   theme: string = 'light';
 
-  constructor(private _weatherService: WeatherService, private datePipe: DatePipe) { }
+  constructor(private _weatherService: WeatherService, private datePipe: DatePipe, private _changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this._weatherService.getUnitType().subscribe((res: any) => {  
@@ -37,6 +38,7 @@ export class DailyChartComponent implements OnInit {
   @Input()
   set weatherData(data: OneAPICallModel) {
     this.chartweatherData = data;
+    this._changeDetectorRef.markForCheck();
     if (this.chartweatherData && this.chartweatherData.daily && this.chartweatherData.daily.length > 0) {
       // console.log("In daily-chart ", this.chartweatherData);
       this.xAxisData = [];

@@ -20,12 +20,14 @@
                             <input type="text" class="form-control" placeholder="Enter City Name" aria-label="Username"
                                 aria-describedby="basic-addon1" [(ngModel)]="cityName"
                                 (keyup.enter)="getCurrentWeatherByCityName()" (keydown)="onKeyDown()" #myinput>
-                            <span *ngIf="cityName" class="input-group-text" id="basic-addon1" (click)="clearInputField()"><i class="fa fa-times"></i></span>
+                            <span *ngIf="cityName" class="input-group-text" id="basic-addon1"
+                                (click)="clearInputField()"><i class="fa fa-times"></i></span>
                         </div>
                     </div>
                 </div>
                 <app-daily-chart [weatherData]="singleCallWeatherData" [cityName]="cityName"></app-daily-chart>
-                <app-weather-widgets [currentWeatherData]="currentWeatherData" [weatherData]="singleCallWeatherData"></app-weather-widgets>
+                <app-weather-widgets [currentWeatherData]="currentWeatherData" [weatherData]="singleCallWeatherData">
+                </app-weather-widgets>
             </div>
         </div>
     </div>

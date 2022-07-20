@@ -10,7 +10,8 @@
             <div class="widgetGaugeMeter">
                 <div #gaugeHumidity class="gauge">
                     <div #gaugeHumidityBody class="gauge__body">
-                        <div #gaugeHumidityFill class="gauge__fill" [ngStyle]="{background: setThresholdColour(OneCallweather.current.humidity)}"></div>
+                        <div #gaugeHumidityFill class="gauge__fill"
+                            [ngStyle]="{background: setThresholdColour(OneCallweather.current.humidity)}"></div>
                         <div #gaugeHumidityCover class="gauge__cover">{{OneCallweather.current.humidity}}%</div>
                     </div>
                 </div>
@@ -45,7 +46,8 @@
             <div class="widgetGaugeMeter">
                 <div #gaugeUVI class="gauge">
                     <div #gaugeUVIBody class="gauge__body">
-                        <div #gaugeUVIFill class="gauge__fill" [ngStyle]="{background: setUVIThresholdColour(OneCallweather.current.uvi)}"></div>
+                        <div #gaugeUVIFill class="gauge__fill"
+                            [ngStyle]="{background: setUVIThresholdColour(OneCallweather.current.uvi)}"></div>
                         <div #gaugeUVICover class="gauge__cover">{{OneCallweather.current.uvi}}</div>
                     </div>
                 </div>
@@ -67,7 +69,8 @@
             <div class="widgetGaugeMeter">
                 <div #gaugeCloud class="gauge">
                     <div #gaugeCloudBody class="gauge__body">
-                        <div #gaugeCloudFill class="gauge__fill" [ngStyle]="{background: setThresholdColour(OneCallweather.current.clouds)}"></div>
+                        <div #gaugeCloudFill class="gauge__fill"
+                            [ngStyle]="{background: setThresholdColour(OneCallweather.current.clouds)}"></div>
                         <div #gaugeCloudCover class="gauge__cover">{{OneCallweather.current.clouds}}%</div>
                     </div>
                 </div>
@@ -89,8 +92,10 @@
             <div class="widgetGaugeMeter">
                 <div #gaugeWind class="gauge">
                     <div #gaugeWindBody class="gauge__body">
-                        <div #gaugeWindFill class="gauge__fill" [ngStyle]="{background: setWindThresholdColour(OneCallweather.current.wind_speed)}"></div>
-                        <div #gaugeWindCover class="gauge__cover">{{OneCallweather.current.wind_speed}}<span class="widgetUnitDiv">{{windSpeedUnit}}</span></div>
+                        <div #gaugeWindFill class="gauge__fill"
+                            [ngStyle]="{background: setWindThresholdColour(OneCallweather.current.wind_speed)}"></div>
+                        <div #gaugeWindCover class="gauge__cover">{{OneCallweather.current.wind_speed}}<span
+                                class="widgetUnitDiv">{{windSpeedUnit}}</span></div>
                     </div>
                 </div>
                 <div class="gaugeThresholdsDiv">
