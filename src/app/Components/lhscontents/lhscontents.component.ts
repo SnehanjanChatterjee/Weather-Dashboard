@@ -40,7 +40,7 @@ export class LHSContentsComponent implements OnInit {
   @Input()
   set singleCallWeatherData(data: OneAPICallModel) {
     this.OneCallLocationWeatherData = data;
-    this._changeDetectorRef.markForCheck();
+    // this._changeDetectorRef.markForCheck();
     if(this.OneCallLocationWeatherData) {
 
       this.iconurl = IconUrl + this.OneCallLocationWeatherData.current.weather[0].icon + '@4x.png';
@@ -74,7 +74,7 @@ export class LHSContentsComponent implements OnInit {
   @Input()
   set weatherData(data: CurrentWeatherModel) {
     this.locationWeatherData = data;
-    this._changeDetectorRef.markForCheck();
+    // this._changeDetectorRef.markForCheck();
     // if (this.locationWeatherData && this.locationWeatherData.name) {
     //   this.cityName = this.locationWeatherData.name;
     // }

@@ -106,7 +106,7 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
   @Input() set weatherData(weather: OneAPICallModel) {
     this.OneCallweather = weather;
-    this._changeDetectorRef.markForCheck();
+    // this._changeDetectorRef.markForCheck();
     if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
       this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
       this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
@@ -117,7 +117,7 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
   @Input() set currentWeatherData(weather: CurrentWeatherModel) {
     this.currentWeather = weather;
-    this._changeDetectorRef.markForCheck();
+    // this._changeDetectorRef.markForCheck();
   }
 
   setGaugeTurnValue(value: number, fillElement: ElementRef) {

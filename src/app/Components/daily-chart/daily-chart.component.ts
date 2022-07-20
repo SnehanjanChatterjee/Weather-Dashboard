@@ -38,7 +38,7 @@ export class DailyChartComponent implements OnInit {
   @Input()
   set weatherData(data: OneAPICallModel) {
     this.chartweatherData = data;
-    this._changeDetectorRef.markForCheck();
+    // this._changeDetectorRef.markForCheck();
     if (this.chartweatherData && this.chartweatherData.daily && this.chartweatherData.daily.length > 0) {
       // console.log("In daily-chart ", this.chartweatherData);
       this.xAxisData = [];

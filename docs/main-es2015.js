@@ -76,7 +76,7 @@ class DailyChartComponent {
     }
     set weatherData(data) {
         this.chartweatherData = data;
-        this._changeDetectorRef.markForCheck();
+        // this._changeDetectorRef.markForCheck();
         if (this.chartweatherData && this.chartweatherData.daily && this.chartweatherData.daily.length > 0) {
             // console.log("In daily-chart ", this.chartweatherData);
             this.xAxisData = [];
@@ -344,7 +344,7 @@ class LHSContentsComponent {
     }
     set singleCallWeatherData(data) {
         this.OneCallLocationWeatherData = data;
-        this._changeDetectorRef.markForCheck();
+        // this._changeDetectorRef.markForCheck();
         if (this.OneCallLocationWeatherData) {
             this.iconurl = src_app_Constants_url_constants__WEBPACK_IMPORTED_MODULE_2__["IconUrl"] + this.OneCallLocationWeatherData.current.weather[0].icon + '@4x.png';
             this.currentDatetime = Object(src_app_Services_weather_helper__WEBPACK_IMPORTED_MODULE_4__["LocalDateTime"])(this.OneCallLocationWeatherData.timezone_offset);
@@ -370,7 +370,7 @@ class LHSContentsComponent {
     }
     set weatherData(data) {
         this.locationWeatherData = data;
-        this._changeDetectorRef.markForCheck();
+        // this._changeDetectorRef.markForCheck();
         // if (this.locationWeatherData && this.locationWeatherData.name) {
         //   this.cityName = this.locationWeatherData.name;
         // }
@@ -975,7 +975,7 @@ class WeatherWidgetsComponent {
     }
     set weatherData(weather) {
         this.OneCallweather = weather;
-        this._changeDetectorRef.markForCheck();
+        // this._changeDetectorRef.markForCheck();
         if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
             this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
             this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
@@ -985,7 +985,7 @@ class WeatherWidgetsComponent {
     }
     set currentWeatherData(weather) {
         this.currentWeather = weather;
-        this._changeDetectorRef.markForCheck();
+        // this._changeDetectorRef.markForCheck();
     }
     setGaugeTurnValue(value, fillElement) {
         if (value <= 0 || value > 1) {
