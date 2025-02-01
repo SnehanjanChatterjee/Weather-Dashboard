@@ -1,10 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { EChartOption } from 'echarts';
-import { min } from 'rxjs/operators';
-import { DAYS } from 'src/app/Constants/weather-dashboard-constants';
+import { EChartsOption } from 'echarts';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
-import { LocalDateTime, LocalDateTimeByUnixTimestamp, TitleCase } from 'src/app/Services/weather-helper';
+import { LocalDateTimeByUnixTimestamp, TitleCase } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
@@ -15,53 +13,54 @@ import { WeatherService } from 'src/app/Services/weather.service';
 })
 export class DailyChartComponent implements OnInit {
 
-  chartweatherData: OneAPICallModel;
-  eChartOptions: EChartOption;
-  xAxisData: string[] = [];
-  seriesData1: number[] = [];
-  seriesData2: number[] = [];
-  minYAxisValue: number = 0;
-  maxYAxisValue: number = 0;
-  unitTypeValue: string;
-  theme: string = 'light';
-
+  // tslint:disable-next-line:variable-name
   constructor(private _weatherService: WeatherService, private datePipe: DatePipe, private _changeDetectorRef: ChangeDetectorRef) { }
-
-  ngOnInit(): void {
-    this._weatherService.getUnitType().subscribe((res: any) => {  
-      this.unitTypeValue = (res) ? '°F' : '°C';
-    })
-  }
-
-  @Input() cityName: string;
 
   @Input()
   set weatherData(data: OneAPICallModel) {
-    this.chartweatherData = data;
+    this.chartWeatherData = data;
     // this._changeDetectorRef.markForCheck();
-    if (this.chartweatherData && this.chartweatherData.daily && this.chartweatherData.daily.length > 0) {
-      // console.log("In daily-chart ", this.chartweatherData);
+    if (this.chartWeatherData && this.chartWeatherData.daily && this.chartWeatherData.daily.length > 0) {
+      // console.log("In daily-chart ", this.chartWeatherData);
       this.xAxisData = [];
       this.seriesData1 = [];
       this.seriesData2 = [];
-      this.chartweatherData.daily.forEach(element => {
-        
-        let newDateTime = LocalDateTimeByUnixTimestamp(element.dt, this.chartweatherData.timezone_offset);
+
+      this.chartWeatherData.daily.forEach(element => {
+        const newDateTime = LocalDateTimeByUnixTimestamp(element.dt, this.chartWeatherData.timezone_offset);
         // let dayOfWeek = DAYS.filter(day => day.id === newDateTime.getDay())[0].day;
-        let xAxisArrayValue = this.datePipe.transform(newDateTime, 'dd/MM');
+        const xAxisArrayValue = this.datePipe.transform(newDateTime, 'dd/MM');
         this.xAxisData.push(xAxisArrayValue);
 
         this.seriesData1.push(element.temp.min);
         this.seriesData2.push(element.temp.max);
       });
-      
-      let min_value = Math.min(Math.min(...this.seriesData1), Math.min(...this.seriesData2));
-      let max_value = Math.max(Math.max(...this.seriesData1), Math.max(...this.seriesData2));
-      this.minYAxisValue = Math.floor(min_value / 10) * 10;
-      this.maxYAxisValue = Math.ceil(max_value / 10) * 10;
+
+      const minValue = Math.min(Math.min(...this.seriesData1), Math.min(...this.seriesData2));
+      const maxValue = Math.max(Math.max(...this.seriesData1), Math.max(...this.seriesData2));
+      this.minYAxisValue = Math.floor(minValue / 10) * 10;
+      this.maxYAxisValue = Math.ceil(maxValue / 10) * 10;
 
       this.smoothLineChart();
     }
+  }
+
+  chartWeatherData: OneAPICallModel;
+  eChartOptions: EChartsOption;
+  xAxisData: string[] = [];
+  seriesData1: number[] = [];
+  seriesData2: number[] = [];
+  minYAxisValue = 0;
+  maxYAxisValue = 0;
+  unitTypeValue: string;
+  theme = 'light';
+
+  @Input() cityName: string;
+
+  ngOnInit(): void {
+    this._weatherService.getUnitType().subscribe((res: any) => {
+      this.unitTypeValue = (res) ? '°F' : '°C';
+    });
   }
 
   smoothLineChart() {
