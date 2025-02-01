@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "Weather-Dashboard"
+  "defaultProject": "Weather-Dashboard",
+  "cli": {
+    "analytics": false
+  }
 }
