@@ -3,6 +3,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { WeatherService } from './Services/weather.service';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

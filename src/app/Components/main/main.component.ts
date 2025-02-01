@@ -10,6 +10,7 @@ import { ToasterNotification } from 'src/app/Models/common.models';
 import { TitleCase } from 'src/app/Services/weather-helper';
 
 @Component({
+  standalone: false,
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']

@@ -1,11 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { EChartsOption } from 'echarts';
+import { EChartsCoreOption } from 'echarts';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { LocalDateTimeByUnixTimestamp, TitleCase } from 'src/app/Services/weather-helper';
 import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
+  standalone: false,
   selector: 'app-daily-chart',
   templateUrl: './daily-chart.component.html',
   styleUrls: ['./daily-chart.component.css'],
@@ -46,7 +47,7 @@ export class DailyChartComponent implements OnInit {
   }
 
   chartWeatherData: OneAPICallModel;
-  eChartOptions: EChartsOption;
+  eChartOptions: EChartsCoreOption;
   xAxisData: string[] = [];
   seriesData1: number[] = [];
   seriesData2: number[] = [];

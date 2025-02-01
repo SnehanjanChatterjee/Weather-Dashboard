@@ -9,6 +9,7 @@ import { WeatherService } from 'src/app/Services/weather.service';
 import * as i18nIsoCountries from 'i18n-iso-countries';
 
 @Component({
+  standalone: false,
   selector: 'app-lhscontents',
   templateUrl: './lhscontents.component.html',
   styleUrls: ['./lhscontents.component.css'],
