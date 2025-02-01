@@ -6,9 +6,7 @@ import { CurrentWeatherModel } from '../Models/weather.models';
 import { CELCIUS_UNIT, FAHRENHEIT_UNIT, OneCallExcludes } from '../Constants/weather-dashboard-constants';
 import { OneAPICallModel } from '../Models/OneAPICallModel.models';
 import { Api, APIUrl } from '../Constants/url-constants';
-import { APIKey } from '../appConfig';
-// import { environment } from 'src/environments/environment';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +18,9 @@ export class WeatherService {
   private unitTypeSubject = new BehaviorSubject<boolean>(false);
   // private showSpinner = new BehaviorSubject<boolean>(false);
   private showSpinner = new Subject<boolean>();
-  // private Stored_API_Key = environment.OPENWEATHER_API_KEY;
-  private Stored_API_Key = APIKey;
+  private Stored_API_Key = environment.OPENWEATHER_API_KEY;
 
   loadCurrentWeatherByCityName(cityName: string): Observable<CurrentWeatherModel> {
-
     let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
     
     const url = APIUrl + Api.endpoints.weather + '?q=' + cityName + '&appid=' + this.Stored_API_Key + '&units=' + unit;
@@ -33,7 +29,6 @@ export class WeatherService {
   }
   
   loadCurrentWeatherByCoordinates(latitude: number, longitude: number): Observable<CurrentWeatherModel> {
-
     let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
     
     const url = APIUrl + Api.endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + this.Stored_API_Key + '&units=' + unit;
@@ -42,7 +37,6 @@ export class WeatherService {
   }
   
   loadOneAPICallDataByCurrentData(currentWeatherData: CurrentWeatherModel, excludes: any): Observable<OneAPICallModel> {
-
     let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
     
     let excludesString = '';

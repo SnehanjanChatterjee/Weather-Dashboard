@@ -61,3 +61,8 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+// Added to fix runtime issue ERROR ReferenceError: process is not defined. Ref: https://stackoverflow.com/questions/50313745/angular-process-is-not-defined-when-trying-to-serve-application
+// With this fix above error was gone but process.env was returning undefined. So had to move the API key to environment.ts
+// (window as any).process = {
+//     env: { DEBUG: undefined },
+// };
