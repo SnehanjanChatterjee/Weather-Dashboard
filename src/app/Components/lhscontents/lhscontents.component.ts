@@ -16,22 +16,23 @@ import * as i18nIsoCountries from 'i18n-iso-countries';
 })
 export class LHSContentsComponent implements OnInit {
 
+  // tslint:disable-next-line:variable-name
   constructor(private _weatherService: WeatherService, private _changeDetectorRef: ChangeDetectorRef) { }
 
-  cityName: string = '';
-  countryName: string = '';
-  unitTypeFahrenheit: boolean = false;
+  cityName = '';
+  countryName = '';
+  unitTypeFahrenheit = false;
   displayUnitType: string = CELCIUS;
-  iconurl: string = '';
+  iconUrl = '';
   currentDatetime: Date;
   currentTemp: number;
   todayMinTemp: number;
   todayMaxTemp: number;
-  weatherDescrption: string = '';
+  weatherDescription = '';
   sunriseTime: Date;
   sunsetTime: Date;
   errorMsg: string;
-  countryFlagUrl: string = '';
+  countryFlagUrl = '';
 
   locationWeatherData: CurrentWeatherModel;
   OneCallLocationWeatherData: OneAPICallModel;
@@ -41,9 +42,9 @@ export class LHSContentsComponent implements OnInit {
   set singleCallWeatherData(data: OneAPICallModel) {
     this.OneCallLocationWeatherData = data;
     // this._changeDetectorRef.markForCheck();
-    if(this.OneCallLocationWeatherData) {
+    if (this.OneCallLocationWeatherData) {
 
-      this.iconurl = IconUrl + this.OneCallLocationWeatherData.current.weather[0].icon + '@4x.png';
+      this.iconUrl = IconUrl + this.OneCallLocationWeatherData.current.weather[0].icon + '@4x.png';
 
       this.currentDatetime = LocalDateTime(this.OneCallLocationWeatherData.timezone_offset);
 
@@ -53,21 +54,23 @@ export class LHSContentsComponent implements OnInit {
       this.todayMinTemp = this.OneCallLocationWeatherData.daily[0].temp.min;
       this.todayMaxTemp = this.OneCallLocationWeatherData.daily[0].temp.max;
 
-      this.weatherDescrption = this.locationWeatherData.weather[0].description;
+      this.weatherDescription = this.locationWeatherData.weather[0].description;
 
-      this.sunriseTime = LocalDateTimeByUnixTimestamp(this.OneCallLocationWeatherData.current.sunrise, this.OneCallLocationWeatherData.timezone_offset);
-      this.sunsetTime = LocalDateTimeByUnixTimestamp(this.OneCallLocationWeatherData.current.sunset, this.OneCallLocationWeatherData.timezone_offset);
+      this.sunriseTime = LocalDateTimeByUnixTimestamp(this.OneCallLocationWeatherData.current.sunrise,
+        this.OneCallLocationWeatherData.timezone_offset);
+      this.sunsetTime = LocalDateTimeByUnixTimestamp(this.OneCallLocationWeatherData.current.sunset,
+        this.OneCallLocationWeatherData.timezone_offset);
 
       if (this.locationWeatherData && this.locationWeatherData.name) {
         this.cityName = this.locationWeatherData.name;
         // this.countryName = this.locationWeatherData.sys.country;
-        var countries = require("i18n-iso-countries");
+        const countries = require('i18n-iso-countries');
         // console.log(countries.getNames("en", {select: "official"}));
-        this.countryName = countries.getName(this.locationWeatherData.sys.country, "en", {select: "official"});
+        this.countryName = countries.getName(this.locationWeatherData.sys.country, 'en', {select: 'official'});
         // this.countryFlagUrl = FlagURUL + this.locationWeatherData.sys.country.toString() + FlagType + FlagSize; // API not working
         this.countryFlagUrl = ContryFlagsAPI_URL + ContryFlagsAPI_FILE_TYPE.PNG + this.locationWeatherData.sys.country.toString();
       }
-      // console.log("IconUrl", this.iconurl, "\n", "currentDatetime", this.currentDatetime);
+      // console.log("IconUrl", this.iconUrl, "\n", "currentDatetime", this.currentDatetime);
     }
   }
 
@@ -89,7 +92,7 @@ export class LHSContentsComponent implements OnInit {
   @Output() onUnitTypeChange: any = new EventEmitter<CurrentWeatherModel>();
 
   ngOnInit(): void {
-    i18nIsoCountries.registerLocale(require("i18n-iso-countries/langs/en.json"));
+    i18nIsoCountries.registerLocale(require('i18n-iso-countries/langs/en.json'));
   }
 
   handleSwitchSelection() {

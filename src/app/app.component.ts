@@ -10,7 +10,8 @@ import { WeatherService } from './Services/weather.service';
 export class AppComponent {
   title = 'Weather-Dashboard';
 
-  constructor(private _weatherService: WeatherService, private spinner: NgxSpinnerService) { 
+  // tslint:disable-next-line:variable-name
+  constructor(private _weatherService: WeatherService, private spinner: NgxSpinnerService) {
     this._weatherService.getShowSpinner().subscribe( (showSpinner) => {
       if (showSpinner) {
         this.spinner.show();

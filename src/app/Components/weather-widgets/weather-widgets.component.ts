@@ -11,6 +11,7 @@ import { WeatherService } from 'src/app/Services/weather.service';
 })
 export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
 
+  // tslint:disable-next-line:variable-name
   constructor(private renderer: Renderer2, private _weatherSrvc: WeatherService, private _changeDetectorRef: ChangeDetectorRef) { }
 
   OneCallweather: OneAPICallModel;
@@ -39,61 +40,61 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
     uv_index: 'UV Index',
     cloudiness: 'Cloudiness',
     wind: 'Wind'
-  }
+  };
 
   windSpeedUnit = '';
 
   @ViewChild('gaugeHumidity') set gaugeHumidityEl(value: ElementRef) {
     this.gaugeHumidityElement = value;
-  };
+  }
   @ViewChild('gaugeHumidityFill') set gaugeHumidityFillEl(value: ElementRef) {
     this.gaugeHumidityFillElement = value;
-  };
+  }
   @ViewChild('gaugeHumidityCover') set gaugeHumidityCoverEl(value: ElementRef) {
     this.gaugeHumidityCoverElement = value;
     if (this.OneCallweather && this.gaugeHumidityCoverElement) {
       this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
     }
-  };
+  }
 
   @ViewChild('gaugeCloud') set gaugeCloudEl(value: ElementRef) {
     this.gaugeCloudElement = value;
-  };
+  }
   @ViewChild('gaugeCloudFill') set gaugeCloudFillEl(value: ElementRef) {
     this.gaugeCloudFillElement = value;
-  };
+  }
   @ViewChild('gaugeCloudCover') set gaugeCloudCoverEl(value: ElementRef) {
     this.gaugeCloudCoverElement = value;
     if (this.OneCallweather && this.gaugeCloudCoverElement) {
       this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);
     }
-  };
+  }
 
   @ViewChild('gaugeUVI') set gaugeUVIEl(value: ElementRef) {
     this.gaugeUVIElement = value;
-  };
+  }
   @ViewChild('gaugeUVIFill') set gaugeUVIFillEl(value: ElementRef) {
     this.gaugeUVIFillElement = value;
-  };
+  }
   @ViewChild('gaugeUVICover') set gaugeUVICoverEl(value: ElementRef) {
     this.gaugeUVICoverElement = value;
     if (this.OneCallweather && this.gaugeUVICoverElement) {
       this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
     }
-  };
+  }
 
   @ViewChild('gaugeWind') set gaugeWindEl(value: ElementRef) {
     this.gaugeWindElement = value;
-  };
+  }
   @ViewChild('gaugeWindFill') set gaugeWindFillEl(value: ElementRef) {
     this.gaugeWindFillElement = value;
-  };
+  }
   @ViewChild('gaugeWindCover') set gaugeWindCoverEl(value: ElementRef) {
     this.gaugeWindCoverElement = value;
     if (this.OneCallweather && this.gaugeWindCoverElement) {
       this.setGaugeRoundedTurnValue(this.OneCallweather.current.wind_speed * 0.01, this.gaugeWindFillElement);
     }
-  };
+  }
 
   ngOnInit(): void {
     this._weatherSrvc.getUnitType().subscribe((unitType: boolean) => {
@@ -107,7 +108,8 @@ export class WeatherWidgetsComponent implements OnInit, AfterViewInit {
   @Input() set weatherData(weather: OneAPICallModel) {
     this.OneCallweather = weather;
     // this._changeDetectorRef.markForCheck();
-    if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
+    if (this.OneCallweather && this.gaugeCloudCoverElement && this.gaugeHumidityCoverElement
+      && this.gaugeUVICoverElement && this.gaugeWindCoverElement) {
       this.setGaugeTurnValue(this.OneCallweather.current.humidity * 0.01, this.gaugeHumidityFillElement);
       this.setGaugeRoundedTurnValue(this.OneCallweather.current.uvi / 8, this.gaugeUVIFillElement);
       this.setGaugeTurnValue(this.OneCallweather.current.clouds * 0.01, this.gaugeCloudFillElement);

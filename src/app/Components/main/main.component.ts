@@ -4,7 +4,7 @@ import { WeatherService } from 'src/app/Services/weather.service';
 import { switchMap } from 'rxjs/operators';
 import { OneAPICallModel } from 'src/app/Models/OneAPICallModel.models';
 import { IconClasses, OneCallExcludes, ToastMessageType } from 'src/app/Constants/weather-dashboard-constants';
-import { NgxSpinnerService } from "ngx-spinner";
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { ToasterNotification } from 'src/app/Models/common.models';
 import { TitleCase } from 'src/app/Services/weather-helper';
@@ -16,17 +16,17 @@ import { TitleCase } from 'src/app/Services/weather-helper';
 })
 export class MainComponent implements OnInit {
 
-  cityName: string = '';
+  cityName = '';
   currentWeatherData: CurrentWeatherModel;
   singleCallWeatherData: OneAPICallModel;
   // pageLoading: boolean = false;
-  showErrorDiv: boolean = false;
-  showErrorPopup: boolean = false;
-  errorMessage: string = '';
+  showErrorDiv = false;
+  showErrorPopup = false;
+  errorMessage = '';
   excludes = [OneCallExcludes.Minutely, OneCallExcludes.Hourly];
   latitude: number;
   longitude: number;
-  htmlGeolocationMessage: string = '';
+  htmlGeolocationMessage = '';
   toastMessageObject: ToasterNotification = {
     closeButton: true,
     timeOut: 2000,
@@ -43,9 +43,10 @@ export class MainComponent implements OnInit {
     onActivateTick: false,
     preventDuplicates: true,
     iconClasses: IconClasses
-  }
-  @ViewChild("myinput") myInputField: ElementRef;
+  };
+  @ViewChild('myinput') myInputField: ElementRef;
 
+  // tslint:disable-next-line:variable-name
   constructor(private _weatherService: WeatherService, private spinner: NgxSpinnerService, private toastr: ToastrService) {
     if (this.cityName === '' || this.cityName === null) {
       this.getLocationByHTMLNavigator();
