@@ -2,7 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
 
-Deployed at(Work under progress): https://snehanjanchatterjee.github.io/Weather-Dashboard/
+Deployed at: https://snehanjanchatterjee.github.io/Weather-Dashboard/
+
+## Note
+OpenWeather has discontinued its free access to API v2.5 (without subscription model), so the app is currently not functioning.
+
 
 ## To upload project
 
