@@ -14,14 +14,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { DailyChartComponent } from './Components/daily-chart/daily-chart.component';
-import { NgxEchartsModule } from 'ngx-echarts';
 import { DatePipe } from '@angular/common';
-import { defineLordIconElement } from 'lord-icon-element';
-import lottie from 'lottie-web';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { WeatherWidgetsComponent } from './Components/weather-widgets/weather-widgets.component';
-import { environment } from '../environments/environment';
+import { NgxEchartsDirective, NgxEchartsModule, provideEchartsCore } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import { GridComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+
+echarts.use([
+  BarChart,
+  GridComponent,
+  CanvasRenderer]
+);
 
 @NgModule({
   declarations: [
@@ -42,18 +49,12 @@ import { environment } from '../environments/environment';
     MatIconModule,
     MatFormFieldModule,
     MatButtonModule,
-    NgxEchartsModule.forRoot({
-      /**
-       * This will import all modules from echarts.
-       * If you only need custom modules,
-       * please refer to [Custom Build] section.
-       */
-      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
-    }),
+    NgxEchartsModule.forRoot({ echarts }),
+    NgxEchartsDirective,
     NgxSpinnerModule,
     ToastrModule.forRoot() // ToastrModule added
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, provideEchartsCore({ echarts })],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
