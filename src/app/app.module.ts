@@ -21,6 +21,7 @@ import lottie from 'lottie-web';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { WeatherWidgetsComponent } from './Components/weather-widgets/weather-widgets.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,5 @@ import { WeatherWidgetsComponent } from './Components/weather-widgets/weather-wi
 })
 export class AppModule {
   constructor() {
-    defineLordIconElement(lottie.loadAnimation);
   }
 }
