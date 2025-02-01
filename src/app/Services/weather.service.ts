@@ -7,41 +7,36 @@ import { CELCIUS_UNIT, FAHRENHEIT_UNIT } from '../Constants/weather-dashboard-co
 import { OneAPICallModel } from '../Models/OneAPICallModel.models';
 import { Api, APIUrl } from '../Constants/url-constants';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
 
+  // tslint:disable-next-line:variable-name
   constructor(private _http: HttpClient) { }
 
   private unitTypeSubject = new BehaviorSubject<boolean>(false);
   // private showSpinner = new BehaviorSubject<boolean>(false);
   private showSpinner = new Subject<boolean>();
-  // private Stored_API_Key = environment.OPENWEATHER_API_KEY;
-  private Stored_API_Key = APIKey;
+  private weatherApiKey = process.env.WEATHER_API_KEY;
 
   loadCurrentWeatherByCityName(cityName: string): Observable<CurrentWeatherModel> {
+    const unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
 
-    let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
-
-    const url = APIUrl + Api.endpoints.weather + '?q=' + cityName + '&appid=' + this.Stored_API_Key + '&units=' + unit;
+    const url = APIUrl + Api.endpoints.weather + '?q=' + cityName + '&appid=' + this.weatherApiKey + '&units=' + unit;
     return this._http.get<CurrentWeatherModel>(url).pipe(catchError(this.errorHandler));
-
   }
 
   loadCurrentWeatherByCoordinates(latitude: number, longitude: number): Observable<CurrentWeatherModel> {
+    const unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
 
-    let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
-
-    const url = APIUrl + Api.endpoints.weather + '?lat=' + latitude + '&lon=' + longitude + '&appid=' + this.Stored_API_Key + '&units=' + unit;
+    const url = APIUrl + Api.endpoints.weather + '?lat=' + latitude + '&lon='
+      + longitude + '&appid=' + this.weatherApiKey + '&units=' + unit;
     return this._http.get<CurrentWeatherModel>(url).pipe(catchError(this.errorHandler));
-
   }
 
   loadOneAPICallDataByCurrentData(currentWeatherData: CurrentWeatherModel, excludes: any): Observable<OneAPICallModel> {
-
-    let unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
+    const unit = (this.unitTypeSubject.getValue()) ? FAHRENHEIT_UNIT : CELCIUS_UNIT;
 
     let excludesString = '';
     excludes.forEach((value, index) => {
@@ -55,13 +50,12 @@ export class WeatherService {
     let url = '';
     if (excludesString && excludes.length > 0) {
       url = APIUrl + Api.endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon +
-      '&exclude=' + excludesString + '&appid=' + this.Stored_API_Key + '&units=' + unit;
+      '&exclude=' + excludesString + '&appid=' + this.weatherApiKey + '&units=' + unit;
     } else {
       url = APIUrl + Api.endpoints.oneCall + '?lat=' + currentWeatherData.coord.lat + '&lon=' + currentWeatherData.coord.lon +
-      '&appid=' + this.Stored_API_Key + '&units=' + unit;
+      '&appid=' + this.weatherApiKey + '&units=' + unit;
     }
     return this._http.get<OneAPICallModel>(url).pipe(catchError(this.errorHandler));
-
   }
 
   setUnitType(unitType: boolean) {
@@ -82,7 +76,7 @@ export class WeatherService {
 
   errorHandler(error: HttpErrorResponse) {
     console.error(error);
-    return throwError(error.message || "Server Error");
+    return throwError(error.message || 'Server Error');
   }
 
 }
